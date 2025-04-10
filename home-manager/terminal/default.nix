@@ -9,6 +9,7 @@
     ./zellij
 
     ./fastfetch.nix
+    ./git.nix
     ./lazygit.nix
     ./rust.nix
 

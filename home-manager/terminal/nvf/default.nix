@@ -75,7 +75,7 @@
         dashboard-nvim.enable = false;
 
         # Maximal
-        alpha.enable = true;
+        alpha.enable = false;
       };
 
       notify = {

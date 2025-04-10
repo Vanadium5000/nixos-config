@@ -1,0 +1,9 @@
+_: {
+  imports = [
+    ./rofi-menu.nix
+    ./rofi-powermenu.nix
+    ./rofi-screenshot.nix
+    ./rofi-wallpaper-selector.nix
+    ./rofi-wallpaper.nix
+  ];
+}

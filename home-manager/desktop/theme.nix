@@ -32,9 +32,7 @@
 
     # Also set by Stylix
     iconTheme = {
-      package = lib.mkForce (pkgs.morewaita-icon-theme.overrideAttrs {
-        src = inputs.morewaita;
-      });
+      package = lib.mkForce pkgs.morewaita-icon-theme;
 
       name = lib.mkForce "MoreWaita";
     };

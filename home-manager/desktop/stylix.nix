@@ -18,10 +18,7 @@ in {
     # Enable/disable icon theming
     iconTheme = {
       enable = true;
-      package = pkgs.morewaita-icon-theme.overrideAttrs {
-        src = inputs.morewaita;
-      };
-
+      package = pkgs.morewaita-icon-theme;
       # Dark & light icon theme name
       dark = "MoreWaita";
       light = "MoreWaita";

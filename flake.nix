@@ -116,11 +116,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     matugen.url = "github:InioX/matugen?ref=v2.2.0";
-
-    morewaita = {
-      url = "github:somepaulo/MoreWaita";
-      flake = false;
-    };
   };
 
   outputs = {

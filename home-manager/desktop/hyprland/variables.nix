@@ -22,7 +22,7 @@
     WLR_RENDERER = "vulkan";
     WLR_NO_HARDWARE_CURSORS = "1";
 
-    SDL_VIDEODRIVER = "wayland";
+    #SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
 
     GSK_RENDERER = "vulkan"; # "ngl" | "vulkan"

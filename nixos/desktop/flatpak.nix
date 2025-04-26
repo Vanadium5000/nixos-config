@@ -43,17 +43,11 @@
       # An improved version of Thunderbird
       # Open source email, newsfeed, chat, and calendaring client
       "eu.betterbird.Betterbird"
-
-      # Sober - Runtime for Roblox on Linux
-      {
-        flatpakref = "https://sober.vinegarhq.org/sober.flatpakref";
-        sha256 = "1pj8y1xhiwgbnhrr3yr3ybpfis9slrl73i0b1lc9q89vhip6ym2l";
-      }
     ];
   };
 
   customPersist.nixos.directories = ["/var/lib/flatpak"];
 
   # Sober Roblox installation - which is quite large
-  customPersist.home.directories = [".var/app"];
+  customPersist.home.directories = [".var/app" ".local/share/flatpak"];
 }

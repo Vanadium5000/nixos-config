@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./ags.nix
+    ./flatpak.nix
     ./kitty.nix
     ./theme.nix
     ./mime.nix

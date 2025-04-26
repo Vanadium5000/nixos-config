@@ -105,7 +105,6 @@
     impermanence.url = "github:nix-community/impermanence";
     # Retroactively persist directories with impermanence - copies files/folders to persist once added instead of deleting & making new - doesn't loose data
     persist-retro.url = "github:Geometer1729/persist-retro";
-    impurity.url = "github:outfoxxed/impurity.nix";
 
     # astal = {
     #   url = "github:aylur/astal";
@@ -124,8 +123,7 @@
     home-manager,
     #disko,
     impermanence,
-    persist-retro,
-    impurity,
+    #persist-retro,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -157,10 +155,6 @@
           #disko.nixosModules.disko # Declarative disk partitioning
           impermanence.nixosModules.impermanence # Handles persistent state on systems with ephemeral root storage
           #persist-retro.nixosModules.persist-retro # Retroactively persist directories with impermanence - copies files/folders to persist once added instead of deleting & making new - doesn't loose data
-          {
-            imports = [impurity.nixosModules.impurity]; # Impure symlinking in your nixos configuration
-            impurity.configRoot = self;
-          }
         ];
       };
   in {

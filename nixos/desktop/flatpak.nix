@@ -1,8 +1,4 @@
-{
-  inputs,
-  config,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.nix-flatpak.nixosModules.nix-flatpak # Install flatpaks declaratively
   ];

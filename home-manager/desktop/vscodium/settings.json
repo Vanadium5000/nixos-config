@@ -57,5 +57,6 @@
         },
       },
     }
-  }
+  },
+  "git.autofetch": true
 }

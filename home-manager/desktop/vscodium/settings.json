@@ -20,7 +20,6 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.iconTheme": "material-icon-theme",
 
   // Nix
   "nix.enableLanguageServer": true,
@@ -33,13 +32,13 @@
       //  "ignored": ["unused_binding", "unused_with"],
       // },
       "formatting": {
-        "command": ["alejandra"],
-      },
+        "command": ["alejandra"]
+      }
     },
     // check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
     "nixd": {
       "formatting": {
-        "command": ["alejandra"],
+        "command": ["alejandra"]
       },
       "options": {
         // By default, this entry will be read from `import <nixpkgs> { }`.
@@ -58,5 +57,7 @@
       },
     }
   },
-  "git.autofetch": true
+  "git.autofetch": true,
+  "lldb.suppressUpdateNotifications": true,
+  "workbench.iconTheme": "material-icon-theme"
 }

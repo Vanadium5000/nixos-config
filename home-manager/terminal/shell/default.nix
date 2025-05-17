@@ -37,7 +37,7 @@
       ];
     };
 
-    initExtra = builtins.concatStringsSep "\n" [
+    initContent = builtins.concatStringsSep "\n" [
       # Disables case-sensitivity
       "zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'"
       # Colours completions like ls --color

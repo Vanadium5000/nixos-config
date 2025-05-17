@@ -30,9 +30,12 @@ in {
     hyprpaper # wallpaper util
     hyprpicker # color picker
 
-    stable.nwg-displays # displays/outputs settings gui
+    nwg-displays # displays/outputs settings gui
     protonvpn-gui # proton vpn gui
   ];
+
+  # Persist nwg-displays diplay settings
+  customPersist.home.directories = [".config/hypr/monitors.conf" ".config/hypr/workspaces.conf"];
 
   wayland.windowManager.hyprland = {
     enable = true;

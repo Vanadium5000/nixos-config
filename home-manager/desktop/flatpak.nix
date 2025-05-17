@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{inputs, ...}: {
   # Flatpaks are setup in the nixos module
   imports = [
     inputs.nix-flatpak.homeManagerModules.nix-flatpak # Install flatpaks declaratively

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.greetd = {
     enable = true;
     settings = {
@@ -10,7 +9,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ greetd.tuigreet ];
+  environment.systemPackages = with pkgs; [greetd.tuigreet];
 
   # this is a life saver.
   # literally no documentation about this anywhere.
@@ -29,5 +28,4 @@
 
   # To prevent getting stuck at shutdown
   systemd.extraConfig = "DefaultTimeoutStopSec=10s";
-
 }

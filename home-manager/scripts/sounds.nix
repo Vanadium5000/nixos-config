@@ -6,9 +6,7 @@
 #- - `sound-down` decreases the volume by 5%.
 #- - `sound-set [value]` sets the volume to the given value.
 #- - `sound-toggle` toggles the mute state of the default audio sink.
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   increments = "5";
   smallIncrements = "1";
 
@@ -40,8 +38,7 @@ let
   sound-toggle = pkgs.writeShellScriptBin "sound-toggle" ''
     sound-change mute
   '';
-in
-{
+in {
   home.packages = [
     sound-change
 

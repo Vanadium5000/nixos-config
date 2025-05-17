@@ -53,8 +53,8 @@
         // Tip: use ${workspaceFolder} variable to define path
         "nix-darwin": {
           //"expr": "(builtins.getFlake \"${workspaceFolder}/path/to/flake\").darwinConfigurations.<name>.options",
-        },
-      },
+        }
+      }
     }
   },
   "git.autofetch": true,

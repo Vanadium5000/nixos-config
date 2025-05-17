@@ -2,7 +2,6 @@
 {
   pkgs,
   config,
-  inputs,
   lib,
   ...
 }: let
@@ -35,7 +34,7 @@ in {
   ];
 
   # Persist nwg-displays diplay settings
-  customPersist.home.directories = [".config/hypr/monitors.conf" ".config/hypr/workspaces.conf"];
+  customPersist.home.files = [".config/hypr/monitors.conf" ".config/hypr/workspaces.conf"];
 
   wayland.windowManager.hyprland = {
     enable = true;

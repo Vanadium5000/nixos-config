@@ -10,4 +10,7 @@
   allowedUnfree = [
     "discord"
   ];
+
+  # Persist settings & extensions
+  customPersist.home.directories = [".config/discord" ".config/Vencord"];
 }

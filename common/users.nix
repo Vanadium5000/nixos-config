@@ -7,7 +7,7 @@
   users.users = {
     ${config.var.username} = {
       isNormalUser = true;
-      shell = pkgs.nushell; # Default shell
+      shell = pkgs.fish; # Default shell
 
       # Don't forget to set a different password with "passwd" after rebooting!
       initialPassword = "1234";

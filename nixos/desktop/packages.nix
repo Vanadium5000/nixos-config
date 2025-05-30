@@ -27,7 +27,7 @@
       papirus-icon-theme # Icon theme
 
       # Obsidian
-      obsidian
+      # obsidian
 
       #kdePackages.breeze-icons
     ])

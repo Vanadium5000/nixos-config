@@ -44,6 +44,7 @@
           "Documents"
           "Videos"
           "VirtualBox VMs"
+          "Vault"
           {
             directory = ".gnupg";
             mode = "0700";

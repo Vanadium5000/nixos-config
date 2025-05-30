@@ -36,6 +36,8 @@
       "org.gnome.baobab" # Disk Usage
       "org.gnome.World.PikaBackup" # Backup software
 
+      # Utility
+      "md.obsidian.Obsidian"
       # An improved version of Thunderbird
       # Open source email, newsfeed, chat, and calendaring client
       "eu.betterbird.Betterbird"

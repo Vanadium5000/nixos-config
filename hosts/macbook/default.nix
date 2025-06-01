@@ -19,8 +19,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     # Disko
-    (import ../../disko.nix {device = "/dev/nvme0n1";})
-  ];
+    ../../disko-replace-mac.nix  ];
 
   # Set hostname to the same as the nixosConfiguration used
   var.hostname = "macbook";

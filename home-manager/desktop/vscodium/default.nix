@@ -10,14 +10,23 @@
 
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
+        # Rust
         rust-lang.rust-analyzer
         vadimcn.vscode-lldb # Rust debugging
 
+        # Python
         ms-python.python
         ms-python.debugpy
+        ms-python.black-formatter
+        ms-python.mypy-type-checker
+        ms-python.pylint
 
+        # General
         eamodio.gitlens
         pkief.material-icon-theme
+
+        # AI
+        continue.continue
       ];
 
       userSettings = lib.mkForce {};

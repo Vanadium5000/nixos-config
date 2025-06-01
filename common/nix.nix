@@ -35,12 +35,12 @@
       max-jobs = "auto";
 
       # Substituters
-      extra-substituters = [
+      substituters = [
         "https://cache.soopy.moe" # Apple T2
         "https://hyprland.cachix.org"
         "https://nix-community.cachix.org"
       ];
-      extra-trusted-public-keys = [
+      trusted-public-keys = [
         "cache.soopy.moe-1:0RZVsQeR+GOh0VQI9rvnHz55nVXkFardDqfm4+afjPo="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="

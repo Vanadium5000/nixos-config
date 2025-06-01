@@ -32,7 +32,11 @@
       vimAlias = true;
 
       globals.mapleader = " "; # The leader key used for <leader> mappings
-      clipboard.enable = true;
+      clipboard = {
+        enable = true;
+        providers.wl-copy.enable = true;
+        registers = "unnamedplus";
+      };
 
       debugMode = {
         enable = false;

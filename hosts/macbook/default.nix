@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -19,7 +20,8 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     # Disko
-    ../../disko-replace-mac.nix  ];
+    ../../disko-replace-mac.nix
+  ];
 
   # Set hostname to the same as the nixosConfiguration used
   var.hostname = "macbook";
@@ -37,6 +39,45 @@
 
   # Enabled by most DEs & by steam anyways
   hardware.graphics.enable = true;
+
+  # Make audio sound better
+  services.pipewire = {
+    extraConfig = {
+      pipewire-pulse."92-fix-crackle" = {
+        "pulse.properties" = {
+          "pulse.properties" = {
+            "pulse.min.req" = "1024/48000";
+            "pulse.default.req" = "1024/48000";
+            "pulse.max.req" = "1024/48000";
+            "pulse.min.quantum" = "1024/48000";
+            "pulse.max.quantum" = "1024/48000";
+          };
+          "stream.properties" = {
+            "node.latency" = "1024/48000";
+            "resample.quality" = 1;
+          };
+        };
+      };
+      pipewire."92-fix-crackle" = {
+        "context.properties" = {
+          "default.clock.rate" = 48000;
+          "default.clock.quantum" = 1024;
+          "default.clock.min-quantum" = 1024;
+          "default.clock.max-quantum" = 1024;
+        };
+      };
+    };
+  };
+
+  # Switch cmd with option, and fn with ctrl: for a more normal keyboard layout
+  # home-manager.users.${config.var.username} = {
+  #   wayland.windowManager.hyprland.settings.input.kb_options = "super:swapalt,function:swapctrl";
+  # };
+
+  # Swap fn & ctrl, opt & cmd
+  boot.extraModprobeConfig = ''
+    options hid_apple fnmode=1 swap_fn_leftctrl=1 swap_opt_cmd=1
+  '';
 
   # Macbook T2 wifi firmware https://wiki.t2linux.org/distributions/nixos/installation/#__tabbed_7_2
   hardware.firmware = [

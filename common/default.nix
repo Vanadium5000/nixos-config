@@ -23,7 +23,7 @@
   environment.defaultPackages = [];
 
   # Use latest available linux kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
 
   home-manager = {
     # Instead use the global pkgs that is configured via the system level nixpkgs options

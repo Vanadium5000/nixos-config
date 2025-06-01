@@ -135,6 +135,8 @@ in {
         disable_splash_rendering = true;
         disable_autoreload = false;
 
+        middle_click_paste = false;
+
         focus_on_activate = true;
         new_window_takes_over_fullscreen = 2; # 0 | 1 | 2
       };

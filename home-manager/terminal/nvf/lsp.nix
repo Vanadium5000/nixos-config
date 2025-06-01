@@ -46,9 +46,12 @@
       # `vim.languages.vim` to enable it, this does not restrict
       # that.
       # See: <https://github.com/PMunch/nimlsp/issues/178#issue-2128106096>
-      nim.enable = false;
 
-      nix.enable = true;
+      # Nix
+      nix = {
+        enable = true;
+        lsp.server = "nixd";
+      };
 
       # Maximal
       markdown.enable = true;

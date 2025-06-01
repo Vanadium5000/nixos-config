@@ -12,8 +12,8 @@
 
   # -d intel_backlight is a temporary solution, nvidia_0 is alternative and doesn't work
   brightness-change = pkgs.writeShellScriptBin "brightness-change" ''
-    [[ $1 == "up" ]] && ${pkgs.brightnessctl}/bin/brightnessctl -d intel_backlight set ''${2-${increments}}%+
-    [[ $1 == "down" ]] && ${pkgs.brightnessctl}/bin/brightnessctl -d intel_backlight set ''${2-${increments}}%-
+    [[ $1 == "up" ]] && ${pkgs.brightnessctl}/bin/brightnessctl set ''${2-${increments}}%+
+    [[ $1 == "down" ]] && ${pkgs.brightnessctl}/bin/brightnessctl set ''${2-${increments}}%-
   '';
 
   brightness-set = pkgs.writeShellScriptBin "brightness-set" ''

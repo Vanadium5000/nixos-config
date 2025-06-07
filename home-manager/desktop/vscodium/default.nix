@@ -24,11 +24,16 @@
         ms-python.mypy-type-checker
         ms-python.pylint
 
+        # Web dev
+        bradlc.vscode-tailwindcss
+        esbenp.prettier-vscode
+
         # Nix
         jnoortheen.nix-ide
 
         # General
         eamodio.gitlens
+        ms-azuretools.vscode-containers
         pkief.material-icon-theme
         usernamehw.errorlens # Improves error highlighting
         fill-labs.dependi # Helps manage dependencies

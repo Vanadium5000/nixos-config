@@ -14,6 +14,9 @@
         rust-lang.rust-analyzer
         vadimcn.vscode-lldb # Rust debugging
 
+        # TOML
+        tamasfe.even-better-toml # Support for Cargo.toml
+
         # Python
         ms-python.python
         ms-python.debugpy
@@ -21,9 +24,15 @@
         ms-python.mypy-type-checker
         ms-python.pylint
 
+        # Nix
+        jnoortheen.nix-ide
+
         # General
         eamodio.gitlens
         pkief.material-icon-theme
+        usernamehw.errorlens # Improves error highlighting
+        fill-labs.dependi # Helps manage dependencies
+        #streetsidesoftware.code-spell-checker
 
         # AI
         continue.continue
@@ -32,6 +41,17 @@
       userSettings = lib.mkForce {};
     };
   };
+
+  # LSPs/Dependencies
+  home.packages = with pkgs; [
+    nixd
+    alejandra
+  ];
+
+  # Custom option
+  allowedUnfree = [
+    "vscode-extension-fill-labs-dependi"
+  ];
 
   home.file.".config/VSCodium/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/nixos-config/home-manager/desktop/vscodium/settings.json";
 

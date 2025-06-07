@@ -21,7 +21,7 @@
 
     # Disko REPLACED
     #(import ../../disko.nix {device = "/dev/nvme0n1";})
-    ../../disko-replace.nix
+    ../../disko-replace-legion.nix
   ];
 
   # Set hostname to the same as the nixosConfiguration used

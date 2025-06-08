@@ -79,10 +79,9 @@
     mkdir /btrfs_tmp
     mount /dev/disk/by-label/nixos /btrfs_tmp
     if [[ -e /btrfs_tmp/root ]]; then
-        # Modified to add under /persist - https://github.com/nix-community/impermanence/issues/258
-        mkdir -p /btrfs_tmp/persist/old_roots
+        mkdir -p /btrfs_tmp/old_roots
         timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-        mv /btrfs_tmp/root "/btrfs_tmp/persist/old_roots/$timestamp"
+        mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
     fi
 
     delete_subvolume_recursively() {

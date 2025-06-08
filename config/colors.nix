@@ -34,8 +34,8 @@
   colors = {
     #accent = "0D";
     #accent-alt = "03";
-    accent = "0C";
-    accent-alt = "0D";
+    accent = "0D";
+    accent-alt = "0C";
 
     background = "00";
     background-alt = "01";

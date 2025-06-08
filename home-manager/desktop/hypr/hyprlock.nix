@@ -17,20 +17,17 @@ in {
     settings = {
       general = {
         grace = 0; # Time before actually locking/not just disappearing when cursor moves
-        no_fade_in = false;
-        no_fade_out = false;
-        disable_loading_bar = false;
+        immediate_render = true; # Makes hyprlock immediately start to draw widgets
+      };
+
+      animations = {
+        enabled = true;
       };
 
       # BACKGROUND
       background = {
         monitor = "";
         path = imageStr;
-        blur_passes = 0;
-        contrast = 0.8916;
-        brightness = 0.7172;
-        vibrancy = 0.1696;
-        vibrancy_darkness = 0.0;
       };
 
       label = [
@@ -123,6 +120,7 @@ in {
 
           check_color = "rgba(204, 136, 34, 0)";
           fail_color = "rgba(204, 34, 34, 0)"; # if authentication failed, changes outer_color and fail message color
+          hide_input_base_color = "rgba(0, 0, 0, 0)"; # color for hide_input, shouldn't happen
 
           fade_on_empty = false;
           font_family = font;
@@ -134,9 +132,6 @@ in {
           halign = "center";
           valign = "center";
 
-          capslock_color = -1;
-          numlock_color = -1;
-          bothlock_color = -1; # when both locks are active. -1 means don't change outer color (same for above)
           invert_numlock = false; # change color if numlock is off
           swap_font_color = false; # see below
         }

@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     bind =
       [
-        "$mod,RETURN, exec, ${pkgs.kitty}/bin/kitty" # Kitty
+        "$mod,RETURN, exec, ${pkgs.ghostty}/bin/ghostty" # Ghostty
         "$mod,E, exec, dolphin" # Dolphin
         "$mod,B, exec, ${pkgs.floorp}/bin/floorp" # Floorp
 

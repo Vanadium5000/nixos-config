@@ -2,6 +2,7 @@
   imports = [
     ./ags.nix
     ./flatpak.nix
+    ./ghostty.nix
     ./kitty.nix
     ./theme.nix
     ./mime.nix

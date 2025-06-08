@@ -6,6 +6,8 @@
   programs.floorp.profiles.${config.var.username}.search = {
     default = "Startpage";
     privateDefault = "Startpage";
+    # Whether to force replace the existing search configuration, recommended
+    force = true;
 
     engines = {
       "Nix Packages" = {
@@ -85,7 +87,8 @@
         definedAliases = ["@yt"];
       };
 
-      "Startpage" = {
+      "startpage" = {
+        name = "Startpage";
         urls = [
           {
             template = "https://www.startpage.com/sp/search";
@@ -102,7 +105,7 @@
           }
         ];
 
-        icon = "https://www.startpage.com/sp/cdn/favicons/favicon-96x96.png";
+        icon = "https://www.startpage.com/sp/cdn/favicons/favicon-gradient.ico";
         definedAliases = ["@sp"];
       };
 
@@ -135,8 +138,5 @@
 
     # Engines that aren’t included in this list will be listed after these in an unspecified order
     order = ["ddg" "Nix Packages" "Wikipedia"];
-
-    # # Whether to force replace the existing search configuration, recommended
-    force = true;
   };
 }

@@ -33,7 +33,7 @@
 
         # General
         eamodio.gitlens
-        ms-azuretools.vscode-containers
+        #ms-azuretools.vscode-containers
         pkief.material-icon-theme
         usernamehw.errorlens # Improves error highlighting
         fill-labs.dependi # Helps manage dependencies

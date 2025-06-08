@@ -23,7 +23,6 @@ in {
   home.packages = with pkgs; [
     wl-clipboard
     brightnessctl
-    light
     dconf # user-prefs
 
     hyprpaper # wallpaper util

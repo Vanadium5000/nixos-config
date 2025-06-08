@@ -68,5 +68,6 @@
   },
   "terminal.integrated.defaultProfile.linux": "fish",
   "containers.containerCommand": "podman",
-  "docker.dockerPath": "podman"
+  "docker.dockerPath": "podman",
+  "workbench.colorTheme": "Stylix"
 }

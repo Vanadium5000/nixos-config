@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Safety
-set -o nounset # Exits if an undefined variable is referenced
-#set -o errexit  # Exits if any command exits with a non-zero status (fails)
-set -o pipefail # Exits if any command in a pipeline fails
+# Safety settings
+set -o nounset  # Exit on undefined variable
+set -o errexit  # Exit on command failure
+set -o pipefail # Exit on pipeline failure
 
 # Default configuration
 SOURCE_SUBVOL="/persist"
@@ -32,19 +32,18 @@ is_btrfs_filesystem_or_subvolume() {
         fi
 }
 
-# Verify directories exist
-if [ ! -d "$SOURCE_SUBVOL" ]; then
-        echo "Error: Source subvolume $SOURCE_SUBVOL does not exist."
-        exit 1
-fi
-if [ ! -d "$SNAPSHOT_DIR" ]; then
-        echo "Error: Snapshot directory $SNAPSHOT_DIR does not exist."
-        exit 1
-fi
-if [ ! -d "$BACKUP_DIR" ]; then
-        echo "Error: Backup directory $BACKUP_DIR does not exist."
-        exit 1
-fi
+# Function to check if command exists
+check_command() {
+        if ! command -v "$1" >/dev/null 2>&1; then
+                echo "Error: Required command '$1' not found."
+                exit 1
+        fi
+}
+
+# Check for required commands
+check_command btrfs
+check_command date
+check_command find
 
 # Verify Btrfs properties
 is_btrfs_subvolume "$SOURCE_SUBVOL"
@@ -52,9 +51,10 @@ is_btrfs_subvolume "$SNAPSHOT_DIR"
 is_btrfs_filesystem_or_subvolume "$BACKUP_DIR"
 
 # Find the most recent snapshot
-LAST_SNAPSHOT=$(ls -t "$SNAPSHOT_DIR"/persist_* 2>/dev/null | head -n 1)
+LAST_SNAPSHOT=$(find "$SNAPSHOT_DIR" -maxdepth 1 -name "persist_*" -type d | sort -r | head -n 1)
 
 # Create new snapshot
+echo "Creating snapshot: persist_$TIMESTAMP"
 if ! sudo btrfs subvolume snapshot -r "$SOURCE_SUBVOL" "$SNAPSHOT_DIR/persist_$TIMESTAMP"; then
         echo "Error: Failed to create snapshot."
         exit 1
@@ -62,21 +62,26 @@ fi
 
 # Send snapshot to backup directory
 if [ -z "$LAST_SNAPSHOT" ]; then
-        # Initial backup
+        echo "Performing initial backup..."
         if ! sudo btrfs send "$SNAPSHOT_DIR/persist_$TIMESTAMP" | sudo btrfs receive "$BACKUP_DIR"; then
                 echo "Error: Initial backup failed."
+                # Clean up failed snapshot
+                sudo btrfs subvolume delete "$SNAPSHOT_DIR/persist_$TIMESTAMP" 2>/dev/null || true
                 exit 1
         fi
 else
-        # Incremental backup
+        echo "Performing incremental backup using parent: $LAST_SNAPSHOT..."
         if ! sudo btrfs send -p "$LAST_SNAPSHOT" "$SNAPSHOT_DIR/persist_$TIMESTAMP" | sudo btrfs receive "$BACKUP_DIR"; then
                 echo "Error: Incremental backup failed."
+                # Clean up failed snapshot
+                sudo btrfs subvolume delete "$SNAPSHOT_DIR/persist_$TIMESTAMP" 2>/dev/null || true
                 exit 1
         fi
 fi
 
 # Clean up old snapshots (keep last 7 days)
-find "$SNAPSHOT_DIR" -name "persist_*" -mtime +7 -exec sudo btrfs subvolume delete {} \; 2>/dev/null
-find "$BACKUP_DIR" -name "persist_*" -mtime +7 -exec sudo btrfs subvolume delete {} \; 2>/dev/null
+echo "Cleaning up snapshots older than 7 days..."
+find "$SNAPSHOT_DIR" -maxdepth 1 -name "persist_*" -type d -mtime +7 -exec sudo btrfs subvolume delete {} \; 2>/dev/null || true
+find "$BACKUP_DIR" -maxdepth 1 -name "persist_*" -type d -mtime +7 -exec sudo btrfs subvolume delete {} \; 2>/dev/null || true
 
 echo "Backup completed successfully: persist_$TIMESTAMP"

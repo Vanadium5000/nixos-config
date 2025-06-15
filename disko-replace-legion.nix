@@ -102,6 +102,41 @@
         poolUuid = null;
       };
     };
+    "/old_roots" = {
+      autoFormat = false;
+      autoResize = false;
+      depends = [];
+      device = "/dev/disk/by-label/nixos";
+      enable = true;
+      encrypted = {
+        blkDev = null;
+        enable = false;
+        keyFile = null;
+        label = null;
+      };
+      formatOptions = null;
+      fsType = "btrfs";
+      label = null;
+      mountPoint = "/old_roots";
+      neededForBoot = false;
+      noCheck = false;
+      options = [
+        "x-initrd.mount"
+        "compress=zstd"
+        "subvol=old_roots"
+        "noatime"
+        "subvol=/old_roots"
+      ];
+      overlay = {
+        lowerdir = null;
+        upperdir = null;
+        useStage1BaseDirectories = true;
+        workdir = null;
+      };
+      stratis = {
+        poolUuid = null;
+      };
+    };
     "/persist" = {
       autoFormat = false;
       autoResize = false;

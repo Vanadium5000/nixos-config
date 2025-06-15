@@ -26,7 +26,7 @@
     animation-speed = "slow"; # "fast" | "medium" | "slow"
 
     # https://tinted-theming.github.io/base16-gallery/
-    colorScheme = "${pkgs.base16-schemes}/share/themes/framer.yaml"; #ayu-mirage
+    colorScheme = "${pkgs.base16-schemes}/share/themes/ayu-mirage.yaml"; #ayu-mirage
     defaultWallpaper = "${pkgs.nixy-wallpapers}/wallpapers/fuji-dark.png";
 
     bar = {

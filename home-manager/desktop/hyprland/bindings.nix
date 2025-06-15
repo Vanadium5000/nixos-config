@@ -85,10 +85,10 @@
       "$shift,XF86MonBrightnessUp, exec, brightness-up-small" # Brightness Up Small
       "$shift,XF86MonBrightnessDown, exec, brightness-down-small" # Brightness Down Small
 
-      ",XF86KbdBrightnessUp, exec, brightness-up 'apple::kbd_backlight'" # Kbd Brightness Up
-      ",XF86KbdBrightnessDown, exec, brightness-down 'apple::kbd_backlight'" # Kbd Brightness Down
-      "$shift,XF86KbdBrightnessUp, exec, brightness-up-small 'apple::kbd_backlight'" # Kbd Brightness Up Small
-      "$shift,XF86KbdBrightnessDown, exec, brightness-down-small 'apple::kbd_backlight'" # Kbd Brightness Down Small
+      ",XF86KbdBrightnessUp, exec, brightness-up" # Kbd Brightness Up
+      ",XF86KbdBrightnessDown, exec, brightness-down" # Kbd Brightness Down
+      "$shift,XF86KbdBrightnessUp, exec, brightness-up-small" # Kbd Brightness Up Small
+      "$shift,XF86KbdBrightnessDown, exec, brightness-down-small" # Kbd Brightness Down Small
     ];
   };
 }

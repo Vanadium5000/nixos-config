@@ -71,4 +71,12 @@
       # https://github.com/anotherhadi/nixy/blob/main/home/programs/shell/zsh.nix
       + ":${config.hardware.nvidia.package}/lib:$LD_LIBRARY_PATH"; # Extra for btop nvidia support
   };
+
+  # Brightness keys
+  home-manager.users."${config.var.username}".wayland.windowManager.hyprland.settings.bindle = [
+    ",XF86MonBrightnessUp, exec, brightness-up 'intel_backlight'" # Brightness Up
+    ",XF86MonBrightnessDown, exec, brightness-down 'intel_backlight'" # Brightness Down
+    "$shift,XF86MonBrightnessUp, exec, brightness-up-small 'intel_backlight'" # Brightness Up Small
+    "$shift,XF86MonBrightnessDown, exec, brightness-down-small 'intel_backlight'" # Brightness Down Small
+  ];
 }

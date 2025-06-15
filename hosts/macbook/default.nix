@@ -92,4 +92,12 @@
       '';
     }))
   ];
+
+  # Brightness keys
+  home-manager.users."${config.var.username}".wayland.windowManager.hyprland.settings.bindle = [
+    ",XF86KbdBrightnessUp, exec, brightness-up 'apple::kbd_backlight'" # Kbd Brightness Up
+    ",XF86KbdBrightnessDown, exec, brightness-down 'apple::kbd_backlight'" # Kbd Brightness Down
+    "$shift,XF86KbdBrightnessUp, exec, brightness-up-small 'apple::kbd_backlight'" # Kbd Brightness Up Small
+    "$shift,XF86KbdBrightnessDown, exec, brightness-down-small 'apple::kbd_backlight'" # Kbd Brightness Down Small
+  ];
 }

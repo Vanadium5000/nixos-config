@@ -1,5 +1,7 @@
 {...}: {
   imports = [
+    ./hyprshade
+
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpaper.nix

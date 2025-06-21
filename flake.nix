@@ -18,7 +18,7 @@
     };
 
     # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland"; #(rev) /ce48bc540824fcaefd777959703df9908e258d0a";
+    hyprland.url = "github:hyprwm/Hyprland";
     # Hyprland official plugins
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -106,15 +106,12 @@
     # Retroactively persist directories with impermanence - copies files/folders to persist once added instead of deleting & making new - doesn't loose data
     persist-retro.url = "github:Geometer1729/persist-retro";
 
-    # astal = {
-    #   url = "github:aylur/astal";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    ags = {
-      url = "github:aylur/ags"; #/60180a184cfb32b61a1d871c058b31a3b9b0743d";
-      inputs.nixpkgs.follows = "nixpkgs";
+    illogical-impulse-dotfiles = {
+      url = "github:xBLACKICEx/dots-hyprland";
+      flake = false;
     };
-    matugen.url = "github:InioX/matugen?ref=v2.2.0";
+    anyrun.url = "github:Kirottu/anyrun";
+    anyrun.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {

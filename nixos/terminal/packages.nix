@@ -26,7 +26,7 @@
     ++
     # Language runtimes/compilers
     [
-      python3
+      #python3
       gcc
       bun
     ]

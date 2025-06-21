@@ -8,4 +8,7 @@ pkgs: {
   catppuccin = pkgs.callPackage ./catppuccin.nix {};
   battery = pkgs.callPackage ./battery.nix {};
   cpu = pkgs.callPackage ./cpu.nix {};
+
+  # End_4
+  #illogical-impulse-oneui4-icons = pkgs.callPackage ./illogical-impulse-oneui4-icons.nix;
 }

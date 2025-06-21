@@ -37,12 +37,12 @@
     };
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "qtct";
-    # Use kvantum for qt themes
-    style.name = "kvantum";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "qtct";
+  #   # Use kvantum for qt themes
+  #   style.name = "kvantum";
+  # };
 
   home.file = {
     # Install ArcDark kvantum theme

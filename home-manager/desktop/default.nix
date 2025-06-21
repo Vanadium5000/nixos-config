@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./ags.nix
     ./flatpak.nix
     ./ghostty.nix
     ./kitty.nix
@@ -11,6 +10,7 @@
     ./stylix.nix
 
     ./discord
+    ./end_4
     ./floorp
     ./hypr
     ./hyprland

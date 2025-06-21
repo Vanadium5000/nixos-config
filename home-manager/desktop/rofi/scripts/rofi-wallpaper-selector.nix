@@ -126,8 +126,7 @@
     main
 
     echo "$result"
-    hyprctl hyprpaper preload "$result"
-    hyprctl hyprpaper wallpaper ",$result"
+    swww img "$result"
     cp -f "$result" ~/.current_wallpaper # For rofi wallpaper
   '';
 in {

@@ -25,7 +25,7 @@ in {
     brightnessctl
     dconf # user-prefs
 
-    hyprpaper # wallpaper util
+    swww # wallpaper utilhyprpaper
     hyprpicker # color picker
 
     nwg-displays # displays/outputs settings gui

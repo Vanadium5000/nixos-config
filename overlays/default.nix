@@ -25,6 +25,9 @@
     basedpyright = prev.basedpyright.overrideAttrs {
       dontCheckForBrokenSymlinks = true;
     };
+    waydroid = prev.waydroid.override {
+      python3Packages = prev.python312Packages;
+    };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

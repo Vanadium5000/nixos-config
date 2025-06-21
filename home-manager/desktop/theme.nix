@@ -37,33 +37,16 @@
     };
   };
 
-  # qt = {
-  #   enable = true;
-  #   platformTheme.name = "qtct";
-  #   # Use kvantum for qt themes
-  #   style.name = "kvantum";
-  # };
+  qt = {
+    enable = true;
+    platformTheme.name = lib.mkForce "kde6";
+    # Use default kde theme for qt
+    style.name = "breeze";
+  };
 
   home.file = {
     # Install ArcDark kvantum theme
     ".config/Kvantum/ArcDark".source = "${pkgs.arc-kde-theme}/share/Kvantum/ArcDark";
-    #".config/Kvantum/kvantum.kvconfig".text = lib.generators.toINI {} {General.theme = "ArcDark";};
-
-    # Use papirus icon theme
-    # ".config/qt5ct/qt5ct.conf".text = lib.generators.toINI {} {
-    #   Appearance = {
-    #     style = "kvantum";
-    #     standard_dialogs = "xdgdesktopportal";
-    #     icon_theme = config.gtk.iconTheme.name;
-    #   };
-    # };
-    # ".config/qt6ct/qt6ct.conf".text = lib.generators.toINI {} {
-    #   Appearance = {
-    #     style = "kvantum";
-    #     standard_dialogs = "xdgdesktopportal";
-    #     icon_theme = config.gtk.iconTheme.name;
-    #   };
-    # };
 
     # Enable gtk theme for flatpaks
     ".local/share/flatpak/overrides/global".text = let

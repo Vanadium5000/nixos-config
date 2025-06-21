@@ -11,4 +11,7 @@ pkgs: {
 
   # End_4
   #illogical-impulse-oneui4-icons = pkgs.callPackage ./illogical-impulse-oneui4-icons.nix;
+
+  # Caelestia
+  caelestia-cli = pkgs.callPackage ./caelestia-cli.nix {};
 }

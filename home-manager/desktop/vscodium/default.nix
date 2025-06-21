@@ -18,11 +18,11 @@
         tamasfe.even-better-toml # Support for Cargo.toml
 
         # Python
-        # ms-python.python
-        # ms-python.debugpy
-        # ms-python.black-formatter
-        # ms-python.mypy-type-checker
-        # ms-python.pylint
+        ms-python.python
+        ms-python.debugpy
+        ms-python.black-formatter
+        ms-python.mypy-type-checker
+        ms-python.pylint
 
         # Web dev
         bradlc.vscode-tailwindcss

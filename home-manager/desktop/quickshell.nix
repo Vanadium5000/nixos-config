@@ -3,17 +3,25 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    inputs.quickshell.packages.${pkgs.system}.default
-    wl-clipboard
-    swww # wallpaper
-    cliphist
-    libnotify
-    inotify-tools
-    socat
-    brightnessctl
-    hyprshade
-    desktop-file-utils
-    hyprpicker
-  ];
+  home.packages = with pkgs;
+    [
+      inputs.quickshell.packages.${pkgs.system}.default
+      fish
+      jq
+      fd
+      cava
+      bluez
+      ddcutil
+      brightnessctl
+      curl
+      material-symbols
+      python3
+    ]
+    ++ (with python312Packages; [
+      aubio
+      pyaudio
+      numpy
+    ]);
+
+  xdg.configFile."quickshell/caelestia".source = "${inputs.caelestia-shell}";
 }

@@ -106,8 +106,8 @@
     # Retroactively persist directories with impermanence - copies files/folders to persist once added instead of deleting & making new - doesn't loose data
     persist-retro.url = "github:Geometer1729/persist-retro";
 
-    illogical-impulse-dotfiles = {
-      url = "github:xBLACKICEx/dots-hyprland";
+    caelestia-shell = {
+      url = "github:liperium/caelestia-shell";
       flake = false;
     };
     anyrun.url = "github:Kirottu/anyrun";

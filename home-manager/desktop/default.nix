@@ -5,16 +5,16 @@
     ./kitty.nix
     ./theme.nix
     ./mime.nix
-    #./quickshell.nix
+    ./quickshell.nix
     ./spicetify.nix
     ./stylix.nix
 
     ./discord
-    ./end_4
+    #./end_4
     ./floorp
     ./hypr
     ./hyprland
-    ./qutebrowser
+    #./qutebrowser
     ./rofi
     ./utils
     ./vscodium

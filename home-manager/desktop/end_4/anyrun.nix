@@ -27,6 +27,6 @@
       maxEntries = null;
     };
 
-    extraCss = builtins.readFile "${inputs.illogical-impulse-dotfiles}/.config/anyrun/style.css";
+    #extraCss = builtins.readFile "${inputs.illogical-impulse-dotfiles}/.config/anyrun/style.css";
   };
 }

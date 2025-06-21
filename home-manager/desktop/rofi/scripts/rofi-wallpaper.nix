@@ -25,8 +25,7 @@
       wallPath=$(echo $(rofi -run-command "echo {cmd}" -show filebrowser) | cut -d " " -f 2)
 
 
-      hyprctl hyprpaper preload "$wallPath"
-      hyprctl hyprpaper wallpaper ",$wallPath"
+      swww img "$wallPath"
 
       # For rofi & hyprlock wallpaper
       rm -f ~/.current_wallpaper

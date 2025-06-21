@@ -41,7 +41,7 @@
     enable = true;
     platformTheme.name = lib.mkForce "kde6";
     # Use default kde theme for qt
-    style.name = "breeze";
+    style.name = lib.mkForce "breeze";
   };
 
   home.file = {

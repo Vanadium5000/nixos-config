@@ -110,6 +110,11 @@
       url = "github:liperium/caelestia-shell";
       flake = false;
     };
+    caelestia-scripts = {
+      url = "github:ItzDerock/caelestia-scripts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     anyrun.url = "github:Kirottu/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
   };

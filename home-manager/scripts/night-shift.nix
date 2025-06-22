@@ -53,7 +53,6 @@
   '';
 in {
   home.packages = [
-    inputs.hyprsunset.packages."${pkgs.system}".hyprsunset
     pkgs.hyprshade
     night-shift-on
     night-shift-off

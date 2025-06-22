@@ -10,16 +10,16 @@
   increments = "5";
   smallIncrements = "1";
 
-# $2 is an optional argument which can include the device to change
+  # $2 is an optional argument which can include the device to change
   brightness-change = pkgs.writeShellScriptBin "brightness-change" ''
-  if [[ -n $3 ]]; then
-    [[ $1 == "up" ]] && ${pkgs.brightnessctl}/bin/brightnessctl -d "$3" set ''${2-${increments}}%+
-    [[ $1 == "down" ]] && ${pkgs.brightnessctl}/bin/brightnessctl -d "$3" set ''${2-${increments}}%-
-  else
-    [[ $1 == "up" ]] && ${pkgs.brightnessctl}/bin/brightnessctl set ''${2-${increments}}%+
-    [[ $1 == "down" ]] && ${pkgs.brightnessctl}/bin/brightnessctl set ''${2-${increments}}%-
-  fi
-'';
+    if [[ -n $3 ]]; then
+      [[ $1 == "up" ]] && ${pkgs.brightnessctl}/bin/brightnessctl -d "$3" set ''${2-${increments}}%+
+      [[ $1 == "down" ]] && ${pkgs.brightnessctl}/bin/brightnessctl -d "$3" set ''${2-${increments}}%-
+    else
+      [[ $1 == "up" ]] && ${pkgs.brightnessctl}/bin/brightnessctl set ''${2-${increments}}%+
+      [[ $1 == "down" ]] && ${pkgs.brightnessctl}/bin/brightnessctl set ''${2-${increments}}%-
+    fi
+  '';
 
   brightness-set = pkgs.writeShellScriptBin "brightness-set" ''
     ${pkgs.brightnessctl}/bin/brightnessctl set ''${1-100}%

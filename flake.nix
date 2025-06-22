@@ -18,11 +18,7 @@
     };
 
     # Easy linting of the flake and all kind of other stuff
-    pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.flake-compat.follows = "chaotic-nyx/nixpkgs";
-      inputs.nixpkgs.follows = "chaotic-nyx/nixpkgs";
-    };
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
@@ -96,9 +92,7 @@
     self,
     nixpkgs,
     home-manager,
-    #disko,
     impermanence,
-    #persist-retro,
     ...
   } @ inputs: let
     inherit (self) outputs;

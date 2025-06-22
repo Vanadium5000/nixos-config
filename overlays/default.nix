@@ -47,8 +47,4 @@
       config.allowUnfree = false;
     };
   };
-  # Adds Nix User Repository: User contributed nix packages, under 'pkgs.nur'
-  nur-packages = final: _prev: {
-    nur = inputs.nur.overlays.default;
-  };
 }

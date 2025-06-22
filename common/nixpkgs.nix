@@ -14,9 +14,6 @@
       outputs.overlays.unstable-packages
       outputs.overlays.stable-packages
 
-      # Adds hyprpanel package
-      inputs.hyprpanel.overlay
-
       # Adds NUR overlay
       inputs.nur.overlays.default
 

@@ -40,13 +40,16 @@
   };
 
   # fish plugins, home-manager's programs.fish.plugins has a weird format
-  home.packages = with pkgs; [
-    fishplugins.sponge # do not add failed commands to history
-    fishPlugins.done # send notification once long-running commands finish
-    fishPlugins.fzf-fish # fzf for fish
-    fishPlugins.forgit # fzf-powered interactive git commands
-    fzf
-  ];
+  home.packages = with pkgs;
+    [
+      fzf
+    ]
+    ++ (with pkgs.fishPlugins; [
+      sponge # do not add failed commands to history
+      done # send notification once long-running commands finish
+      fzf-fish # fzf for fish
+      forgit # fzf-powered interactive git commands
+    ]);
 
   # set as default interactive shell
   programs.kitty.settings.shell = lib.mkForce (lib.getExe pkgs.fish);

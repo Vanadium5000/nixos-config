@@ -11,23 +11,18 @@
       mpv
       libreoffice
 
-      hyprpanel # Panel
-
       # CLIs
       powertop # CLI for checking battery power-draw
       wl-clipboard # System clipboard
       nvtopPackages.full # GPU monitoring
 
-      # Gnome apps
-      nautilus # File Manager
-      gnome-software
-      gnome-disk-utility
-      gnome-clocks
+      # BTRFS
+      btdu # Disk usage
 
       papirus-icon-theme # Icon theme
 
       # Obsidian
-      # obsidian
+      #obsidian
 
       #kdePackages.breeze-icons
     ])

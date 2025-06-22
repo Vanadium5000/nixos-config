@@ -40,9 +40,12 @@
   };
 
   # fish plugins, home-manager's programs.fish.plugins has a weird format
-  home.packages = with pkgs.fishPlugins; [
-    # do not add failed commands to history
-    sponge
+  home.packages = with pkgs; [
+    fishplugins.sponge # do not add failed commands to history
+    fishPlugins.done # send notification once long-running commands finish
+    fishPlugins.fzf-fish # fzf for fish
+    fishPlugins.forgit # fzf-powered interactive git commands
+    fzf
   ];
 
   # set as default interactive shell

@@ -17,6 +17,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Easy linting of the flake and all kind of other stuff
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.flake-compat.follows = "chaotic-nyx/nixpkgs";
+      inputs.nixpkgs.follows = "chaotic-nyx/nixpkgs";
+    };
+
     # Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
     # Hyprland official plugins
@@ -24,32 +31,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    # Overview plugin
-    hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    # Hyprpanel
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    # Provides hyprpanel pkg via overlay
-    # Hyprpolkitagent
-    hyprpolkitagent.url = "github:hyprwm/hyprpolkitagent";
-    # A simple polkit authentication agent for Hyprland
-    # Hyprsunset
-    hyprsunset.url = "github:hyprwm/hyprsunset";
-    # An application to enable a blue-light filter on Hyprland
 
     # Shell using QtQuick, used for panels/bars/widgets/etc.
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Firefox extensions
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -93,13 +78,7 @@
     };
 
     # Hardware configs/drivers
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master"; #/cceee0a31d2f01bcc98b2fbd591327c06a4ea4f9";
-
-    # Declarative disk partitioning
-    # disko = {
-    #   url = "github:nix-community/disko/latest";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Handles persistent state on systems with ephemeral root storage
     impermanence.url = "github:nix-community/impermanence";
@@ -110,13 +89,7 @@
       url = "github:liperium/caelestia-shell";
       flake = false;
     };
-    caelestia-scripts = {
-      url = "github:ItzDerock/caelestia-scripts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    anyrun.url = "github:Kirottu/anyrun";
-    anyrun.inputs.nixpkgs.follows = "nixpkgs";
+    caelestia-cli.url = "github:t7h-dots/cli";
   };
 
   outputs = {
@@ -180,12 +153,12 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://cache.soopy.moe" # Apple T2
+      #"https://cache.soopy.moe" # Apple T2
       "https://hyprland.cachix.org"
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "cache.soopy.moe-1:0RZVsQeR+GOh0VQI9rvnHz55nVXkFardDqfm4+afjPo="
+      #"cache.soopy.moe-1:0RZVsQeR+GOh0VQI9rvnHz55nVXkFardDqfm4+afjPo="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];

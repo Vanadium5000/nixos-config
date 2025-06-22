@@ -5,6 +5,7 @@
     ./clipman.nix
     #./cliphist.nix
     ./flameshot.nix
+    ./safeeyes.nix
     ./udiskie.nix
   ];
 }

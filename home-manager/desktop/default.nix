@@ -5,7 +5,6 @@
     ./kitty.nix
     ./theme.nix
     ./mime.nix
-    ./quickshell.nix
     ./spicetify.nix
     ./stylix.nix
 
@@ -14,6 +13,7 @@
     ./floorp
     ./hypr
     ./hyprland
+    ./quickshell
     #./qutebrowser
     ./rofi
     ./utils

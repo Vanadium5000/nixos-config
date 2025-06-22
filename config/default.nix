@@ -52,7 +52,7 @@
     configDirectory =
       "/home/"
       + config.var.username
-      + "/.config/nixos"; # The path of the nixos configuration directory
+      + "/Documents/nixos-config"; # The path of the nixos configuration directory
 
     keyboardLayout = "gb";
 

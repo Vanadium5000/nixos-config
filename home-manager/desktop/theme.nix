@@ -44,6 +44,9 @@
     style.name = lib.mkForce "breeze";
   };
 
+  # Use kde6 platform theme
+  stylix.targets.qt.platform = "kde6";
+
   home.file = {
     # Install ArcDark kvantum theme
     ".config/Kvantum/ArcDark".source = "${pkgs.arc-kde-theme}/share/Kvantum/ArcDark";

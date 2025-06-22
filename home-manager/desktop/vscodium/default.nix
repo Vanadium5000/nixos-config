@@ -58,7 +58,7 @@
     "vscode-extension-fill-labs-dependi"
   ];
 
-  home.file.".config/VSCodium/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/nixos-config/home-manager/desktop/vscodium/settings.json";
+  home.file.".config/VSCodium/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.var.configDirectory}/home-manager/desktop/vscodium/settings.json";
 
   # Persist settings & extensions, ".continue" contains settings for the Continue ai extension
   customPersist.home.directories = [".config/VSCodium" ".vscode-oss/extensions" ".continue"];

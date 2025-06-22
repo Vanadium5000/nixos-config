@@ -1,8 +1,14 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: {
+  imports = [
+    ./packages.nix # Caelestia scripts and quickshell wrapper derivations
+    ./caelestia-quickshell.nix # Caelestia quickshell cli
+  ];
+
   home.packages = with pkgs; [
     (inputs.quickshell.packages."${pkgs.system}".default.override {
       withJemalloc = true;
@@ -13,8 +19,6 @@
       withPam = true;
       withHyprland = true;
     })
-
-    (inputs.caelestia-scripts.packages."${pkgs.system}".caelestia)
 
     # dependencies for caelestia-dots
     git
@@ -32,10 +36,12 @@
   ];
 
   xdg.configFile."quickshell/caelestia".source = "${inputs.caelestia-shell}";
+  # Fish completions (a fixed version?)
+  xdg.configFile."fish/completions/caelestia.fish".source = ./caelestia-completions.fish;
 
   home.file."Pictures/Wallpapers".source = "${pkgs.nixy-wallpapers}/wallpapers/";
 
-  systemd.user.services.quickshell = {
+  systemd.user.services.caelestia-shell = {
     Unit = {
       Description = "Quickshell UI";
       After = "graphical-session.target";
@@ -44,9 +50,16 @@
       WantedBy = ["graphical-session.target"];
     };
     Service = {
-      ExecStart = "${pkgs.bash}/bin/bash -c %h/.config/quickshell/caelestia/run.sh";
+      ExecStart = "${pkgs.fish}/bin/fish -c %h/.config/quickshell/caelestia/run.fish";
       Restart = "on-failure";
       Slice = "app-graphical.slice";
     };
+  };
+
+  # Shell aliases
+  home.shellAliases = {
+    caelestia-shell = "qs -c caelestia";
+    caelestia-edit = "cd ${config.xdg.configHome}/quickshell/caelestia && $EDITOR";
+    caelestia = "caelestia-quickshell";
   };
 }

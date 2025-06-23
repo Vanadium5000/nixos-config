@@ -121,9 +121,17 @@ in {
     #media,
     #load {
         padding: 3px 5px;
-        margin-left: 5px;
+        margin-left: 0px;
         background-color: ${clrs-rgba.background};
         color: ${clrs.foreground};
+        border: ${
+      toString
+      (
+        if thme.bar.borders
+        then thme.border-size
+        else 0
+      )
+    }px solid ${clrs.border-color};
     }
 
     #mode {

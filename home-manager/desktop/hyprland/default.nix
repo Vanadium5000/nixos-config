@@ -3,6 +3,7 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }: let
   clrs = config.var.colors-no-tags;
@@ -53,7 +54,7 @@ in {
     portalPackage = null;
 
     plugins = [
-      #inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
     ];
 
     settings = {

@@ -33,7 +33,7 @@
       position = "top"; # "top" | "bottom"
       transparent = true; # Make button backgrounds transparent
 
-      borders = false; # Whether to enable borders
+      borders = true; # Whether to enable borders
 
       opacity = 0.7;
 

@@ -27,6 +27,12 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    # Overview plugin
+    hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      # Hyprspace uses latest Hyprland. We declare this to keep them in sync.
+      inputs.hyprland.follows = "hyprland";
+    };
 
     # Shell using QtQuick, used for panels/bars/widgets/etc.
     quickshell = {
@@ -80,12 +86,6 @@
     impermanence.url = "github:nix-community/impermanence";
     # Retroactively persist directories with impermanence - copies files/folders to persist once added instead of deleting & making new - doesn't loose data
     persist-retro.url = "github:Geometer1729/persist-retro";
-
-    caelestia-shell = {
-      url = "github:liperium/caelestia-shell";
-      flake = false;
-    };
-    caelestia-cli.url = "github:t7h-dots/cli";
   };
 
   outputs = {

@@ -7,7 +7,7 @@
         format = "{icon} {volume}%";
         format-bluetooth = "󰂰";
         format-muted = "";
-        tooltip-format = "{volume}%  {icon}";
+        tooltip-format = "{volume}% {icon}";
         format-icons = {
           headphones = "";
           bluetooth = "󰥰";
@@ -58,7 +58,8 @@
 
       # Visualize audio using cava
       cava = {
-        cava_config = "/home/${config.var.username}/.config/cava/config";
+        format = "{bars}";
+        format_silent = "quiet";
         bars = 14;
         bar_delimiter = 0;
         hide_on_silence = true;
@@ -73,6 +74,7 @@
           "█"
         ];
 
+        method = "pipewire";
         actions = {
           on-click-right = "mode";
         };

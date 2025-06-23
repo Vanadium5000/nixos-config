@@ -13,7 +13,7 @@
     ./floorp
     ./hypr
     ./hyprland
-    ./quickshell
+    #./quickshell
     #./qutebrowser
     ./rofi
     ./utils

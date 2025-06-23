@@ -5,8 +5,8 @@
     ./hypridle.nix
     ./hyprlock.nix
     #./hyprpaper.nix
-    #./nwg-dock.nix
+    ./nwg-dock.nix
     ./swww.nix
-    #./utils.nix
+    ./utils.nix
   ];
 }

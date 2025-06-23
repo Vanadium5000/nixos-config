@@ -18,7 +18,7 @@
   };
 
   # Start waybar when Hyprland starts
-  #wayland.windowManager.hyprland.settings.exec-once = ["waybar"];
+  wayland.windowManager.hyprland.settings.exec-once = ["waybar"];
 
   # Used by waybar config
   home.packages = with pkgs; [

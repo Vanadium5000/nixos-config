@@ -10,6 +10,7 @@
 
     ./discord
     #./end_4
+    ./firefox
     ./floorp
     ./hypr
     ./hyprland

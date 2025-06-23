@@ -34,6 +34,11 @@
     else
       night-shift-on
     fi
+    title="󰁯 Night-Shift Mode"
+    description="Hyprshade will return to auto in 60 seconds."
+
+    notif "night-shift" "$title" "$description"
+    sleep 60 && hyprshade auto
   '';
 
   night-shift-status = pkgs.writeShellScriptBin "night-shift-status" ''

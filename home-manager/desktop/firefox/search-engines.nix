@@ -4,89 +4,12 @@
   ...
 }: {
   programs.firefox.profiles.${config.var.username}.search = {
-    default = "Startpage";
-    privateDefault = "Startpage";
+    default = "startpage";
+    privateDefault = "startpage";
     # Whether to force replace the existing search configuration, recommended
     force = true;
 
     engines = {
-      "Nix Packages" = {
-        urls = [
-          {
-            template = "https://search.nixos.org/packages";
-            params = [
-              {
-                name = "type";
-                value = "packages";
-              }
-              {
-                name = "channel";
-                value = "unstable";
-              }
-              {
-                name = "query";
-                value = "{searchTerms}";
-              }
-            ];
-          }
-        ];
-
-        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = ["@np"];
-      };
-
-      "Home Manager Settings" = {
-        urls = [
-          {
-            template = "https://home-manager-options.extranix.com";
-            params = [
-              {
-                name = "release";
-                value = "master";
-              }
-              {
-                name = "query";
-                value = "{searchTerms}";
-              }
-            ];
-          }
-        ];
-
-        icon = "https://home-manager-options.extranix.com/images/favicon.png";
-        definedAliases = ["@hm"];
-      };
-
-      "NixOS Wiki" = {
-        urls = [{template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";}];
-        icon = "https://wiki.nixos.org/favicon.ico";
-        updateInterval = 24 * 60 * 60 * 1000; # every day
-        definedAliases = ["@nw"];
-      };
-
-      "Brave" = {
-        urls = [{template = "https://search.brave.com/search?q={searchTerms}";}];
-        icon = "https://brave.com/static-assets/images/brave-favicon.png";
-        updateInterval = 24 * 60 * 60 * 1000; # every day
-        definedAliases = ["@b"];
-      };
-
-      "youtube" = {
-        urls = [
-          {
-            template = "https://www.youtube.com/results";
-            params = [
-              {
-                name = "search_query";
-                value = "{searchTerms}";
-              }
-            ];
-          }
-        ];
-
-        icon = "https://www.youtube.com/s/desktop/508deff1/img/logos/favicon_96x96.png";
-        definedAliases = ["@yt"];
-      };
-
       "startpage" = {
         name = "Startpage";
         urls = [
@@ -109,7 +32,8 @@
         definedAliases = ["@sp"];
       };
 
-      "GitHub" = {
+      "github" = {
+        name = "GitHub";
         urls = [
           {
             template = "https://github.com/search";

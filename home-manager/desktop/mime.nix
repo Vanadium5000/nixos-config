@@ -25,11 +25,11 @@ _: {
       "image/jpg" = "org.gnome.Loupe.desktop";
       "image/webp" = "org.gnome.Loupe.desktop";
 
-      "image/gif" = "floorp.desktop";
-      "x-scheme-handler/http" = "floorp.desktop";
-      "x-scheme-handler/https" = "floorp.desktop";
-      "text/html" = "floorp.desktop";
-      "application/pdf" = "floorp.desktop";
+      "image/gif" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "text/html" = "firefox.desktop";
+      "application/pdf" = "firefox.desktop";
     };
   };
 }

@@ -29,6 +29,9 @@
     command-not-found.enable = false;
   };
 
+  # Enable Polkit
+  security.polkit.enable = true;
+
   # More secure
   security.doas = {
     enable = false;

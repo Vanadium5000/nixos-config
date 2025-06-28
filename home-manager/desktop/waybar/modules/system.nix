@@ -6,9 +6,8 @@ _: {
       backlight = {
         device = "intel_backlight";
         format = "󰖨 {percent}%";
-        on-scroll-down = "light -U 10";
-        on-scroll-up = "light -A 10";
-        smooth-scrolling-threshold = 1;
+        on-scroll-down = "brightness-down";
+        on-scroll-up = "brightness-up";
       };
       "backlight/slider" = {
         min = 0;

@@ -25,6 +25,5 @@
     pavucontrol
     alsa-utils
     pulseaudio
-    light
   ];
 }

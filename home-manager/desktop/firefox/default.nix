@@ -1,7 +1,7 @@
 {
   pkgs,
   config,
-  inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -43,10 +43,23 @@
         "font.name.monospace.x-western" = config.stylix.fonts.monospace.name;
         "font.name.sans-serif.x-western" = config.stylix.fonts.sansSerif.name;
         "font.name.serif.x-western" = config.stylix.fonts.serif.name;
+
+        # Custom Preferences
+        "browser.toolbars.bookmarks.visibility" = "always";
+        "general.autoScroll" = true;
+        "browser.gesture.swipe.left" = "";
+        "browser.gesture.swipe.right" = "";
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
       };
+      extraConfig = lib.fileContents "${pkgs.arkenfox-userjs}/user.js";
 
       userChrome = ''
         /* some css */
+        /*menupopup, panel {
+          transition: unset !important;
+        }*/
       '';
 
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [

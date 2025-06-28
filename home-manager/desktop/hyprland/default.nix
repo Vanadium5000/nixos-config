@@ -15,8 +15,8 @@ in {
     ./animations.nix
     ./bindings.nix
     ./decorations.nix
-    #./hyprspace.nix
-    ./polkitagent.nix
+    ./hyprspace.nix
+    #./polkitagent.nix
     ./variables.nix
     ./xwayland.nix
   ];
@@ -54,7 +54,7 @@ in {
     portalPackage = null;
 
     plugins = [
-      inputs.hyprspace.packages.${pkgs.system}.Hyprspace
+      #inputs.hyprspace.packages.${pkgs.system}.Hyprspace
     ];
 
     settings = {

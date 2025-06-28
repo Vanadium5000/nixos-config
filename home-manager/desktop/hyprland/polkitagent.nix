@@ -1,5 +1,9 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.hyprpolkitagent];
+  # Install hyprpolkitagent package
+  home.packages = with pkgs; [
+    hyprpolkitagent # Polkit authentication agent for Hyprland
+  ];
 
-  wayland.windowManager.hyprland.settings.exec-once = ["systemctl --user start hyprpolkitagent"];
+  # Enable hyprpolkitagent service
+  services.hyprpolkitagent.enable = true;
 }

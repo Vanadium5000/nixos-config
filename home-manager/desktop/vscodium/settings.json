@@ -69,5 +69,6 @@
   "terminal.integrated.defaultProfile.linux": "fish",
   "containers.containerCommand": "podman",
   "docker.dockerPath": "podman",
-  "containers.containerClient": "com.microsoft.visualstudio.containers.podman"
+  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+  "workbench.colorTheme": "Stylix"
 }

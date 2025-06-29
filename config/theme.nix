@@ -5,7 +5,7 @@
 }: {
   config.var.theme = {
     rounding = 10;
-    button-rounding = 0;
+    button-rounding = 5;
 
     gaps-in = 2; # between windows/buttons
     gaps-out = 3; # between windows and border of display

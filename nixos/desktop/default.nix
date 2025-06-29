@@ -5,6 +5,8 @@
   ...
 }: {
   imports = [
+    ./ungoogled-chromium
+
     ./apps.nix
     ./audio.nix
     ./bluetooth.nix
@@ -14,6 +16,7 @@
     ./nix-ld.nix
     ./ollama.nix
     ./packages.nix
+    ./stylix.nix
     ./syncthing.nix
     ./tuigreet.nix
     ./virtualisation.nix

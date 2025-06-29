@@ -6,7 +6,6 @@
     ./theme.nix
     ./mime.nix
     ./spicetify.nix
-    ./stylix.nix
 
     ./discord
     #./end_4

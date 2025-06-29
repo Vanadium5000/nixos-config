@@ -10,7 +10,7 @@ _: {
         interval = 1;
       };
       "custom/logo" = {
-        "format" = "";
+        "format" = " ";
         "on-click" = "rofi-menu";
         "tooltip" = false;
       };

@@ -10,6 +10,7 @@
       keepassxc
       mpv
       libreoffice
+      freetube
 
       # CLIs
       powertop # CLI for checking battery power-draw

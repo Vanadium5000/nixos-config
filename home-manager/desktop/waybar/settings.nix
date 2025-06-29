@@ -1,25 +1,28 @@
 _: {
-  # https://github.com/gzowski/public_configs/blob/main/.config/waybar/config
+  # https://github.com/ashish-kus/waybar-minimal/blob/main/src/config.jsonc
   # Options: https://github.com/Alexays/Waybar/wiki/Configuration
   programs.waybar.settings = {
     mainBar = {
-      position = "top";
       layer = "top";
+      position = "top";
       modules-left = [
-        "custom/os_button"
-        "clock"
-        "mpris"
+        "custom/logo"
+        "hyprland/workspaces"
+        "group/monitoring"
+        "network#speed"
       ];
       modules-center = [
-        "hyprland/workspaces"
+        "clock"
+        #"cava"
       ];
       modules-right = [
+        "group/media"
         "tray"
-        "pulseaudio"
-        "disk"
+        #"hyprland/window"
+        "group/actions"
+        "group/system"
+        "custom/notifications"
       ];
-
-      reload_style_on_change = true;
     };
   };
 }

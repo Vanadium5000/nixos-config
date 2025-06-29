@@ -1,133 +1,150 @@
 {config, ...}: let
-  font = config.stylix.fonts.sansSerif.name;
+  font = config.stylix.fonts.monospace.name;
   fontSize = config.stylix.fonts.sizes.desktop;
 
   radius = toString thme.button-rounding;
   width = toString thme.border-size;
-  border-color = config.var.colors.border-color;
 
-  clrs = config.var.colors-rgba thme.bar.opacity;
+  clrs-rgba = config.var.colors-rgba thme.bar.opacity;
+  clrs = config.var.colors;
+
   thme = config.var.theme;
 in {
   # CSS style of the bar
   # https://github.com/gzowski/public_configs/blob/main/.config/waybar/style.css
   programs.waybar.style = with config.lib.stylix.colors.withHashtag; ''
-    @define-color base00 ${base00}; @define-color base01 ${base01}; @define-color base02 ${base02}; @define-color base03 ${base03};
-    @define-color base04 ${base04}; @define-color base05 ${base05}; @define-color base06 ${base06}; @define-color base07 ${base07};
-
-    @define-color base08 ${base08}; @define-color base09 ${base09}; @define-color base0A ${base0A}; @define-color base0B ${base0B};
-    @define-color base0C ${base0C}; @define-color base0D ${base0D}; @define-color base0E ${base0E}; @define-color base0F ${base0F};
-
     * {
-        border: 0px;
-        font-family: '${font} Bold';
+        /* `otf-font-awesome` is required to be installed for icons */
+        font-family: '${font}';
         font-size: ${toString fontSize}px;
-        min-height: 0px;
+
+        /* Reset all styles */
+        border-radius: ${radius}px;
+        min-height: 0;
+        margin: 0;
     }
 
-    window > box {
-        margin: ${toString (thme.gaps-in * 2)} ${toString thme.gaps-in} 0px ${toString thme.gaps-in};
-        background-color: rgba(0,0,0,0);
-    }
     window#waybar {
-        background-color: rgba(0,0,0,0);
-        color: @color7;
-    }
-    #workspaces button {
-        border-radius: 0px;
-        color: @color7;
-    }
-    #workspaces {
-        color: @color7;
-        border: 0px;
-        box-shadow: inherit;
+        background-color: ${clrs-rgba.background};
+        color: ${clrs.foreground};
+
+        border: ${width}px solid ${clrs.border-color};
+        border-radius: ${toString thme.rounding}px;
+        /* Bottom doesn't need gap */
+        margin: ${toString thme.gaps-out} ${toString thme.gaps-out} 0 ${toString thme.gaps-out};
     }
 
-    #workspaces button {
-        background-color: transparent;
-        color: @color8;
-    }
-    #workspaces button:hover {
-        color: @color4;
-        background-color: transparent;
-    }
-    #workspaces button.visible {
-        color: @color7;
-    }
-    #workspaces button.focused {
-        color: @color8;
-    }
-    #workspaces button.active {
-        color: @color7;
-    }
-    #workspaces button.urgent {
-        color: @color1;
+    .modules-right {
+        margin: 0 5px 0 0;
     }
     .modules-center {
+        margin: 0px 0 0 0;
     }
     .modules-left {
+        margin: 0 0 0 5px;
     }
-    .modules-right {
-    }
-    #tray,
-    #mode,
+
+    #custom-logo,
+    #cava,
     #window,
-    #temperature,
-    #temperature.critical,
     #clock,
-    #cpu,
-    #pulseaudio,
-    #disk,
-    #custom-dot,
-    #custom-os_button,
-    #custom-vpnstatus,
+    #monitoring, /* group */
+    #actions, /* group */
+    #system, /* group */
+    #custom-notifications,
+    #tray,
+    #network,
     #workspaces,
-    #custom-updates,
-    #taskbar,
-    #mpris
-    {
-    background-color: ${clrs.background};
-      border-radius: ${radius}px;
-      border-top: ${width} solid ${border-color};
-      border-left: ${width} solid ${border-color};
-      border-right: ${width} solid ${border-color};
-      border-bottom: ${width} solid ${border-color};
-      padding-left: 10px;
-      padding-right: 10px;
-      margin-left: ${toString thme.gaps-in};
-      margin-right: ${toString thme.gaps-in};
+    #media,
+    #load {
+        margin: ${width}px ${toString thme.gaps-in} ${width}px ${toString thme.gaps-in};
+        padding-left: 3px;
+        padding-right: 3px;
+        background-color: ${clrs.background-alt};
+        color: ${clrs.foreground};
+        /* border: ${width}px solid ${clrs.border-color};
+        border-radius: ${radius}px; */
     }
+
+    #workspaces button {
+        padding: 0;
+        background-color: transparent;
+        color: ${clrs.foreground};
+        border-radius: 0;
+    }
+
+
+    #workspaces button:first-child {
+        border-radius: ${radius}px 0 0 ${radius}px;
+    }
+
+    #workspaces button:last-child {
+        border-radius: 0 ${radius}px ${radius}px 0;
+    }
+
+    #workspaces button:hover {
+        color: ${clrs.foreground-alt};
+    }
+
+    #workspaces button.focused {
+        background-color: ${clrs.accent};
+    }
+
+    /* If workspaces is the leftmost module, omit left margin */
+    .modules-left > widget:first-child > #workspaces {
+        margin-left: 0;
+    }
+
+    /* If workspaces is the rightmost module, omit right margin */
+    .modules-right > widget:last-child > #workspaces {
+        margin-right: 0;
+    }
+
+    #battery.charging, #battery.plugged {
+        /* background-color: ${clrs-rgba.background}; */
+        color: #00FF00;
+    }
+
     @keyframes blink {
         to {
-            background-color: @color0;
-            color: @color7;
+            background-color: ${clrs-rgba.background};
+            color: ${clrs.foreground};
         }
     }
-    label:focus {
+
+    /* Using steps() instead of linear as a timing function to limit cpu usage */
+    #battery.critical:not(.charging) {
+        background-color: #cc241d;
+        color: ${clrs.foreground};
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: steps(12);
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
     }
-    #custom-dot {
-      padding-top: 0px;
-      color: @color4;
+
+    #backlight-slider slider,
+    #pulseaudio-slider slider {
+      background: #A1BDCE;
+      background-color: transparent;
+      box-shadow: none;
+      margin-right: 7px;
     }
-    #custom-vpnstatus {
-      color: @color1;
-      font-size: 20px;
+
+    #backlight-slider trough,
+    #pulseaudio-slider trough {
+      margin-top: -3px;
+      min-width: 90px;
+      min-height: 10px;
+      margin-bottom: -4px;
+      border-radius: 8px;
+      background: #343434;
     }
-    #custom-spotify {
-    }
-    #memory {
-    }
-    #pulseaudio {
-    }
-    #pulseaudio.muted {
-    }
-    #tray {
-    }
-    #disk {
-    }
-    #window {
-    }
-    #clock {
+
+    #backlight-slider highlight,
+    #pulseaudio-slider highlight {
+      border-radius: 8px;
+      background-color: #2096C0;
     }
   '';
 }

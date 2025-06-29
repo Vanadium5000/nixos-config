@@ -22,6 +22,7 @@
 
       fastfetch # Device info
       cpufetch # CPU info
+      nix-tree # Nix storage info
     ]
     ++
     # Language runtimes/compilers

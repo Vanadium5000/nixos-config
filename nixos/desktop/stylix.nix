@@ -7,7 +7,7 @@
 }: let
   thme = config.var.theme;
 in {
-  imports = [inputs.stylix.homeManagerModules.stylix];
+  imports = [inputs.stylix.nixosModules.stylix];
 
   stylix = {
     enable = true;
@@ -16,13 +16,13 @@ in {
     polarity = "dark";
 
     # Enable/disable icon theming
-    iconTheme = {
-      enable = true;
-      package = pkgs.morewaita-icon-theme;
-      # Dark & light icon theme name
-      dark = "MoreWaita";
-      light = "MoreWaita";
-    };
+    # iconTheme = {
+    #   enable = true;
+    #   package = pkgs.morewaita-icon-theme;
+    #   # Dark & light icon theme name
+    #   dark = "MoreWaita";
+    #   light = "MoreWaita";
+    # };
 
     # Base-16 Theme
     base16Scheme = thme.colorScheme;

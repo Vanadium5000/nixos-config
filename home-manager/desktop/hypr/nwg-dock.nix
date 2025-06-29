@@ -19,7 +19,7 @@
     if [ -n "$(pgrep nwg-dock)" ]; then
       echo "nwg-dock is already running"
     else
-      hyprctl dispatch exec "nwg-dock-hyprland -x -mb 0 -ml 0 -mr 0 -mt 0 -f -p left -a start"
+      hyprctl dispatch exec "nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start"
     fi
   '';
 
@@ -27,7 +27,7 @@
     if [ -n "$(pgrep nwg-dock)" ]; then
       pkill nwg-dock
     else
-      hyprctl dispatch exec "nwg-dock-hyprland -x -mb 0 -ml 0 -mr 0 -mt 0 -f -p left -a start"
+      hyprctl dispatch exec "nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start"
     fi
   '';
 in {
@@ -41,15 +41,15 @@ in {
 
   home.file.".config/nwg-dock-hyprland/style.css".text = ''
     window {
-        background: ${clrs-rgba.background};
-    	border-radius: ${toString thme.button-rounding}px;
+      background: ${clrs-rgba.background};
+    	border-radius: ${toString thme.rounding}px;
     	border-style: solid;
     	border-width: ${
       if thme.bar.borders
       then toString thme.border-size
       else "0"
     }px;
-    	border-color: ${clrs-rgba.border-color};
+    	border-color: ${clrs.border-color};
     }
 
     #box {

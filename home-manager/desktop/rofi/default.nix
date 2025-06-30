@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{pkgs, ...}: let
   rofiPackage = pkgs.rofi-wayland.override {
     plugins = [
       pkgs.rofi-emoji-wayland
@@ -16,11 +12,6 @@ in {
 
     ./scripts
   ];
-
-  home.file.".current_wallpaper" = {
-    source = config.stylix.image;
-    force = true;
-  };
 
   home.packages = [
     rofiPackage

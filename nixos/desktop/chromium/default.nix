@@ -1,13 +1,12 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs.unstable; [
-    ungoogled-chromium
+    brave
   ];
 
   programs.chromium = {
     enable = true;
 
     extensions = [
-      "kbfnbcaeplbcioakkpcpgfkobkghlhen" # Grammarly
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
       "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock for YouTube
       "gebbhagfogifgggkldgodflihgfeippi" # Return YouTube Dislike

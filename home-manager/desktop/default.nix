@@ -7,6 +7,7 @@
     ./mime.nix
     ./spicetify.nix
 
+    ./chromium
     ./discord
     #./end_4
     ./firefox

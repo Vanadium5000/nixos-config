@@ -39,6 +39,9 @@ in {
 
   wayland.windowManager.hyprland.settings.exec-once = ["spawn-dock"];
 
+  # Persist pinned apps
+  customPersist.home.files = [".cache/nwg-dock-pinned"];
+
   home.file.".config/nwg-dock-hyprland/style.css".text = ''
     window {
       background: ${clrs-rgba.background};

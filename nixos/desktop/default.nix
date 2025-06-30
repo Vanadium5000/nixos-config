@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./ungoogled-chromium
+    ./chromium
 
     ./apps.nix
     ./audio.nix

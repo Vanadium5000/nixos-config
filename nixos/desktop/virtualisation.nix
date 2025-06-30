@@ -18,7 +18,6 @@
 
     libvirtd.enable = true;
     oci-containers.backend = "podman";
-    #qemu.enable = true;
   };
 
   # Add 'newuidmap' and 'sh' to the PATH for users' Systemd units.

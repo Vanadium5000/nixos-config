@@ -22,7 +22,7 @@
 
     if [[ $result == "Choose a file..." ]];then
       echo "Choosing a specific file"
-      wallPath=$(echo $(rofi -run-command "echo {cmd}" -show filebrowser) | cut -d " " -f 2)
+      wallPath=$(echo $(rofi -run-command "echo {cmd}" -show filebrowser) | sed 's/^xdg-open //')
 
       echo "$wallPath"
       swww img "$wallPath"

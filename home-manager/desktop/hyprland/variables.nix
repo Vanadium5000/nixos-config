@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   home.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
     XDG_SESSION_DESKTOP = "Hyprland";
@@ -12,7 +16,7 @@
     DIRENV_LOG_FORMAT = "";
     WLR_DRM_NO_ATOMIC = "1";
 
-    QT_QPA_PLATFORMTHEME = lib.mkForce "kde";
+    #QT_QPA_PLATFORMTHEME = lib.mkForce "kde";
 
     QT_AUTO_SCREEN_SCALE_FACTOR = "1"; # enables automatic scaling
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -26,5 +30,8 @@
     CLUTTER_BACKEND = "wayland";
 
     GSK_RENDERER = "vulkan"; # "ngl" | "vulkan"
+
+    # Use GUI for password inputting
+    SUDO_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
   };
 }

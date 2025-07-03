@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   # https=//github.com/ashish-kus/waybar-minimal/blob/main/src/config.jsonc
   # Options= https=//github.com/Alexays/Waybar/wiki/Configuration
   programs.waybar.settings = {
@@ -79,25 +79,6 @@
           on-click-right = "mode";
         };
       };
-      # Waybar lyrics
-      "custom/lyrics" = {
-        return-type = "json";
-        format = "{icon} {0}";
-        hide-empty-text = true;
-        format-icons = {
-          playing = "";
-          paused = "";
-          lyric = "";
-          music = "󰝚";
-        };
-        exec-if = "which waybar-lyric";
-        exec = "waybar-lyric --quiet -m150";
-        on-click = "waybar-lyric --toggle";
-      };
     };
   };
-  home.packages = with pkgs; [
-    # Custom package
-    waybar-lyric
-  ];
 }

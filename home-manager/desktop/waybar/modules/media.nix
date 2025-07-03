@@ -53,6 +53,21 @@ in {
           paused = "󰏤";
         };
       };
+      # Waybar lyrics
+      "custom/lyrics" = {
+        return-type = "json";
+        format = "{icon} {0}";
+        hide-empty-text = true;
+        format-icons = {
+          playing = "";
+          paused = "";
+          lyric = "";
+          music = "󰝚";
+        };
+        exec-if = "which waybar-lyric";
+        exec = "waybar-lyric --quiet -m150";
+        on-click = "waybar-lyric --toggle";
+      };
       "image#album-art" = {
         exec = "album_art";
         size = 24;
@@ -62,7 +77,8 @@ in {
         orientation = "horizontal";
         modules = [
           "image#album-art"
-          "mpris"
+          #"mpris"
+          "custom/lyrics"
         ];
       };
     };
@@ -70,5 +86,7 @@ in {
 
   home.packages = [
     album_art
+    # Custom package
+    pkgs.waybar-lyric
   ];
 }

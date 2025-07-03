@@ -39,13 +39,14 @@
 
   qt = {
     enable = true;
-    platformTheme.name = lib.mkForce "kde6";
+    #platformTheme.name = lib.mkForce "kde6";
+
     # Use default kde theme for qt
-    style.name = lib.mkForce "breeze";
+    #style.name = lib.mkForce "breeze";
   };
 
   # Use kde6 platform theme
-  stylix.targets.qt.platform = "kde6";
+  #stylix.targets.qt.platform = "kde6";
 
   home.file = {
     # Install ArcDark kvantum theme

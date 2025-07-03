@@ -51,7 +51,7 @@
       Defaults lecture = never
       Defaults pwfeedback
       Defaults insults
-      Defaults env_keep
+      Defaults env_keep += "EDITOR PATH DISPLAY"
     '';
   };
 

@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-  # https://github.com/ashish-kus/waybar-minimal/blob/main/src/config.jsonc
-  # Options: https://github.com/Alexays/Waybar/wiki/Configuration
+  # https=//github.com/ashish-kus/waybar-minimal/blob/main/src/config.jsonc
+  # Options= https=//github.com/Alexays/Waybar/wiki/Configuration
   programs.waybar.settings = {
     mainBar = {
       pulseaudio = {
@@ -81,11 +81,18 @@
       };
       # Waybar lyrics
       "custom/lyrics" = {
-        format = "♪ {}";
-        interval = 1;
-        exec = "/usr/bin/cat /tmp/lyrics";
-        exec-if = "test -f /tmp/lyrics";
         return-type = "json";
+        format = "{icon} {0}";
+        hide-empty-text = true;
+        format-icons = {
+          playing = "";
+          paused = "";
+          lyric = "";
+          music = "󰝚";
+        };
+        exec-if = "which waybar-lyric";
+        exec = "waybar-lyric --quiet -m150";
+        on-click = "waybar-lyric --toggle";
       };
     };
   };

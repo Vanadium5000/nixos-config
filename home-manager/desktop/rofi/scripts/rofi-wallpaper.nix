@@ -24,11 +24,10 @@
       echo "Choosing a specific file"
       wallPath=$(echo $(rofi -run-command "echo {cmd}" -show filebrowser) | cut -d " " -f 2)
 
-
+      echo "$wallPath"
       swww img "$wallPath"
 
       # For rofi & hyprlock wallpaper
-      rm -f ~/.current_wallpaper
       cp -f "$wallPath" ~/.current_wallpaper
       exit 0
     fi

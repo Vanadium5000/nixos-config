@@ -34,7 +34,7 @@
       }
     '';
   };
-  rofi-wallpaper = pkgs.writeShellScriptBin "rofi-wallpaper-selector" ''
+  rofi-wallpaper-selector = pkgs.writeShellScriptBin "rofi-wallpaper-selector" ''
     # Kill Rofi if already running
     if pgrep -x "rofi" >/dev/null; then
       pkill rofi
@@ -130,5 +130,5 @@
     cp -f "$result" ~/.current_wallpaper # For rofi wallpaper
   '';
 in {
-  home.packages = [rofi-wallpaper];
+  home.packages = [rofi-wallpaper-selector];
 }

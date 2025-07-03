@@ -46,6 +46,15 @@
     dbus.enable = true;
   };
 
+  # Whether to enable KDE PIM base packages
+  programs.kde-pim = {
+    enable = true;
+
+    merkuro = true; # Calendar & contacts
+    kontact = true; # Contacts
+    kmail = true; # Mail
+  };
+
   # NetworkManager control applet for GNOME
   programs.nm-applet.enable = true;
   environment.systemPackages = with pkgs; [networkmanagerapplet];

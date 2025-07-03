@@ -1,4 +1,4 @@
-{config, ...}: {
+{pkgs, ...}: {
   # https://github.com/ashish-kus/waybar-minimal/blob/main/src/config.jsonc
   # Options: https://github.com/Alexays/Waybar/wiki/Configuration
   programs.waybar.settings = {
@@ -79,6 +79,18 @@
           on-click-right = "mode";
         };
       };
+      # Waybar lyrics
+      "custom/lyrics" = {
+        format = "♪ {}";
+        interval = 1;
+        exec = "/usr/bin/cat /tmp/lyrics";
+        exec-if = "test -f /tmp/lyrics";
+        return-type = "json";
+      };
     };
   };
+  home.packages = with pkgs; [
+    # Custom package
+    waybar-lyric
+  ];
 }

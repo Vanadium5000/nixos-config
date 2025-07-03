@@ -12,13 +12,14 @@ in {
       margin-right = thme.gaps-out;
 
       modules-left = [
-        "custom/logo"
-        "hyprland/workspaces"
-        "group/monitoring"
-        "network#speed"
+        # "custom/logo"
+        # "hyprland/workspaces"
+        # "group/monitoring"
+        # "network#speed"
       ];
       modules-center = [
         "clock"
+        "custom/lyrics"
         #"cava"
       ];
       modules-right = [

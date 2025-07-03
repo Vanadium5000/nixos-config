@@ -4,7 +4,7 @@
     ./nvf
     ./pass
     ./shell
-    ./tmux
+    #./tmux
     ./yazi
     ./zellij
 

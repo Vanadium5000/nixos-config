@@ -19,7 +19,7 @@
     if [ -n "$(pgrep nwg-dock)" ]; then
       echo "nwg-dock is already running"
     else
-      hyprctl dispatch exec "nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start"
+      hyprctl dispatch exec "nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start -i 38"
     fi
   '';
 
@@ -27,7 +27,7 @@
     if [ -n "$(pgrep nwg-dock)" ]; then
       pkill nwg-dock
     else
-      hyprctl dispatch exec "nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start"
+      hyprctl dispatch exec "nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start -i 38"
     fi
   '';
 in {

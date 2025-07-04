@@ -65,7 +65,7 @@ in {
           music = "󰝚";
         };
         exec-if = "which waybar-lyric";
-        exec = "waybar-lyric --quiet -m150";
+        exec = "waybar-lyric --quiet -m50";
         on-click = "waybar-lyric --toggle";
       };
       "image#album-art" = {

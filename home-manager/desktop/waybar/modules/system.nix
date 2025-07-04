@@ -55,7 +55,13 @@ _: {
       "group/system" = {
         orientation = "horizontal";
         modules = [
-          "group/audio"
+          #"group/audio"
+
+          # Audio
+          "pulseaudio"
+          "pulseaudio#mic"
+          "pulseaudio/slider"
+
           "group/blight"
           "battery"
         ];

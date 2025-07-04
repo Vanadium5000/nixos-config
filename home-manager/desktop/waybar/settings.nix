@@ -14,6 +14,8 @@ in {
       modules-left = [
         "custom/logo"
         "hyprland/workspaces"
+        "tray"
+        "group/actions"
         "group/monitoring"
         "network#speed"
       ];
@@ -24,9 +26,7 @@ in {
       ];
       modules-right = [
         "group/media"
-        "tray"
         #"hyprland/window"
-        "group/actions"
         "group/system"
         "custom/notifications"
       ];

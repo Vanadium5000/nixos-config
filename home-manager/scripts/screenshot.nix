@@ -3,7 +3,8 @@
 #- This module provides a script to take screenshots using `grimblast` and `tesseract`.
 #-
 #- - `screenshot [active|area|monitor] [toText]` - Take a screenshot of the region, window, or monitor. Optionally, use `tesseract` to convert the screenshot to text and copy to the clipboard.
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   screenshot = pkgs.writeShellScriptBin "screenshot" ''
     folder="$HOME/Pictures/Screenshots"
     filename="Screenshot $(date +%Y-%m-%d_%H:%M:%S).png"
@@ -22,7 +23,8 @@
       ${pkgs.grimblast}/bin/grimblast --notify copysave $mode "$folder/$filename" || exit 1
     fi
   '';
-in {
+in
+{
   home.packages = [
     screenshot
     pkgs.grimblast

@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./boot.nix
     ./impermanence.nix
@@ -21,7 +22,7 @@
   i18n.defaultLocale = config.var.locale;
 
   # Disables default packages such as perl
-  environment.defaultPackages = [];
+  environment.defaultPackages = [ ];
 
   # Use latest available linux kernel
   #boot.kernelPackages = pkgs.linuxPackages_latest;

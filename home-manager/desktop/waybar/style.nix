@@ -1,4 +1,5 @@
-{config, ...}: let
+{ config, ... }:
+let
   font = config.stylix.fonts.monospace.name;
   fontSize = config.stylix.fonts.sizes.desktop;
 
@@ -9,13 +10,12 @@
   clrs = config.var.colors;
 
   thme = config.var.theme;
-in {
+in
+{
   # CSS style of the bar
   # https://github.com/gzowski/public_configs/blob/main/.config/waybar/style.css
   programs.waybar.style =
-    /*
-    with config.lib.stylix.colors.withHashtag;
-    */
+    # with config.lib.stylix.colors.withHashtag;
     ''
       * {
           /* `otf-font-awesome` is required to be installed for icons */
@@ -54,6 +54,7 @@ in {
       #actions, /* group */
       #system, /* group */
       #custom-notifications,
+      #custom-recording,
       #tray,
       #network,
       #workspaces,
@@ -115,7 +116,8 @@ in {
       }
 
       /* Using steps() instead of linear as a timing function to limit cpu usage */
-      #battery.critical:not(.charging) {
+      /* Urgent red styling for critical battery or active recording */
+      #battery.critical:not(.charging), #custom-recording.recording-active {
           background-color: #cc241d;
           color: ${clrs.foreground};
           animation-name: blink;

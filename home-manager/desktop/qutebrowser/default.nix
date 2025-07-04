@@ -4,7 +4,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   accent = "#${config.lib.stylix.colors.base0D}";
   background = "#${config.lib.stylix.colors.base00}";
   foreground = "#${config.lib.stylix.colors.base05}";
@@ -67,9 +68,7 @@
 
     buildPhase = ''
       npm install
-      cp ${
-        pkgs.writeText "src/routes/config.json" settings
-      } src/routes/config.json
+      cp ${pkgs.writeText "src/routes/config.json" settings} src/routes/config.json
       npm run build
       mkdir $out
       mv build $out
@@ -80,8 +79,9 @@
       homepage = "https://github.com/anotherhadi/homepage";
     };
   };
-in {
-  imports = [./duckduckgo-colorscheme.nix];
+in
+{
+  imports = [ ./duckduckgo-colorscheme.nix ];
 
   programs.qutebrowser = {
     enable = true;
@@ -121,7 +121,7 @@ in {
     settings = {
       url = {
         default_page = "${homepage}/build/index.html";
-        start_pages = ["${homepage}/build/index.html"];
+        start_pages = [ "${homepage}/build/index.html" ];
       };
 
       colors = {
@@ -132,7 +132,7 @@ in {
 
       completion = {
         height = "30%";
-        open_categories = ["history"];
+        open_categories = [ "history" ];
         scrollbar = {
           padding = 0;
           width = 0;
@@ -156,7 +156,9 @@ in {
         remove_finished = 0;
       };
 
-      hints = {radius = 1;};
+      hints = {
+        radius = 1;
+      };
 
       scrolling = {
         bar = "never";

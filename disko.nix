@@ -1,4 +1,8 @@
-{device ? throw "Set this to your disk device, e.g. /dev/sda", ...}: {
+{
+  device ? throw "Set this to your disk device, e.g. /dev/sda",
+  ...
+}:
+{
   # https://github.com/vimjoyer/impermanent-setup/blob/main/final/disko.nix
   # Partition device with:
   #
@@ -22,7 +26,10 @@
               format = "vfat";
               mountpoint = "/boot";
 
-              mountOptions = ["defaults" "umask=077"]; # "umask=077" allows read, write, and execute permission for the file's owner, but prohibits read, write, and execute permission for everyone else, improves security
+              mountOptions = [
+                "defaults"
+                "umask=077"
+              ]; # "umask=077" allows read, write, and execute permission for the file's owner, but prohibits read, write, and execute permission for everyone else, improves security
             };
           };
 
@@ -45,23 +52,35 @@
             size = "100%FREE";
             content = {
               type = "btrfs";
-              extraArgs = ["-f"]; # --force, overrides existing partition
+              extraArgs = [ "-f" ]; # --force, overrides existing partition
 
               subvolumes = {
                 "/root" = {
                   # "noatime" disables the updating of access time for both files and directories so that reading a file does not update their access time, improves performance
                   # "noexec" makes it impossible to write and run executable files outside of /nix/store, greatly increasing security
-                  mountOptions = ["compress=zstd" "subvol=root" "noatime"];
+                  mountOptions = [
+                    "compress=zstd"
+                    "subvol=root"
+                    "noatime"
+                  ];
                   mountpoint = "/";
                 };
 
                 "/persist" = {
-                  mountOptions = ["compress=zstd" "subvol=persist" "noatime"];
+                  mountOptions = [
+                    "compress=zstd"
+                    "subvol=persist"
+                    "noatime"
+                  ];
                   mountpoint = "/persist";
                 };
 
                 "/nix" = {
-                  mountOptions = ["compress=zstd" "subvol=nix" "noatime"];
+                  mountOptions = [
+                    "compress=zstd"
+                    "subvol=nix"
+                    "noatime"
+                  ];
                   mountpoint = "/nix";
                 };
               };

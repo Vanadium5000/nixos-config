@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.nvf.settings.vim = {
     lsp = {
       formatOnSave = true;
@@ -29,7 +30,9 @@
 
     # Markdown rendering
     extraPlugins = with pkgs.vimPlugins; {
-      render-markdown = {package = render-markdown-nvim;};
+      render-markdown = {
+        package = render-markdown-nvim;
+      };
     };
 
     languages = {

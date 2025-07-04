@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   rofi-config = pkgs.writeTextFile {
     name = "rofi-config.rasi";
     text = ''
@@ -129,6 +130,7 @@
     swww img "$result"
     cp -f "$result" ~/.current_wallpaper # For rofi wallpaper
   '';
-in {
-  home.packages = [rofi-wallpaper-selector];
+in
+{
+  home.packages = [ rofi-wallpaper-selector ];
 }

@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Power management (increased battery-life on laptops)
   services.tlp = {
     enable = true;

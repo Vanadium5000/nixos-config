@@ -5,42 +5,45 @@
   inputs,
   osConfig,
   ...
-}: let
+}:
+let
   # nextmeeting = lib.getExe inputs.nextmeeting.packages.${pkgs.system}.default;
   waybar-mediaplayer = lib.getExe inputs.waybar-mediaplayer.packages.${pkgs.system}.default;
   todoist-script =
-    pkgs.writers.writePython3Bin "todoist" {
-      libraries = [
-        pkgs.python3Packages.todoist-api-python
-      ];
-    }
-    ''
-      def countTasks(items):
-          count = {1: 0, 2: 0, 3: 0, 4: 0}
-          for item in items:
-              count[item.priority] += 1
-          return count
+    pkgs.writers.writePython3Bin "todoist"
+      {
+        libraries = [
+          pkgs.python3Packages.todoist-api-python
+        ];
+      }
+      ''
+        def countTasks(items):
+            count = {1: 0, 2: 0, 3: 0, 4: 0}
+            for item in items:
+                count[item.priority] += 1
+            return count
 
 
-      try:
-          count = 10
-          task_count = ""
-          if count[4] != 0:
-              task_count += f'<span color=\\"#${config.lib.stylix.colors.base08}\\">󰰁 {count[4]} </span>'
-          if count[3] != 0:
-              task_count += f'<span color=\\"#${config.lib.stylix.colors.base09}\\">󰰐 {count[3]} </span>'
-          if count[2] != 0:
-              task_count += f'<span color=\\"#${config.lib.stylix.colors.base0A}\\">󰰍 {count[2]} </span>'
-          if count[1] != 0:
-              task_count += f'<span color=\\"#${config.lib.stylix.colors.base0E}\\"> {count[1]}</span>'
-          if not task_count:
-              task_count += '<span color=\\"#${config.lib.stylix.colors.base0B}\\"> All done!</span>'
+        try:
+            count = 10
+            task_count = ""
+            if count[4] != 0:
+                task_count += f'<span color=\\"#${config.lib.stylix.colors.base08}\\">󰰁 {count[4]} </span>'
+            if count[3] != 0:
+                task_count += f'<span color=\\"#${config.lib.stylix.colors.base09}\\">󰰐 {count[3]} </span>'
+            if count[2] != 0:
+                task_count += f'<span color=\\"#${config.lib.stylix.colors.base0A}\\">󰰍 {count[2]} </span>'
+            if count[1] != 0:
+                task_count += f'<span color=\\"#${config.lib.stylix.colors.base0E}\\"> {count[1]}</span>'
+            if not task_count:
+                task_count += '<span color=\\"#${config.lib.stylix.colors.base0B}\\"> All done!</span>'
 
-          print('{{"text": "<span>{0}</span>","class": "todoist"}}'.format(task_count))  # noqa: E501
-      except Exception:
-          print(' ERROR ')
-    '';
-in {
+            print('{{"text": "<span>{0}</span>","class": "todoist"}}'.format(task_count))  # noqa: E501
+        except Exception:
+            print(' ERROR ')
+      '';
+in
+{
   home.file.".config/waybar-mediaplayer.json".text = ''
     {
       "refresh_interval": 500,
@@ -322,7 +325,11 @@ in {
         layer = "top";
         position = "top";
         output = lib.mkIf (osConfig.networking.hostName == "link") "DP-1";
-        modules-left = ["hyprland/workspaces" "image#album-art" "custom/playerlabel"];
+        modules-left = [
+          "hyprland/workspaces"
+          "image#album-art"
+          "custom/playerlabel"
+        ];
         # modules-center = ["custom/dynamic"];
         modules-right = [
           "backlight"
@@ -393,7 +400,13 @@ in {
         network = {
           format-wifi = "{icon} {essid}";
           format-ethernet = " Wired";
-          format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
+          format-icons = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
           format-disconnected = "󰤭 Disconnected";
         };
         pulseaudio = {
@@ -403,13 +416,25 @@ in {
             "alsa_output.usb-Focusrite_Scarlett_8i6_USB_F8337319501296-00.pro-output-0" = "󰋋";
             "alsa_output.pci-0000_0e_00.4.analog-stereo" = "󰜟";
             headphones = "󰋋";
-            default = ["󰕿" "󰖀" "󰕾"];
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+            ];
           };
           on-click = "pavucontrol";
         };
         backlight = {
           format = "{icon} {percent}%";
-          format-icons = ["󰃚" "󰃛" "󰃜" "󰃝" "󰃞" "󰃟" "󰃠"];
+          format-icons = [
+            "󰃚"
+            "󰃛"
+            "󰃜"
+            "󰃝"
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
         };
         clock = {
           format = "󰥔 {:%A, %b %d %R}";
@@ -422,7 +447,18 @@ in {
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}% {time}";
           format-time = "{H}:{M} to full";
-          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+          format-icons = [
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
         };
       }
     ];

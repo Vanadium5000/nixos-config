@@ -1,9 +1,10 @@
-{...}: {
+{ ... }:
+{
   fileSystems = {
     "/" = {
       autoFormat = false;
       autoResize = false;
-      depends = [];
+      depends = [ ];
       device = "/dev/disk/by-uuid/25221394-fc3f-4e7e-931d-f2bbd885f1e9";
       enable = true;
       encrypted = {
@@ -38,7 +39,7 @@
     "/boot" = {
       autoFormat = false;
       autoResize = false;
-      depends = [];
+      depends = [ ];
       device = "/dev/disk/by-label/boot";
       enable = true;
       encrypted = {
@@ -70,7 +71,7 @@
     "/nix" = {
       autoFormat = false;
       autoResize = false;
-      depends = [];
+      depends = [ ];
       device = "/dev/disk/by-uuid/25221394-fc3f-4e7e-931d-f2bbd885f1e9";
       enable = true;
       encrypted = {
@@ -105,7 +106,7 @@
     "/persist" = {
       autoFormat = false;
       autoResize = false;
-      depends = [];
+      depends = [ ];
       device = "/dev/disk/by-uuid/25221394-fc3f-4e7e-931d-f2bbd885f1e9";
       enable = true;
       encrypted = {

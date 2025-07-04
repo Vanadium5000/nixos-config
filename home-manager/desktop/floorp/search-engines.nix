@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   programs.floorp.profiles.${config.var.username}.search = {
     default = "Startpage";
     privateDefault = "Startpage";
@@ -32,7 +33,7 @@
         ];
 
         icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-        definedAliases = ["@np"];
+        definedAliases = [ "@np" ];
       };
 
       "Home Manager Settings" = {
@@ -53,21 +54,21 @@
         ];
 
         icon = "https://home-manager-options.extranix.com/images/favicon.png";
-        definedAliases = ["@hm"];
+        definedAliases = [ "@hm" ];
       };
 
       "NixOS Wiki" = {
-        urls = [{template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";}];
+        urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
         icon = "https://wiki.nixos.org/favicon.ico";
         updateInterval = 24 * 60 * 60 * 1000; # every day
-        definedAliases = ["@nw"];
+        definedAliases = [ "@nw" ];
       };
 
       "Brave" = {
-        urls = [{template = "https://search.brave.com/search?q={searchTerms}";}];
+        urls = [ { template = "https://search.brave.com/search?q={searchTerms}"; } ];
         icon = "https://brave.com/static-assets/images/brave-favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
-        definedAliases = ["@b"];
+        definedAliases = [ "@b" ];
       };
 
       "youtube" = {
@@ -84,7 +85,7 @@
         ];
 
         icon = "https://www.youtube.com/s/desktop/508deff1/img/logos/favicon_96x96.png";
-        definedAliases = ["@yt"];
+        definedAliases = [ "@yt" ];
       };
 
       "startpage" = {
@@ -106,7 +107,7 @@
         ];
 
         icon = "https://www.startpage.com/sp/cdn/favicons/favicon-gradient.ico";
-        definedAliases = ["@sp"];
+        definedAliases = [ "@sp" ];
       };
 
       "GitHub" = {
@@ -127,7 +128,7 @@
         ];
 
         icon = "https://github.githubassets.com/favicons/favicon.png";
-        definedAliases = ["@gh"];
+        definedAliases = [ "@gh" ];
       };
 
       "bing".metaData.hidden = true;
@@ -137,6 +138,10 @@
     };
 
     # Engines that aren’t included in this list will be listed after these in an unspecified order
-    order = ["ddg" "Nix Packages" "Wikipedia"];
+    order = [
+      "ddg"
+      "Nix Packages"
+      "Wikipedia"
+    ];
   };
 }

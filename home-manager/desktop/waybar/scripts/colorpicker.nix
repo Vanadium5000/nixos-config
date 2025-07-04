@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   colorpicker = pkgs.writeShellScriptBin "colorpicker" ''
     check() {
       command -v "$1" 1>/dev/null
@@ -59,7 +60,8 @@
     sed -i '/^$/d' "$loc/colors"
     pkill -RTMIN+1 waybar
   '';
-in {
+in
+{
   home.packages = [
     colorpicker
   ];

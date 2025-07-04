@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   home = {
     # Use centralized cargo cache
     sessionVariables = rec {
@@ -12,7 +13,7 @@
     };
 
     # Add cargo binaries to path
-    sessionPath = [".local/share/.cargo/bin"];
+    sessionPath = [ ".local/share/.cargo/bin" ];
   };
 
   # Add the custom completions for both fish and fish
@@ -29,18 +30,20 @@
     '';
   };
 
-  home.packages = with pkgs; (
-    # Rust packages
-    [
-      rustup # Rust toolchain installer
-    ]
-    # Random libraries, often used by cargo
-    ++ [
-      openssl
-      ncurses
-      pkg-config
-    ]
-  );
+  home.packages =
+    with pkgs;
+    (
+      # Rust packages
+      [
+        rustup # Rust toolchain installer
+      ]
+      # Random libraries, often used by cargo
+      ++ [
+        openssl
+        ncurses
+        pkg-config
+      ]
+    );
 
   customPersist.home.directories = [
     ".local/share/.cargo"

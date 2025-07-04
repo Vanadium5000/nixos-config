@@ -1,11 +1,13 @@
 # A duckduckgo colorscheme generated for the Stylix theme used.
-{config, ...}: let
+{ config, ... }:
+let
   accent = config.lib.stylix.colors.base0D;
   background = config.lib.stylix.colors.base00;
   foreground = config.lib.stylix.colors.base05;
   background-alt = config.lib.stylix.colors.base01;
   foreground-alt = config.lib.stylix.colors.base06;
-in {
+in
+{
   home.file.".duckduckgo-colorscheme.js".text =
     # js
     ''

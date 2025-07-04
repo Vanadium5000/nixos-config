@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # On NixOS 24.05 or older, this option must be set:
   #sound.enable = false;
 
@@ -20,5 +21,5 @@
     #jack.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [pavucontrol];
+  environment.systemPackages = with pkgs; [ pavucontrol ];
 }

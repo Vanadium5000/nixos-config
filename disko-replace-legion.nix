@@ -1,9 +1,10 @@
-{...}: {
+{ ... }:
+{
   fileSystems = {
     "/" = {
       autoFormat = false;
       autoResize = false;
-      depends = [];
+      depends = [ ];
       device = "/dev/disk/by-label/nixos";
       enable = true;
       encrypted = {
@@ -38,7 +39,7 @@
     "/boot" = {
       autoFormat = false;
       autoResize = false;
-      depends = [];
+      depends = [ ];
       device = "/dev/disk/by-label/boot";
       enable = true;
       encrypted = {
@@ -70,7 +71,7 @@
     "/nix" = {
       autoFormat = false;
       autoResize = false;
-      depends = [];
+      depends = [ ];
       device = "/dev/disk/by-label/nixos";
       enable = true;
       encrypted = {
@@ -105,7 +106,7 @@
     "/old_roots" = {
       autoFormat = false;
       autoResize = false;
-      depends = [];
+      depends = [ ];
       device = "/dev/disk/by-label/nixos";
       enable = true;
       encrypted = {
@@ -140,7 +141,7 @@
     "/persist" = {
       autoFormat = false;
       autoResize = false;
-      depends = [];
+      depends = [ ];
       device = "/dev/disk/by-label/nixos";
       enable = true;
       encrypted = {

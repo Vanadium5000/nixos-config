@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Run unpatched dynamic binaries on NixOS
   # Fixes "missioncenter" flatpak
   # https://github.com/NixOS/nixpkgs/issues/349957

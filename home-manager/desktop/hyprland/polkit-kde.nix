@@ -1,10 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   systemd.user.services.polkit-kde-autostart = {
     Unit = {
       Description = "Autostart kde-polkit-agent";
     };
     Install = {
-      WantedBy = ["default.target"];
+      WantedBy = [ "default.target" ];
     };
     Service = {
       ExecStart = pkgs.writeShellScript "kde-polkit-agent-start" ''

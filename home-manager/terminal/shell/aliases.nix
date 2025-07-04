@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   # Shell aliases
   aliases = {
     # Clears screen + scrollback
@@ -22,7 +23,8 @@
     logout = "hyprctl dispatch exit";
     poweroff = "systemctl poweroff";
   };
-in {
+in
+{
   programs = {
     zsh.shellAliases = aliases;
     bash.shellAliases = aliases;

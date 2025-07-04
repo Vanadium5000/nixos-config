@@ -21,7 +21,9 @@ _: {
 
         # Clear highlights on search when pressing <Esc> in normal mode
         # See `:help hlsearch`
-        "<Esc>" = {action = "<cmd>nohlsearch<CR>";};
+        "<Esc>" = {
+          action = "<cmd>nohlsearch<CR>";
+        };
 
         # CodeCompanion - AI-powered coding, seamlessly in Neovim
         "<LocalLeader>a" = {

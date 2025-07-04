@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   powerdraw = pkgs.writeShellScriptBin "powerdraw" ''
     if [ -f /sys/class/power_supply/BAT*/power_now ]; then
       powerDraw="󱐥 $(($(cat /sys/class/power_supply/BAT*/power_now)/1000000))w"
@@ -9,7 +10,8 @@
     { "text":"$powerDraw", "tooltip":"power Draw $powerDraw"}
     EOF
   '';
-in {
+in
+{
   home.packages = [
     powerdraw
   ];

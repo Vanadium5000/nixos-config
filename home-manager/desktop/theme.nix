@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   home = {
     # Cursor
     pointerCursor = {
@@ -53,17 +54,19 @@
     ".config/Kvantum/ArcDark".source = "${pkgs.arc-kde-theme}/share/Kvantum/ArcDark";
 
     # Enable gtk theme for flatpaks
-    ".local/share/flatpak/overrides/global".text = let
-      dirs = [
-        "/nix/store:ro"
-        "xdg-config/gtk-3.0:ro"
-        "xdg-config/gtk-4.0:ro"
-        "${config.xdg.dataHome}/icons:ro"
-      ];
-    in ''
-      [Context]
-      filesystems=${builtins.concatStringsSep ";" dirs}
-    '';
+    ".local/share/flatpak/overrides/global".text =
+      let
+        dirs = [
+          "/nix/store:ro"
+          "xdg-config/gtk-3.0:ro"
+          "xdg-config/gtk-4.0:ro"
+          "${config.xdg.dataHome}/icons:ro"
+        ];
+      in
+      ''
+        [Context]
+        filesystems=${builtins.concatStringsSep ";" dirs}
+      '';
   };
   stylix.targets.gtk.flatpakSupport.enable = false; # Use solution above instead
 }

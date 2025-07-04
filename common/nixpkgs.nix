@@ -4,7 +4,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -33,7 +34,8 @@
       allowUnfree = false;
 
       # Exceptions
-      allowUnfreePredicate = pkg:
+      allowUnfreePredicate =
+        pkg:
         builtins.elem (lib.getName pkg) (
           [
             "steam"

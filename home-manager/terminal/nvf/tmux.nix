@@ -1,9 +1,12 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nvf.settings.vim = {
     # Navigate tmux panes & vim splits with same key bindings
     # https://github.com/christoomey/vim-tmux-navigator
     extraPlugins = with pkgs.vimPlugins; {
-      vim-tmux-navigator = {package = vim-tmux-navigator;};
+      vim-tmux-navigator = {
+        package = vim-tmux-navigator;
+      };
     };
 
     maps.normal = {

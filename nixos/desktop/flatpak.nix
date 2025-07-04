@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     inputs.nix-flatpak.nixosModules.nix-flatpak # Install flatpaks declaratively
   ];
@@ -44,8 +45,11 @@
     ];
   };
 
-  customPersist.nixos.directories = ["/var/lib/flatpak"];
+  customPersist.nixos.directories = [ "/var/lib/flatpak" ];
 
   # Sober Roblox installation - which is quite large
-  customPersist.home.directories = [".var/app" ".local/share/flatpak"];
+  customPersist.home.directories = [
+    ".var/app"
+    ".local/share/flatpak"
+  ];
 }

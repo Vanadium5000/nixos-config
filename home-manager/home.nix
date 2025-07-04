@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ../config # Variables/settings
     ../config/theme.nix # Theme settings (only needed for home-manager)

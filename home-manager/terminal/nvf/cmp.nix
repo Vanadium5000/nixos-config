@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   programs.nvf.settings.vim = {
     # List of plugins to load on startup
     startPlugins = with pkgs.vimPlugins; [
@@ -77,81 +78,81 @@
           documentation = lib.generators.mkLuaInline ''cmp.config.window.bordered()'';
         };
         mapping =
-          lib.generators.mkLuaInline #lua
-          
-          ''
-            {
-              ["<PageUp>"] = cmp.mapping.select_prev_item {
-                behavior = cmp.SelectBehavior.Select,
-                count = 8,
-              },
-              ["<PageDown>"] = cmp.mapping.select_next_item {
-                behavior = cmp.SelectBehavior.Select,
-                count = 8,
-              },
-              ["<C-PageUp>"] = cmp.mapping.select_prev_item {
-                behavior = cmp.SelectBehavior.Select,
-                count = 16,
-              },
-              ["<C-PageDown>"] = cmp.mapping.select_next_item {
-                behavior = cmp.SelectBehavior.Select,
-                count = 16,
-              },
-              ["<S-PageUp>"] = cmp.mapping.select_prev_item {
-                behavior = cmp.SelectBehavior.Select,
-                count = 16,
-              },
-              ["<S-PageDown>"] = cmp.mapping.select_next_item {
-                behavior = cmp.SelectBehavior.Select,
-                count = 16,
-              },
-              ["<Up>"] = cmp.mapping.select_prev_item {
-                behavior = cmp.SelectBehavior.Select,
-              },
-              ["<Down>"] = cmp.mapping.select_next_item {
-                behavior = cmp.SelectBehavior.Select,
-              },
-              ["<C-p>"] = cmp.mapping.select_prev_item {
-                behavior = cmp.SelectBehavior.Insert,
-              },
-              ["<C-n>"] = cmp.mapping.select_next_item {
-                behavior = cmp.SelectBehavior.Insert,
-              },
-              ["<C-k>"] = cmp.mapping.select_prev_item {
-                behavior = cmp.SelectBehavior.Insert,
-              },
-              ["<C-j>"] = cmp.mapping.select_next_item {
-                behavior = cmp.SelectBehavior.Insert,
-              },
-              ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-              ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-              ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-              ["<C-y>"] = cmp.config.disable,
-              ["<C-e>"] = cmp.mapping {
-                i = cmp.mapping.abort(),
-                c = cmp.mapping.close(),
-              },
-              ["<CR>"] = cmp.mapping.confirm { select = false },
-              ["<Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                  cmp.select_next_item()
-                elseif luasnip.expand_or_jumpable() then
-                  luasnip.expand_or_jump()
-                else
-                  fallback()
-                end
-              end, { "i", "s" }),
-              ["<S-Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                  cmp.select_prev_item()
-                elseif luasnip.jumpable(-1) then
-                  luasnip.jump(-1)
-                else
-                  fallback()
-                end
-              end, { "i", "s" }),
-            }
-          '';
+          lib.generators.mkLuaInline # lua
+
+            ''
+              {
+                ["<PageUp>"] = cmp.mapping.select_prev_item {
+                  behavior = cmp.SelectBehavior.Select,
+                  count = 8,
+                },
+                ["<PageDown>"] = cmp.mapping.select_next_item {
+                  behavior = cmp.SelectBehavior.Select,
+                  count = 8,
+                },
+                ["<C-PageUp>"] = cmp.mapping.select_prev_item {
+                  behavior = cmp.SelectBehavior.Select,
+                  count = 16,
+                },
+                ["<C-PageDown>"] = cmp.mapping.select_next_item {
+                  behavior = cmp.SelectBehavior.Select,
+                  count = 16,
+                },
+                ["<S-PageUp>"] = cmp.mapping.select_prev_item {
+                  behavior = cmp.SelectBehavior.Select,
+                  count = 16,
+                },
+                ["<S-PageDown>"] = cmp.mapping.select_next_item {
+                  behavior = cmp.SelectBehavior.Select,
+                  count = 16,
+                },
+                ["<Up>"] = cmp.mapping.select_prev_item {
+                  behavior = cmp.SelectBehavior.Select,
+                },
+                ["<Down>"] = cmp.mapping.select_next_item {
+                  behavior = cmp.SelectBehavior.Select,
+                },
+                ["<C-p>"] = cmp.mapping.select_prev_item {
+                  behavior = cmp.SelectBehavior.Insert,
+                },
+                ["<C-n>"] = cmp.mapping.select_next_item {
+                  behavior = cmp.SelectBehavior.Insert,
+                },
+                ["<C-k>"] = cmp.mapping.select_prev_item {
+                  behavior = cmp.SelectBehavior.Insert,
+                },
+                ["<C-j>"] = cmp.mapping.select_next_item {
+                  behavior = cmp.SelectBehavior.Insert,
+                },
+                ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+                ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+                ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+                ["<C-y>"] = cmp.config.disable,
+                ["<C-e>"] = cmp.mapping {
+                  i = cmp.mapping.abort(),
+                  c = cmp.mapping.close(),
+                },
+                ["<CR>"] = cmp.mapping.confirm { select = false },
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_next_item()
+                  elseif luasnip.expand_or_jumpable() then
+                    luasnip.expand_or_jump()
+                  else
+                    fallback()
+                  end
+                end, { "i", "s" }),
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_prev_item()
+                  elseif luasnip.jumpable(-1) then
+                    luasnip.jump(-1)
+                  else
+                    fallback()
+                  end
+                end, { "i", "s" }),
+              }
+            '';
       };
     };
 
@@ -165,7 +166,7 @@
       '';
 
       # These are simply appended to {option} vim.startPlugins
-      providers = ["friendly-snippets"];
+      providers = [ "friendly-snippets" ];
     };
   };
 }

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nvf.settings.vim.lazy.plugins = {
     "better-escape.nvim" = {
       package = pkgs.vimPlugins.better-escape-nvim;

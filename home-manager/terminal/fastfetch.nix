@@ -1,9 +1,10 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # https://github.com/fastfetch-cli/fastfetch/
   programs.fastfetch = {
     enable = true;
     settings = {
-      logo = {};
+      logo = { };
       display = {
         size.binaryPrefix = "si";
         color = {

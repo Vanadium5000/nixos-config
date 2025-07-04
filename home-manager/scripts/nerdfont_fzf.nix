@@ -7,7 +7,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   nerdfont-fzf = pkgs.writeShellScriptBin "nerdfont-fzf" ''
     icons=$(${pkgs.jq}/bin/jq -r 'to_entries[] | "\(.key):\(.value.char)"' "/home/${config.var.username}/.config/nerdfont_glyphnames.json" | awk -F: '{print "\033[95m "$2" \033[0m "$1}')
     fzf_result=$(echo "$icons" | ${pkgs.fzf}/bin/fzf --ansi --border none | awk '{print $1}')
@@ -19,8 +20,9 @@
     echo "Copied to clipboard: $fzf_result"
     ${pkgs.wl-clipboard}/bin/wl-copy "$fzf_result"
   '';
-in {
-  home.packages = [nerdfont-fzf];
+in
+{
+  home.packages = [ nerdfont-fzf ];
 
   xdg.configFile."nerdfont_glyphnames.json" = {
     source = pkgs.fetchurl {

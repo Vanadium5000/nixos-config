@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   stylix.targets.tmux.enable = true; # Base16 theme
 
   programs.tmux = {

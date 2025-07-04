@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   programs.firefox.profiles.${config.var.username}.search = {
     default = "startpage";
     privateDefault = "startpage";
@@ -29,7 +30,7 @@
         ];
 
         icon = "https://www.startpage.com/sp/cdn/favicons/favicon-gradient.ico";
-        definedAliases = ["@sp"];
+        definedAliases = [ "@sp" ];
       };
 
       "github" = {
@@ -51,7 +52,7 @@
         ];
 
         icon = "https://github.githubassets.com/favicons/favicon.png";
-        definedAliases = ["@gh"];
+        definedAliases = [ "@gh" ];
       };
 
       "bing".metaData.hidden = true;
@@ -61,6 +62,10 @@
     };
 
     # Engines that aren’t included in this list will be listed after these in an unspecified order
-    order = ["ddg" "Nix Packages" "Wikipedia"];
+    order = [
+      "ddg"
+      "Nix Packages"
+      "Wikipedia"
+    ];
   };
 }

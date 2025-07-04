@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   programs = {
     fish = {
       enable = true;
@@ -17,11 +18,9 @@
       # use abbreviations instead of aliases
       preferAbbrs = true;
       # seems like shell abbreviations take precedence over aliases
-      shellAbbrs =
-        config.home.shellAliases
-        // {
-          ehistory = "nvim ${config.xdg.dataHome}/fish/fish_history";
-        };
+      shellAbbrs = config.home.shellAliases // {
+        ehistory = "nvim ${config.xdg.dataHome}/fish/fish_history";
+      };
       shellInit = ''
         #fastfetch
         # shut up welcome message
@@ -40,7 +39,8 @@
   };
 
   # fish plugins, home-manager's programs.fish.plugins has a weird format
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     [
       fzf
     ]

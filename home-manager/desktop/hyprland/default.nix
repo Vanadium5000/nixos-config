@@ -5,12 +5,14 @@
   lib,
   inputs,
   ...
-}: let
+}:
+let
   clrs = config.var.colors-no-tags;
   thme = config.var.theme;
 
   inherit (config.var) keyboardLayout;
-in {
+in
+{
   imports = [
     ./animations.nix
     ./bindings.nix
@@ -34,7 +36,10 @@ in {
   ];
 
   # Persist nwg-displays diplay settings
-  customPersist.home.files = [".config/hypr/monitors.conf" ".config/hypr/workspaces.conf"];
+  customPersist.home.files = [
+    ".config/hypr/monitors.conf"
+    ".config/hypr/workspaces.conf"
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -42,7 +47,7 @@ in {
 
     systemd = {
       enable = false; # Disables the systemd integration, as it conflicts with uwsm
-      variables = ["--all"];
+      variables = [ "--all" ];
     };
 
     # set the flake package
@@ -182,6 +187,11 @@ in {
       cursor = {
         inactive_timeout = 10.0; # time to wait before hiding cursor
       };
+
+      # https://github.com/hyprwm/Hyprland/issues/9738 Fixes error
+      # render = {
+      #   cm_enabled = false;
+      # };
 
       input = {
         kb_layout = keyboardLayout;

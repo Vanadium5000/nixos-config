@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   wallpaperSources = {
     "Nixy Wallpapers" = "${pkgs.nixy-wallpapers}/wallpapers/";
     "Nixos Artwork" = "${pkgs.nixos-wallpapers}/wallpapers/";
@@ -13,12 +14,18 @@
     fi
 
     # Nix magic
-    result=$(echo "${builtins.concatStringsSep "\n" (builtins.attrNames wallpaperSources ++ ["Choose a file..."])}" | \
+    result=$(echo "${
+      builtins.concatStringsSep "\n" (builtins.attrNames wallpaperSources ++ [ "Choose a file..." ])
+    }" | \
     rofi -dmenu)
 
     echo $result
 
-    declare -A wallpaperSources=(${builtins.concatStringsSep "\n" (map (x: ''["${x}"]="${wallpaperSources.${x}}"'') (builtins.attrNames wallpaperSources))})
+    declare -A wallpaperSources=(${
+      builtins.concatStringsSep "\n" (
+        map (x: ''["${x}"]="${wallpaperSources.${x}}"'') (builtins.attrNames wallpaperSources)
+      )
+    })
 
     if [[ $result == "Choose a file..." ]];then
       echo "Choosing a specific file"
@@ -41,6 +48,7 @@
 
     exit 0
   '';
-in {
-  home.packages = [rofi-wallpaper];
+in
+{
+  home.packages = [ rofi-wallpaper ];
 }

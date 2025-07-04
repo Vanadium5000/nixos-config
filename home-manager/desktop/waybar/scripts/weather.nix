@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   weather = pkgs.writeShellScriptBin "weather" ''
     for i in {1..5}
     do
@@ -18,7 +19,8 @@
     done
     echo "{\"text\":\"error\", \"tooltip\":\"error\"}"
   '';
-in {
+in
+{
   home.packages = [
     weather
   ];

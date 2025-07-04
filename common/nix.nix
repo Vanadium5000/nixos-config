@@ -2,7 +2,8 @@
   inputs,
   config,
   ...
-}: {
+}:
+{
   nix = {
     settings = {
       # Enable flakes and new 'nix' command
@@ -50,12 +51,12 @@
     # Opinionated: disable channels
     channel.enable = false;
 
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
     # Save space by hardlinking store files
     optimise = {
       automatic = true;
-      dates = ["weekly"];
+      dates = [ "weekly" ];
     };
     # Remove old generations, unnecessary software, etc.
     gc = {

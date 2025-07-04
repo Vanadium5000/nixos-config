@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   # NH reimplements some basic nix commands.
   # Adding functionality on top of the existing solutions, like nixos-rebuild, home-manager cli or nix itself.
   programs.nh = {

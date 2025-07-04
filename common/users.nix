@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   # Defines system-wide user settings (groups, etc)
   users.users = {
     ${config.var.username} = {

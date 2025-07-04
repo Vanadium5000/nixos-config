@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./batsignal.nix
     ./cava.nix

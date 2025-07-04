@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     (discord.override {
       # withOpenASAR = true; # can do this here too
@@ -12,5 +13,8 @@
   ];
 
   # Persist settings & extensions
-  customPersist.home.directories = [".config/discord" ".config/Vencord"];
+  customPersist.home.directories = [
+    ".config/discord"
+    ".config/Vencord"
+  ];
 }

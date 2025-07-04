@@ -4,10 +4,12 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   thme = config.var.theme;
-in {
-  imports = [inputs.stylix.nixosModules.stylix];
+in
+{
+  imports = [ inputs.stylix.nixosModules.stylix ];
 
   stylix = {
     enable = true;
@@ -75,5 +77,5 @@ in {
     };
   };
 
-  nixpkgs = lib.mkForce {};
+  nixpkgs = lib.mkForce { };
 }

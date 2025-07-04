@@ -12,5 +12,5 @@ _: {
   };
 
   # Persist nix-index cache, which takes a long time to make
-  customPersist.home.directories = [".cache/nix-index"];
+  customPersist.home.directories = [ ".cache/nix-index" ];
 }

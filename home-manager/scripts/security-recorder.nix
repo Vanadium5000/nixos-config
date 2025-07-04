@@ -1,19 +1,22 @@
 # - ## Recording
 #
-# This module provides scripts to control video and audio recording using FFmpeg.
+# This module provides scripts to control video and audio recording using FFmpeg and display recording status in Waybar.
 #
 # - `start-recording` initiates recording from the default webcam (/dev/video0) and audio source,
-#   saving to ~/Videos with a timestamped filename. Logs are saved to ~/.recording.log.
+#   saving to ~/Videos with a timestamped filename. Logs are saved to /tmp/recording.log.
 # - `stop-recording` terminates the recording process, ensures graceful shutdown,
-#   and logs actions to ~/.recording.log.
-{pkgs, ...}: let
+#   and logs actions to /tmp/recording.log.
+# - `waybar-is-recording` outputs JSON for a Waybar custom module, showing recording status with an icon
+#   and tooltip with details, updating every 2 seconds.
+{ pkgs, ... }:
+let
   start-recording = pkgs.writeShellScriptBin "start-recording" ''
     set -euo pipefail
 
     # Define variables
     OUTPUT_DIR="$HOME/Videos"
-    LOG_FILE="$HOME/.recording.log"
-    PID_FILE="$HOME/.ffmpeg.pid"
+    LOG_FILE="/tmp/recording.log"
+    PID_FILE="/tmp/ffmpeg.pid"
     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
     OUTPUT_FILE="$OUTPUT_DIR/recording_$TIMESTAMP.mp4"
 
@@ -64,51 +67,86 @@
     echo "$FFMPEG_PID" > "$PID_FILE"
     echo "Recording started (PID: $FFMPEG_PID). Output: $OUTPUT_FILE"
   '';
-  stop-recording =
-    pkgs.writeShellScriptBin "stop-recording"
-    ''
-      set -euo pipefail
+  stop-recording = pkgs.writeShellScriptBin "stop-recording" ''
+    set -euo pipefail
 
-      # Define variables
-      PID_FILE="$HOME/.ffmpeg.pid"
-      LOG_FILE="$HOME/.recording.log"
+    # Define variables
+    PID_FILE="/tmp/ffmpeg.pid"
+    LOG_FILE="/tmp/recording.log"
 
-      # Check if recording is running
-      if [ ! -f "$PID_FILE" ]; then
-        echo "No recording process found"
-        exit 0
+    # Check if recording is running
+    if [ ! -f "$PID_FILE" ]; then
+      echo "No recording process found"
+      exit 0
+    fi
+
+    PID=$(cat "$PID_FILE")
+    if ! ps -p "$PID" > /dev/null 2>&1; then
+      echo "No active recording process found (stale PID file)"
+      rm -f "$PID_FILE"
+      exit 0
+    fi
+
+    # Stop recording
+    echo "Stopping recording (PID: $PID)" | tee -a "$LOG_FILE"
+    if kill -TERM "$PID" 2>/dev/null; then
+      # Wait for FFmpeg to exit gracefully
+      timeout=10
+      while [ $timeout -gt 0 ] && ps -p "$PID" > /dev/null 2>&1; do
+        sleep 1
+        timeout=$((timeout - 1))
+      done
+
+      if ps -p "$PID" > /dev/null 2>&1; then
+        echo "Recording did not stop gracefully, forcing termination" | tee -a "$LOG_FILE"
+        kill -KILL "$PID" 2>/dev/null
       fi
 
-      PID=$(cat "$PID_FILE")
-      if ! ps -p "$PID" > /dev/null 2>&1; then
-        echo "No active recording process found (stale PID file)"
-        rm -f "$PID_FILE"
-        exit 0
-      fi
+      rm -f "$PID_FILE"
+      echo "Recording stopped successfully"
+    else
+      echo "Error: Failed to stop recording. Check $LOG_FILE for details" | tee -a "$LOG_FILE"
+      rm -f "$PID_FILE"
+      exit 1
+    fi
+  '';
+  waybar-is-recording = pkgs.writeShellScriptBin "waybar-is-recording" ''
+    set -euo pipefail
 
-      # Stop recording
-      echo "Stopping recording (PID: $PID)" | tee -a "$LOG_FILE"
-      if kill -TERM "$PID" 2>/dev/null; then
-        # Wait for FFmpeg to exit gracefully
-        timeout=10
-        while [ $timeout -gt 0 ] && ps -p "$PID" > /dev/null 2>&1; do
-          sleep 1
-          timeout=$((timeout - 1))
-        done
+    # Define variables
+    PID_FILE="/tmp/ffmpeg.pid"
+    LOG_FILE="/tmp/recording.log"
 
+    # Ensure log file is writable
+    if ! touch "$LOG_FILE" 2>/dev/null; then
+      echo "{\"text\": \"Recording ERROR\", \"tooltip\": \"Error: Cannot write to $LOG_FILE\", \"class\": \"recording-error\"}"
+      exit 1
+    fi
+
+    while true; do
+      if [ -f "$PID_FILE" ]; then
+        PID=$(cat "$PID_FILE")
         if ps -p "$PID" > /dev/null 2>&1; then
-          echo "Recording did not stop gracefully, forcing termination" | tee -a "$LOG_FILE"
-          kill -KILL "$PID" 2>/dev/null
+          # Recording is active
+          echo "{\"text\":\"Recording\",\"tooltip\":\"Recording active (PID: $PID)\",\"class\":\"recording-active\"}"
+        else
+          # Stale PID file
+          rm -f "$PID_FILE"
+          echo "{\"text\":\"\",\"tooltip\":\"Not recording\",\"class\":\"recording-inactive\"}"
         fi
-
-        rm -f "$PID_FILE"
-        echo "Recording stopped successfully"
       else
-        echo "Error: Failed to stop recording. Check $LOG_FILE for details" | tee -a "$LOG_FILE"
-        rm -f "$PID_FILE"
-        exit 1
+        # No PID file
+        echo "{\"text\":\"\",\"tooltip\":\"Not recording\",\"class\":\"recording-inactive\"}"
       fi
-    '';
-in {
-  home.packages = [start-recording stop-recording pkgs.ffmpeg-full];
+      sleep 1
+    done
+  '';
+in
+{
+  home.packages = [
+    start-recording
+    stop-recording
+    waybar-is-recording
+    pkgs.ffmpeg-full
+  ];
 }

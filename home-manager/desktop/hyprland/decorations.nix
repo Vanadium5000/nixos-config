@@ -1,7 +1,9 @@
-{config, ...}: let
+{ config, ... }:
+let
   clrs = config.var.colors-no-tags;
   thme = config.var.theme;
-in {
+in
+{
   wayland.windowManager.hyprland = {
     #-------------------------------------------------------------
     #                       Decoration section
@@ -35,7 +37,7 @@ in {
       blur = {
         enabled = thme.blur;
         size = 5;
-        passes = 3; #  more passes = more resources
+        passes = 3; # more passes = more resources
         ignore_opacity = true;
         new_optimizations = true;
         noise = 0.01;

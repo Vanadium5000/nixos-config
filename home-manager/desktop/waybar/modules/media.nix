@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   album_art = pkgs.writeShellScriptBin "album_art" ''
     # File to store the last URL
     CACHE_FILE="/tmp/last_album_art_url.txt"
@@ -40,7 +41,8 @@
         fi
     fi
   '';
-in {
+in
+{
   # Options: https://github.com/Alexays/Waybar/wiki/Configuration
   programs.waybar.settings = {
     mainBar = {

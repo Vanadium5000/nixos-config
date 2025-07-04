@@ -3,10 +3,16 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium.fhsWithPackages (ps: with ps; [rustup zlib]);
+    package = pkgs.vscodium.fhsWithPackages (
+      ps: with ps; [
+        rustup
+        zlib
+      ]
+    );
 
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
@@ -43,13 +49,32 @@
         continue.continue
       ];
 
-      userSettings = lib.mkForce {};
+      userSettings = lib.mkForce { };
     };
   };
 
   # LSPs/Dependencies
   home.packages = with pkgs; [
     nixd
+    nixfmt-rfc-style # Nixfmt
+
+    # Treefmt
+    pkgs.treefmt.withConfig
+    {
+      runtimeInputs = [ pkgs.nixfmt-rfc-style ];
+
+      settings = {
+        # Log level for files treefmt won't format
+        on-unmatched = "info";
+
+        # Configure nixfmt for .nix files
+        formatter.nixfmt = {
+          command = "nixfmt";
+          includes = [ "*.nix" ];
+        };
+      };
+    }
+
     alejandra
   ];
 
@@ -58,8 +83,13 @@
     "vscode-extension-fill-labs-dependi"
   ];
 
-  home.file.".config/VSCodium/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.var.configDirectory}/home-manager/desktop/vscodium/settings.json";
+  home.file.".config/VSCodium/User/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.var.configDirectory}/home-manager/desktop/vscodium/settings.json";
 
   # Persist settings & extensions, ".continue" contains settings for the Continue ai extension
-  customPersist.home.directories = [".config/VSCodium" ".vscode-oss/extensions" ".continue"];
+  customPersist.home.directories = [
+    ".config/VSCodium"
+    ".vscode-oss/extensions"
+    ".continue"
+  ];
 }

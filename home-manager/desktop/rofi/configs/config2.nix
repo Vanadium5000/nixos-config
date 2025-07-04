@@ -1,4 +1,5 @@
-{config, ...}: let
+{ config, ... }:
+let
   clrs = config.var.colors;
   stylix = config.var.stylix;
   thme = config.var.theme;
@@ -8,7 +9,8 @@
   fontSize = "${toString config.stylix.fonts.sizes.desktop}";
 
   inherit (thme.bar) font;
-in {
+in
+{
   home.file.".config/rofi/config2.rasi" = {
     force = true;
     text = ''

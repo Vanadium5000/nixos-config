@@ -3,8 +3,7 @@
   fetchFromGitHub,
   ...
 }:
-stdenvNoCC.mkDerivation
-{
+stdenvNoCC.mkDerivation {
   pname = "nixy-wallpapers";
   version = "unstable-2024-12-10";
 

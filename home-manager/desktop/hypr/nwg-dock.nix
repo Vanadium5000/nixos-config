@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   fontSize = config.stylix.fonts.sizes.desktop;
 
   clrs-rgba = config.var.colors-rgba thme.bar.opacity;
@@ -30,28 +31,25 @@
       hyprctl dispatch exec "nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start -i 38"
     fi
   '';
-in {
+in
+{
   home.packages = [
     spawn-dock
     toggle-dock
     pkgs.nwg-dock-hyprland
   ];
 
-  wayland.windowManager.hyprland.settings.exec-once = ["spawn-dock"];
+  wayland.windowManager.hyprland.settings.exec-once = [ "spawn-dock" ];
 
   # Persist pinned apps
-  customPersist.home.files = [".cache/nwg-dock-pinned"];
+  customPersist.home.files = [ ".cache/nwg-dock-pinned" ];
 
   home.file.".config/nwg-dock-hyprland/style.css".text = ''
     window {
       background: ${clrs-rgba.background};
     	border-radius: ${toString thme.rounding}px;
     	border-style: solid;
-    	border-width: ${
-      if thme.bar.borders
-      then toString thme.border-size
-      else "0"
-    }px;
+    	border-width: ${if thme.bar.borders then toString thme.border-size else "0"}px;
     	border-color: ${clrs.border-color};
     }
 

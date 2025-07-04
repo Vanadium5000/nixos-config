@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.file.".config/hypr/hyprshade.toml" = {
     text = ''
       [[shades]]
@@ -17,7 +18,8 @@
     '';
   };
   home.file.".config/hypr/shaders/grayscale.glsl".source = ./grayscale.glsl;
-  home.file.".config/hypr/shaders/blue-light-filter.glsl.mustache".source = ./blue-light-filter.glsl.mustache;
+  home.file.".config/hypr/shaders/blue-light-filter.glsl.mustache".source =
+    ./blue-light-filter.glsl.mustache;
 
   systemd.user.services.hyprshade = {
     Unit = {
@@ -45,7 +47,7 @@
       ];
     };
     Install = {
-      WantedBy = ["timers.target"];
+      WantedBy = [ "timers.target" ];
     };
   };
 

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
     # A simple GTK based notification daemon
     swaync.enable = true;

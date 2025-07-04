@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     font-awesome # Icons that some apps require

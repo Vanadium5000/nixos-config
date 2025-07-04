@@ -2,15 +2,17 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   clrs = config.var.colors;
   thme = config.var.theme;
 
   backgroundOpacity = builtins.floor (builtins.mul thme.bar.opacity 255);
-in {
+in
+{
   # Powerful yet simple to use screenshot software
   home.packages = with pkgs; [
-    (flameshot.override {enableWlrSupport = true;})
+    (flameshot.override { enableWlrSupport = true; })
   ];
 
   home.file.".config/flameshot/flameshot.ini" = {

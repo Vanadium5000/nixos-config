@@ -1,6 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Clipboard manager
-  home.packages = with pkgs; [cliphist];
+  home.packages = with pkgs; [ cliphist ];
 
   wayland.windowManager.hyprland.settings.exec-once = [
     "wl-paste --type text --watch cliphist store" # Stores only text data

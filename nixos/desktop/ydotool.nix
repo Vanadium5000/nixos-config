@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Generic command-line automation tool (macro/autoclicker)
   programs.ydotool = {
     # Whether to enable ydotoold system service and ydotool for members of programs.ydotool.group
@@ -9,5 +10,8 @@
   services.input-remapper.enable = true;
 
   # Add the ydotool application
-  environment.systemPackages = with pkgs; [ydotool input-remapper];
+  environment.systemPackages = with pkgs; [
+    ydotool
+    input-remapper
+  ];
 }

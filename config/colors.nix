@@ -1,6 +1,11 @@
-{config, ...}: let
+{ config, ... }:
+let
   clr = base: "${config.lib.stylix.colors.${"base" + base}}";
-  rgba = base: opacity: "rgba(${config.lib.stylix.colors.${"base" + base + "-rgb-r"}}, ${config.lib.stylix.colors.${"base" + base + "-rgb-g"}}, ${config.lib.stylix.colors.${"base" + base + "-rgb-b"}}, ${toString opacity})";
+  rgba =
+    base: opacity:
+    "rgba(${config.lib.stylix.colors.${"base" + base + "-rgb-r"}}, ${
+      config.lib.stylix.colors.${"base" + base + "-rgb-g"}
+    }, ${config.lib.stylix.colors.${"base" + base + "-rgb-b"}}, ${toString opacity})";
 
   # Styling Guide: https://github.com/nix-community/stylix/blob/master/doc/src/styling.md#general-colors
 
@@ -46,7 +51,8 @@
     border-color = "0D";
     border-color-inactive = "03";
   };
-in {
+in
+{
   config.var = {
     # Gets hexadecimal colors
 

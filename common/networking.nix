@@ -3,7 +3,8 @@
   options,
   pkgs,
   ...
-}: {
+}:
+{
   networking = {
     hostName = config.var.hostname;
 
@@ -43,7 +44,7 @@
 
     dnssec = "allow-downgrade"; # "true" | "allow-downgrade" | "false"
     dnsovertls = "opportunistic"; # "true" | "opportunistic" | "false"
-    domains = ["~."]; # "use as default interface for all requests"
+    domains = [ "~." ]; # "use as default interface for all requests"
 
     # (see man resolved.conf)
     # let Avahi handle mDNS publication

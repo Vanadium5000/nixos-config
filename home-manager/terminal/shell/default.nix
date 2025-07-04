@@ -1,5 +1,6 @@
 # Shell config
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./aliases.nix
     ./btop.nix

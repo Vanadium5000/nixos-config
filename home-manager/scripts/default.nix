@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./brightness.nix
     ./caffeine.nix

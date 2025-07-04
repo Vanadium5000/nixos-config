@@ -55,16 +55,22 @@ _: {
       "group/system" = {
         orientation = "horizontal";
         modules = [
-          #"group/audio"
-
-          # Audio
-          "pulseaudio"
-          "pulseaudio#mic"
-          "pulseaudio/slider"
-
+          "group/audio"
           "group/blight"
           "battery"
         ];
+      };
+      "custom/recording" = {
+        return-type = "json";
+        format = "{icon}{text}";
+        format-icons = {
+          recording-active = "󰻃 ";
+          #recording-inactive = "󰑊 ";
+        };
+        hide-empty-text = true;
+        exec-if = "which waybar-is-recording";
+        exec = "waybar-is-recording";
+        on-click = "stop-recording";
       };
     };
   };

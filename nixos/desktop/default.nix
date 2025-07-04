@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./chromium
 
@@ -57,5 +58,5 @@
 
   # NetworkManager control applet for GNOME
   programs.nm-applet.enable = true;
-  environment.systemPackages = with pkgs; [networkmanagerapplet];
+  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 }

@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   programs.nvf.settings.vim = {
     # CodeCompanion - AI-powered coding, seamlessly in Neovim
     assistant.codecompanion-nvim = {
@@ -6,21 +7,21 @@
       setupOpts = {
         adapters =
           lib.generators.mkLuaInline
-          # lua
-          ''
-            {
-              l = function ()
-                return require("codecompanion.adapters").extend("ollama", {
-                  name = "l",
-                  schema = {
-                    model = {
-                      default = "deepseek-r1:14b",
+            # lua
+            ''
+              {
+                l = function ()
+                  return require("codecompanion.adapters").extend("ollama", {
+                    name = "l",
+                    schema = {
+                      model = {
+                        default = "deepseek-r1:14b",
+                      }
                     }
-                  }
-                })
-              end
-            }
-          '';
+                  })
+                end
+              }
+            '';
         strategies = {
           chat.adapter = "l";
           inline.adapter = "l";

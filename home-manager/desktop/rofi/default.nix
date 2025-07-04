@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   rofiPackage = pkgs.rofi-wayland.override {
     plugins = [
       pkgs.rofi-emoji-wayland
@@ -6,7 +7,8 @@
       pkgs.rofi-calc
     ];
   };
-in {
+in
+{
   imports = [
     ./configs
 

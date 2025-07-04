@@ -1,5 +1,6 @@
 # Hyprlock is a lockscreen for Hyprland
-{config, ...}: let
+{ config, ... }:
+let
   inherit (config.var.theme.lockscreen) dark;
   clrs = config.var.colors-rgba thme.lockscreen.opacity;
   thme = config.var.theme;
@@ -9,7 +10,8 @@
   fontSize = config.stylix.fonts.sizes.desktop;
 
   scale = x: (builtins.floor (x * 1.5));
-in {
+in
+{
   stylix.targets.hyprlock.enable = false;
 
   programs.hyprlock = {
@@ -35,10 +37,7 @@ in {
           # Day-Month-Date
           monitor = "";
           text = ''cmd[update:1000] echo -e "$(date +"%A, %B %d")"'';
-          color =
-            if dark
-            then clrs.background
-            else clrs.foreground;
+          color = if dark then clrs.background else clrs.foreground;
           font_size = scale 20;
           font_family = font + " Bold";
           position = "0, ${toString (scale 405)}";
@@ -49,10 +48,7 @@ in {
         {
           monitor = "";
           text = ''cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"'';
-          color =
-            if dark
-            then clrs.background
-            else clrs.foreground;
+          color = if dark then clrs.background else clrs.foreground;
           font_size = scale 93;
           font_family = font + " Bold";
           position = "0, ${toString (scale 310)}";
@@ -63,10 +59,7 @@ in {
         {
           monitor = "";
           text = "$USER";
-          color =
-            if dark
-            then clrs.background
-            else clrs.foreground;
+          color = if dark then clrs.background else clrs.foreground;
           outline_thickness = 2;
           dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8
           dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0
@@ -81,10 +74,7 @@ in {
         {
           monitor = "";
           text = "Touch ID or Enter Password";
-          color =
-            if dark
-            then clrs.background-alt
-            else clrs.foreground-alt;
+          color = if dark then clrs.background-alt else clrs.foreground-alt;
           outline_thickness = 2;
           dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8
           dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0
@@ -113,10 +103,7 @@ in {
           #  else clrs.foreground;
           outer_color = "rgba(0, 0, 0, 0)";
           inner_color = "rgba(255, 255, 255, 0)";
-          font_color =
-            if dark
-            then clrs.background
-            else clrs.foreground;
+          font_color = if dark then clrs.background else clrs.foreground;
 
           check_color = "rgba(204, 136, 34, 0)";
           fail_color = "rgba(204, 34, 34, 0)"; # if authentication failed, changes outer_color and fail message color

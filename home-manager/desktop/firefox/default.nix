@@ -3,19 +3,20 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     #./bookmarks.nix
     ./search-engines.nix
   ];
 
   # Persist browser
-  customPersist.home.directories = [".mozilla"];
+  customPersist.home.directories = [ ".mozilla" ];
 
   # Stylix theming for floorp
   stylix.targets.firefox = {
     # The Floorp profile names to apply styling on
-    profileNames = [config.var.username];
+    profileNames = [ config.var.username ];
 
     # Whether to enable theming for Firefox GNOME theme
     firefoxGnomeTheme.enable = true;
@@ -24,11 +25,11 @@
   # Browser
   programs.firefox = {
     enable = true;
-    languagePacks = ["en-GB"];
+    languagePacks = [ "en-GB" ];
 
     package = pkgs.firefox;
 
-    nativeMessagingHosts = [pkgs.keepassxc];
+    nativeMessagingHosts = [ pkgs.keepassxc ];
 
     profiles.${config.var.username} = {
       id = 0;

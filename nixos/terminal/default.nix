@@ -4,7 +4,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     #./fenix.nix
     ./fonts.nix
@@ -20,7 +21,11 @@
   };
 
   # Enables fish/zsh
-  environment.shells = with pkgs; [nushell fish zsh];
+  environment.shells = with pkgs; [
+    nushell
+    fish
+    zsh
+  ];
   programs = {
     fish.enable = true;
     zsh.enable = true;

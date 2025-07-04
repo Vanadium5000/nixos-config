@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   thme = config.var.theme;
-in {
+in
+{
   # https://github.com/ashish-kus/waybar-minimal/blob/main/src/config.jsonc
   # Options: https://github.com/Alexays/Waybar/wiki/Configuration
   programs.waybar.settings = {
@@ -25,6 +27,7 @@ in {
         #"cava"
       ];
       modules-right = [
+        "custom/recording"
         "group/media"
         #"hyprland/window"
         "group/system"

@@ -7,5 +7,5 @@ _: {
   };
 
   # Save direnv stuff
-  customPersist.home.directories = [".local/share/direnv"];
+  customPersist.home.directories = [ ".local/share/direnv" ];
 }

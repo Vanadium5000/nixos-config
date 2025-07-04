@@ -11,7 +11,8 @@
   inputs,
   pkgs,
   ...
-}: let
+}:
+let
   night-shift-on = pkgs.writeShellScriptBin "night-shift-on" ''
     ${pkgs.hyprshade}/bin/hyprshade on blue-light-filter
     title="󰖔  Night-Shift Activated"
@@ -56,7 +57,8 @@
         echo "󰖕"
       fi
   '';
-in {
+in
+{
   home.packages = [
     pkgs.hyprshade
     night-shift-on

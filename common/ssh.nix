@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   services.openssh = {
     settings.PermitRootLogin = "yes";
     #settings.PasswordAuthentication = true;

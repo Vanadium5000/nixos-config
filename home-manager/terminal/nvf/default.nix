@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nvf.homeManagerModules.default
 
@@ -21,7 +22,7 @@
     ./utilities.nix
   ];
 
-  home.packages = [pkgs.ueberzugpp]; # For image support
+  home.packages = [ pkgs.ueberzugpp ]; # For image support
 
   programs.nvf = {
     enable = true;
@@ -46,7 +47,11 @@
 
       spellcheck = {
         enable = true;
-        languages = ["en" "en_gb" "en_us"];
+        languages = [
+          "en"
+          "en_gb"
+          "en_us"
+        ];
 
         programmingWordlist.enable = true;
       };

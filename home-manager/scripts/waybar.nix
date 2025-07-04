@@ -5,7 +5,8 @@
 #- - `waybar-toggle` - Toggle waybar.
 #- - `waybar-reload` - Reload waybar.
 #- - `waybar-kill` - Kill waybar.
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   waybar-toggle = pkgs.writers.writeBashBin "waybar-toggle" ''
     if [ -n "$(pgrep waybar || true)" ]; then
       pkill waybar
@@ -26,7 +27,8 @@
     [ -n "$(pgrep "waybar")" ] && pkill waybar
     hyprctl dispatch exec waybar
   '';
-in {
+in
+{
   home.packages = [
     waybar-toggle
     waybar-reload

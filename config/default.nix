@@ -2,15 +2,16 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options = {
     var = lib.mkOption {
       type = lib.types.attrs;
-      default = {};
+      default = { };
     };
     allowedUnfree = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [];
+      default = [ ];
     };
     # Persist options
     customPersist = {
@@ -18,22 +19,22 @@
       nixos = {
         directories = lib.mkOption {
           type = lib.types.listOf (lib.types.either lib.types.str lib.types.attrs);
-          default = [];
+          default = [ ];
         };
         files = lib.mkOption {
           type = lib.types.listOf (lib.types.either lib.types.str lib.types.attrs);
-          default = [];
+          default = [ ];
         };
       };
       # Home
       home = {
         directories = lib.mkOption {
           type = lib.types.listOf (lib.types.either lib.types.str lib.types.attrs);
-          default = [];
+          default = [ ];
         };
         files = lib.mkOption {
           type = lib.types.listOf (lib.types.either lib.types.str lib.types.attrs);
-          default = [];
+          default = [ ];
         };
       };
     };
@@ -49,10 +50,7 @@
     # Set by hosts/x.nix file
     #hostname = "nxs";
 
-    configDirectory =
-      "/home/"
-      + config.var.username
-      + "/Documents/nixos-config"; # The path of the nixos configuration directory
+    configDirectory = "/home/" + config.var.username + "/Documents/nixos-config"; # The path of the nixos configuration directory
 
     keyboardLayout = "gb";
 

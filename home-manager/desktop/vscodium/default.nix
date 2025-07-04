@@ -57,24 +57,7 @@
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style # Nixfmt
-
-    # Treefmt
-    pkgs.treefmt.withConfig
-    {
-      runtimeInputs = [ pkgs.nixfmt-rfc-style ];
-
-      settings = {
-        # Log level for files treefmt won't format
-        on-unmatched = "info";
-
-        # Configure nixfmt for .nix files
-        formatter.nixfmt = {
-          command = "nixfmt";
-          includes = [ "*.nix" ];
-        };
-      };
-    }
-
+    nixfmt-tree # Nixfmt-tree
     alejandra
   ];
 

@@ -15,6 +15,7 @@
     ./floorp
     ./hypr
     ./hyprland
+    ./obsidian
     #./quickshell
     #./qutebrowser
     ./rofi

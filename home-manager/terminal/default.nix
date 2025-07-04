@@ -1,8 +1,7 @@
-{ ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./nh
-    ./nvf
     ./pass
     ./shell
     #./tmux
@@ -15,5 +14,10 @@
     ./rust.nix
 
     ../home.nix
+  ];
+
+  home.packages = [
+    # My Neovim config using NVF
+    inputs.nvf-neovim.packages.${pkgs.system}.default
   ];
 }

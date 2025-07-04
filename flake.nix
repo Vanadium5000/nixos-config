@@ -46,12 +46,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Rust toolchains and rust-analyzer nightly for Nix
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Install flatpaks declaratively
     # https://github.com/gmodena/nix-flatpak
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
@@ -72,10 +66,9 @@
     # Apple fonts
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
 
-    # Nvf
-    nvf = {
-      url = "github:notashelf/nvf";
-      # you can override input nixpkgs
+    # My Neovim config using NVF
+    nvf-neovim = {
+      url = "github:Vanadium5000/nvf-neovim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -84,8 +77,6 @@
 
     # Handles persistent state on systems with ephemeral root storage
     impermanence.url = "github:nix-community/impermanence";
-    # Retroactively persist directories with impermanence - copies files/folders to persist once added instead of deleting & making new - doesn't loose data
-    persist-retro.url = "github:Geometer1729/persist-retro";
   };
 
   outputs =

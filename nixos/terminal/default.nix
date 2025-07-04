@@ -20,6 +20,9 @@
     users.${config.var.username} = import ../../home-manager/terminal;
   };
 
+  # Disable the slow "building man-cache" step
+  documentation.man.generateCaches = lib.mkForce false;
+
   # Enables fish/zsh
   environment.shells = with pkgs; [
     nushell

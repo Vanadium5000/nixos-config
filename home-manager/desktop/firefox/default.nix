@@ -29,7 +29,10 @@
 
     package = pkgs.firefox;
 
-    nativeMessagingHosts = [ pkgs.keepassxc ];
+    nativeMessagingHosts = [
+      pkgs.keepassxc
+      pkgs.passff-host
+    ];
 
     profiles.${config.var.username} = {
       id = 0;

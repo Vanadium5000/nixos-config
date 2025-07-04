@@ -20,6 +20,16 @@ let
     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
     OUTPUT_FILE="$OUTPUT_DIR/recording_$TIMESTAMP.mp4"
 
+    if [ $(df --output=avail "$OUTPUT_DIR" | tail -n1) -lt 1048576 ]; then
+      echo "Error: Insufficient disk space in $OUTPUT_DIR" >> "$LOG_FILE"
+      exit 1
+    fi
+
+    if command -v acpi >/dev/null && [ $(acpi -b | grep -o '[0-9]\+%' | tr -d '%' || echo 100) -lt 10 ]; then
+      echo "Error: Battery too low to start recording" >> "$LOG_FILE"
+      exit 1
+    fi
+
     # Ensure output directory exists
     mkdir -p "$OUTPUT_DIR" || { echo "Failed to create $OUTPUT_DIR"; exit 1; }
 
@@ -148,5 +158,6 @@ in
     stop-recording
     waybar-is-recording
     pkgs.ffmpeg-full
+    pkgs.acpi # Check if battery level is suitable
   ];
 }

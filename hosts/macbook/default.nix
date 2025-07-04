@@ -28,10 +28,36 @@
   var.hostname = "macbook";
 
   # Enable s2idle sleep, disable broken s3 sleep
-  systemd.sleep.extraConfig = ''
-    SuspendState=mem
-    MemorySleepMode=s2idle
-  '';
+  # systemd.sleep.extraConfig = ''
+  #   SuspendState=mem
+  #   MemorySleepMode=s2idle
+  # '';
+
+  # Workaround for suspend/resume issues on T2 Macs
+  systemd.services."suspend-fix-t2" = {
+    enable = true;
+    unitConfig = {
+      Description = "Disable and Re-Enable Apple BCE Module (and Wi-Fi)";
+      Before = "sleep.target";
+      StopWhenUnneeded = "yes";
+    };
+    serviceConfig = {
+      User = "root";
+      Type = "oneshot";
+      RemainAfterExit = "yes";
+      ExecStart = [
+        "/run/current-system/sw/bin/modprobe -r brcmfmac_wcc"
+        "/run/current-system/sw/bin/modprobe -r brcmfmac"
+        "/run/current-system/sw/bin/rmmod -f apple-bce"
+      ];
+      ExecStop = [
+        "/run/current-system/sw/bin/modprobe apple-bce"
+        "/run/current-system/sw/bin/modprobe brcmfmac"
+        "/run/current-system/sw/bin/modprobe brcmfmac_wcc"
+      ];
+    };
+    wantedBy = [ "sleep.target" ];
+  };
 
   # Keyboard
   services.xserver.xkb.layout = "gb";

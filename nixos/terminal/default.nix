@@ -56,7 +56,7 @@
       Defaults lecture = never
       Defaults pwfeedback
       Defaults insults
-      Defaults env_keep += "EDITOR PATH DISPLAY"
+      Defaults env_keep += "EDITOR PATH DISPLAY SUDO_ASKPASS"
     '';
   };
 

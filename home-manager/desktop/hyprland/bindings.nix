@@ -76,7 +76,13 @@
       ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause" # Play/Pause Song
       ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next" # Next Song
       ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous" # Previous Song
-      ",switch:Lid Switch, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock when closing Lid
+
+      # Lid switch bindings for security recording
+      ", switch:on:Lid Switch, exec, start-recording && sleep 120 && stop-recording --silent"
+      ", switch:off:Lid Switch, exec, stop-recording"
+
+      # Lock when closing Lid
+      ",switch:Lid Switch, exec, ${pkgs.hyprlock}/bin/hyprlock"
     ];
 
     bindle = [

@@ -25,6 +25,7 @@ _: {
       };
       "custom/powerDraw" = {
         format = "{}";
+        hide-empty-text = true;
         interval = 5;
         exec = "powerdraw";
         return-type = "json";

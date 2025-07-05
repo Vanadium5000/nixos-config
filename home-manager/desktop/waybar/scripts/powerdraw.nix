@@ -5,10 +5,12 @@ let
       powerDraw="󱐥 $(($(cat /sys/class/power_supply/BAT*/power_now)/1000000))w"
     fi
 
+    if [ -z "$powerDraw" ] || [ "$powerDraw" -eq "󱐥 0w" ]; then
+      echo "{\"text\":\"\", \"tooltip\":\"power Draw $powerDraw\"}"
+      exit 0
+    fi
 
-    cat << EOF
-    { "text":"$powerDraw", "tooltip":"power Draw $powerDraw"}
-    EOF
+    echo "{\"text\":\"$powerDraw\", \"tooltip\":\"power Draw $powerDraw\"}"
   '';
 in
 {

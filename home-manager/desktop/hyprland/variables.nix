@@ -1,6 +1,4 @@
 {
-  lib,
-  pkgs,
   ...
 }:
 {
@@ -31,8 +29,5 @@
     CLUTTER_BACKEND = "wayland";
 
     GSK_RENDERER = "vulkan"; # "ngl" | "vulkan"
-
-    # Use GUI for password inputting
-    SUDO_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
   };
 }

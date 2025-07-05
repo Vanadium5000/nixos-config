@@ -1,18 +1,18 @@
 { pkgs, ... }:
-let
+{
   # Shell aliases
-  aliases = {
+  home.shellAliases = {
     # Clears screen + scrollback
     "c" = "printf '\\033[2J\\033[3J\\033[1;1H'";
+
     # General aliases
-    "nixr" = "sudo nixos-rebuild switch --impure --flake";
-    "homer" = "home-manager switch --impure --flake";
-    "v" = "nvim";
     "edit" = "sudo -e";
     ":q" = "exit";
+
     # Eza, ls alternative
     "ls" = "eza";
     "tree" = "eza --tree";
+
     # Tools
     "open" = "${pkgs.xdg-utils}/bin/xdg-open";
     "icat" = "${pkgs.kitty}/bin/kitty +kitten icat";
@@ -22,13 +22,5 @@ let
     reboot = "systemctl reboot";
     logout = "hyprctl dispatch exit";
     poweroff = "systemctl poweroff";
-  };
-in
-{
-  programs = {
-    zsh.shellAliases = aliases;
-    bash.shellAliases = aliases;
-    fish.shellAliases = aliases;
-    nushell.shellAliases = aliases;
   };
 }

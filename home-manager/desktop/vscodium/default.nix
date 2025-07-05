@@ -33,6 +33,10 @@
         # Web dev
         bradlc.vscode-tailwindcss
         esbenp.prettier-vscode
+        svelte.svelte-vscode # Svelte
+
+        # Go
+        golang.go
 
         # Nix
         jnoortheen.nix-ide

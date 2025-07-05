@@ -70,5 +70,6 @@
   "terminal.integrated.defaultProfile.linux": "fish",
   "containers.containerCommand": "podman",
   "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
-  "workbench.colorTheme": "Stylix"
+  "workbench.colorTheme": "Stylix",
+  "svelte.enable-ts-plugin": true
 }

@@ -189,9 +189,9 @@ in
       };
 
       # https://github.com/hyprwm/Hyprland/issues/9738 Fixes error
-      # render = {
-      #   cm_enabled = false;
-      # };
+      render = {
+        cm_enabled = false;
+      };
 
       input = {
         kb_layout = keyboardLayout;

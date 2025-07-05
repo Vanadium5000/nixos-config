@@ -11,6 +11,7 @@
     ./fonts.nix
     ./packages.nix
     ./pager.nix
+    ./postgresql.nix
   ];
 
   home-manager = lib.mkDefault {

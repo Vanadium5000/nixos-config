@@ -20,8 +20,6 @@
       #morewaita-icon-theme
       qogir-icon-theme
       papirus-icon-theme
-      libssh # sftp
-      kdePackages.dolphin
       ffmpegthumbnailer
     ];
   };

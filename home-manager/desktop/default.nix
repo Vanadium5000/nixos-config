@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./dolphin.nix
     ./flatpak.nix
     ./ghostty.nix
     ./kitty.nix

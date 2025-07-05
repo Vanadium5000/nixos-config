@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   # https://github.com/ashish-kus/waybar-minimal/blob/main/src/config.jsonc
   # Options: https://github.com/Alexays/Waybar/wiki/Configuration
   programs.waybar.settings = {
@@ -15,10 +16,10 @@ _: {
         "tooltip" = false;
       };
       "custom/weather" = {
-        format = "{}";
+        format = "{}°";
         tooltip = true;
-        interval = 100;
-        exec = "weather";
+        interval = 600;
+        exec = "wttrbar";
         return-type = "json";
       };
       "custom/nvidia" = {
@@ -57,4 +58,8 @@ _: {
       };
     };
   };
+
+  home.packages = with pkgs; [
+    wttrbar # Custom module for showing the weather in Waybar, using the great wttr.in
+  ];
 }

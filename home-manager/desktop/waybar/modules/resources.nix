@@ -37,7 +37,7 @@ _: {
           #"temperature" # Not very useful
           "custom/powerDraw"
           #"network#speed"
-          #"custom/weather" # broken
+          "custom/weather"
         ];
       };
     };

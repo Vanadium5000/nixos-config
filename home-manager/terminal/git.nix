@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   programs.git = {
     enable = true;
     extraConfig = {
@@ -53,6 +54,10 @@ _: {
       };
       column = {
         ui = "auto";
+      };
+      # Solution to issue "opening Git repository ...: repository path ... is not owned by current user"
+      safe = {
+        directory = config.var.configDirectory;
       };
     };
   };

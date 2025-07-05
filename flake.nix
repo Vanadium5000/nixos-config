@@ -21,7 +21,7 @@
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
     # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland?rev=29e2e59fdbab8ed2cc23a20e3c6043d5decb5cdc";
+    hyprland.url = "github:hyprwm/Hyprland";
     # Hyprland official plugins
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";

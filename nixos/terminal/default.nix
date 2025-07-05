@@ -51,7 +51,7 @@
 
         # Optional, retains environment variables while running commands
         # e.g. retains your NIX_PATH when applying your config
-        keepEnv = true;
+        #keepEnv = true; # Problematic
         persist = true; # Optional, don't ask for the password for some time, after a successfully authentication
       }
     ];

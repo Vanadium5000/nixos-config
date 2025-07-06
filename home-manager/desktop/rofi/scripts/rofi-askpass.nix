@@ -11,15 +11,10 @@ let
   '';
 in
 {
-
   # Use GUI for password inputting
   home.sessionVariables.SUDO_ASKPASS = "rofi-askpass";
-
-  # Shell alias
-  home.shellAliases = {
-    # Use SUDO_ASKPASS variable
-    sudo = "sudo -A";
-  };
+  # Note: a sudo wrapper in nixos/desktop/default.nix
+  #  adds the -A flag to the sudo package which makes it follow the SUDO_ASKPASS variable
 
   home.packages = [
     rofi-askpass

@@ -4,6 +4,18 @@
   pkgs,
   ...
 }:
+let
+  # Add -A flag to use SUDO_ASKPASS for sudo, which is rofi-askpass
+  wrappedSudo = pkgs.sudo.overrideAttrs (oldAttrs: {
+    nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+    postInstall =
+      (oldAttrs.postInstall or "")
+      + ''
+        wrapProgram $out/bin/sudo \
+          -A
+      '';
+  });
+in
 {
   imports = [
     ./chromium
@@ -59,4 +71,6 @@
   # NetworkManager control applet for GNOME
   programs.nm-applet.enable = true;
   environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+
+  security.sudo.package = wrappedSudo;
 }

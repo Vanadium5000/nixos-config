@@ -30,8 +30,8 @@
     package = pkgs.firefox;
 
     nativeMessagingHosts = [
-      pkgs.keepassxc
-      pkgs.passff-host
+      #pkgs.keepassxc
+      #pkgs.passff-host
     ];
 
     profiles.${config.var.username} = {
@@ -44,20 +44,23 @@
         "identity.fxaccounts.enabled" = false;
         #"signon.rememberSignons" = false;
 
-        "font.name.monospace.x-western" = config.stylix.fonts.monospace.name;
-        "font.name.sans-serif.x-western" = config.stylix.fonts.sansSerif.name;
-        "font.name.serif.x-western" = config.stylix.fonts.serif.name;
-
-        # Custom Preferences
-        "browser.toolbars.bookmarks.visibility" = "always";
-        "general.autoScroll" = true;
-        "browser.gesture.swipe.left" = "";
-        "browser.gesture.swipe.right" = "";
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-        "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
       };
-      extraConfig = lib.fileContents "${pkgs.arkenfox-userjs}/user.js";
+
+      /*
+        2815: set "Cookies" and "Site Data" to clear on shutdown (if 2810 is true) [SETUP-CHROME] [FF128+]
+          * [NOTE] Exceptions: For cross-domain logins, add exceptions for both sites
+          * e.g. https://www.youtube.com (site) + https://accounts.google.com (single sign on)
+          * [WARNING] Be selective with what sites you "Allow", as they also disable partitioning (1767271)
+          * [SETTING] to add site exceptions: Ctrl+I>Permissions>Cookies>Allow (when on the website in question)
+          * [SETTING] to manage site exceptions: Options>Privacy & Security>Permissions>Settings **
+      */
+      extraConfig =
+        (lib.fileContents "${pkgs.arkenfox-userjs}/user.js")
+        # Overrides
+        + ''
+          // Overrides go here
+        '';
 
       userChrome = ''
         /* some css */

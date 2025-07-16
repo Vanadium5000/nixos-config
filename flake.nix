@@ -72,6 +72,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Utility (script) for automatically syncing git repos every 2 seconds
+    gitwatch = {
+      url = "github:gitwatch/gitwatch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hardware configs/drivers
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 

@@ -29,4 +29,7 @@
 
     ../scripts
   ];
+
+  # Automatically create Home user directories: e.g. Pictures, Music, Documents
+  xdg.userDirs.createDirectories = true;
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   rofi-askpass = pkgs.writeShellScriptBin "rofi-askpass" ''
     : | rofi -dmenu \
@@ -11,12 +11,20 @@ let
   '';
 in
 {
+
   # Use GUI for password inputting
-  home.sessionVariables.SUDO_ASKPASS = "rofi-askpass";
-  # Note: a sudo wrapper in nixos/desktop/default.nix
-  #  adds the -A flag to the sudo package which makes it follow the SUDO_ASKPASS variable
+  home.sessionVariables.SUDO_ASKPASS = lib.getExe rofi-askpass;
+
+  # Shell alias
+  home.shellAliases = {
+    # Use SUDO_ASKPASS variable
+    sudo = "sudo -A";
+  };
 
   home.packages = [
     rofi-askpass
+
+    # More reliable way to make everything use rofi-askpass
+    (pkgs.writeShellScriptBin "sudo" "sudo -A $@")
   ];
 }

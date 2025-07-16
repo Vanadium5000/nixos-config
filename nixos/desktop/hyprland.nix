@@ -19,7 +19,7 @@
     grimblast # Screenshot utility
     tesseract # Image to text cli
 
-    #nwg-dock-hyprland # App dock
+    nwg-dock-hyprland # App dock
     nwg-drawer # Full-screen application launcher
   ];
 
@@ -27,13 +27,14 @@
   xdg.portal = {
     enable = true;
     config.common.default = "*";
-    #wlr.enable = true;
     xdgOpenUsePortal = true;
 
-    extraPortals = [
+    extraPortals = with pkgs; [
       # Already added by hyprland
-      #pkgs.xdg-desktop-portal-hyprland
-      #pkgs.xdg-desktop-portal-gtk
+      #xdg-desktop-portal-hyprland
+
+      # KDE
+      kdePackages.xdg-desktop-portal-kde
     ];
   };
 }

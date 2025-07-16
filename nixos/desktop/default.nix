@@ -4,18 +4,6 @@
   pkgs,
   ...
 }:
-let
-  # Add -A flag to use SUDO_ASKPASS for sudo, which is rofi-askpass
-  wrappedSudo = pkgs.sudo.overrideAttrs (oldAttrs: {
-    nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
-    postInstall =
-      (oldAttrs.postInstall or "")
-      + ''
-        wrapProgram $out/bin/sudo \
-          -A
-      '';
-  });
-in
 {
   imports = [
     ./chromium
@@ -60,17 +48,28 @@ in
   };
 
   # Whether to enable KDE PIM base packages
-  programs.kde-pim = {
-    enable = true;
+  # programs.kde-pim = {
+  #   enable = true;
 
-    merkuro = true; # Calendar & contacts
-    kontact = true; # Contacts
-    kmail = true; # Mail
+  #   merkuro = true; # Calendar & contacts
+  #   kontact = true; # Contacts
+  #   kmail = true; # Mail
+  # };
+
+# Enable kwallet service
+  security = {
+    pam.services.kwallet = {
+      name = "kwallet";
+      enableKwallet = true;
+    };
   };
 
   # NetworkManager control applet for GNOME
   programs.nm-applet.enable = true;
   environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 
-  security.sudo.package = wrappedSudo;
+  # GUI password prompt for SUDO
+  environment.sessionVariables.SUDO_ASKPASS =
+    # Syncronised with home-manager
+    config.home-manager.users."${config.var.username}".home.sessionVariables.SUDO_ASKPASS;
 }

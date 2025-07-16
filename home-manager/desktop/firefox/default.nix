@@ -70,11 +70,18 @@
       '';
 
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        keepassxc-browser
+        # Bookmarks & tabs sync across browsers any WebDAV or Git service,
+        # via local file, Nextcloud, or Google Drive
+        floccus
+
+        # Dark mode for every website
+        darkreader
+
+        # YouTube enhancements
         ublock-origin
         sponsorblock
-        darkreader
         youtube-shorts-block
+        return-youtube-dislikes
       ];
     };
   };

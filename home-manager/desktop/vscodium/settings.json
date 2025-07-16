@@ -71,5 +71,8 @@
   "containers.containerCommand": "podman",
   "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
   "svelte.enable-ts-plugin": true,
-  "workbench.colorTheme": "Stylix"
+  "workbench.colorTheme": "Stylix",
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

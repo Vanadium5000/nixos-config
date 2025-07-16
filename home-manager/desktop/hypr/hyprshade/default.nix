@@ -33,11 +33,11 @@
 
   systemd.user.timers.hyprshade = {
     Unit = {
-      Description = "Run hyprshade auto every 10 minutes";
+      Description = "Run hyprshade auto every minute";
     };
     Timer = {
       OnBootSec = "1min"; # Specifies the delay after the system boots
-      OnUnitActiveSec = "10min"; # Normal interval
+      OnUnitActiveSec = "1min"; # Normal interval
       Unit = "hyprshade.service"; # Explicitly link to the service
 
       OnCalendar = [

@@ -16,6 +16,7 @@
     # Packages
     packages = with pkgs; [
       morewaita-icon-theme
+      adwaita-icon-theme
       ffmpegthumbnailer
     ];
   };

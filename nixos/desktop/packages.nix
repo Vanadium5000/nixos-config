@@ -7,8 +7,8 @@
   environment.systemPackages =
     (with pkgs; [
       # GUIs
-      kitty
-      freetube
+      nautilus # File Manager
+      kitty # Terminal Emulator
 
       # CLIs
       powertop # CLI for checking battery power-draw
@@ -22,19 +22,21 @@
     ++ (with config.home-manager.users.${config.var.username}.gtk; [
       theme.package
       iconTheme.package
+      morewaita-icon-theme
+      adwaita-icon-theme
     ])
     # QT libraries
-    ++ (with pkgs.kdePackages; [
-      #applet-window-buttons6
-      kdegraphics-thumbnailers
-      kimageformats
-      kio-admin
-      qtstyleplugin-kvantum
-
-      qtwayland
-      kio-extras
-      dolphin-plugins
-      qtsvg
+    ++ (with pkgs; [
+      ffmpegthumbnailer
+      kdePackages.applet-window-buttons6
+      kdePackages.kdegraphics-thumbnailers
+      kdePackages.kimageformats
+      kdePackages.kio-admin
+      kdePackages.kio-extras
+      kdePackages.qtstyleplugin-kvantum
+      kdePackages.qtwayland
+      kdePackages.qtsvg
+      resvg
     ]);
 
   services = {

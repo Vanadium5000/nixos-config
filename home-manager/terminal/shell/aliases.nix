@@ -18,7 +18,7 @@
     "icat" = "${pkgs.kitty}/bin/kitty +kitten icat";
 
     # System actions
-    sleep = "systemctl suspend";
+    suspend = "systemctl suspend";
     reboot = "systemctl reboot";
     logout = "hyprctl dispatch exit";
     poweroff = "systemctl poweroff";

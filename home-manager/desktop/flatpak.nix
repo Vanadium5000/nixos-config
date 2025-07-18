@@ -31,5 +31,6 @@
     "org.gnome.World.PikaBackup" # Backup software
     "org.gnome.Evolution" # Email, contacts and schedule
     "org.gnome.Snapshot" # Camera
+    "org.gnome.FileRoller" # Archives
   ];
 }

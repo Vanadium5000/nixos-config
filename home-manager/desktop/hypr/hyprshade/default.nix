@@ -3,10 +3,6 @@
   home.file.".config/hypr/hyprshade.toml" = {
     text = ''
       [[shades]]
-      name = ""
-      default = true
-
-      [[shades]]
       name = "blue-light-filter-modified"
       start_time = 19:00:00
       end_time = 22:15:00

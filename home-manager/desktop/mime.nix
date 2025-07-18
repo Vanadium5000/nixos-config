@@ -281,11 +281,12 @@
           "text/x-tex"
         ];
       in
-      (lib.genAttrs code (_: [ "neovim.desktop" ]))
-      // (lib.genAttrs archives (_: [ "ark.desktop" ]))
-      // (lib.genAttrs audioVideo (_: [ "vlc.desktop" ]))
-      // (lib.genAttrs documents (_: [ "okular.desktop" ]))
-      // (lib.genAttrs images (_: [ "gwenview.desktop" ]))
-      // (lib.genAttrs urls (_: [ "firefox.desktop" ]));
+      (lib.genAttrs code (_: [ "nvim.desktop" ])) # Quick code editor - not my main editor
+      // (lib.genAttrs urls (_: [ "firefox.desktop" ])) # Browser
+      // (lib.genAttrs audioVideo (_: [ "vlc.desktop" ])) # Video player
+      # Flatpak GUI apps
+      // (lib.genAttrs archives (_: [ "org.gnome.FileRoller.desktop" ])) # Archive manager
+      // (lib.genAttrs documents (_: [ "org.gnome.Evince.desktop" ])) # Document viewer
+      // (lib.genAttrs images (_: [ "org.gnome.Loupe.desktop" ])); # Image viewer
   };
 }

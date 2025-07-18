@@ -32,7 +32,7 @@
     extraPortals = with pkgs; [
       # Already added by hyprland
       #xdg-desktop-portal-hyprland
-      
+
       # GTK
       xdg-desktop-portal-gtk
     ];

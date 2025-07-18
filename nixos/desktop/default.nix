@@ -8,7 +8,6 @@
   imports = [
     ./chromium
 
-    ./apps.nix
     ./audio.nix
     ./bluetooth.nix
     ./flatpak.nix

@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }:
 {
@@ -29,5 +30,7 @@
     CLUTTER_BACKEND = "wayland";
 
     GSK_RENDERER = "vulkan"; # "ngl" | "vulkan"
+
+    FLAKE = config.var.configDirectory; # Config Directory
   };
 }

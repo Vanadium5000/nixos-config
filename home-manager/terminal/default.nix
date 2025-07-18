@@ -5,7 +5,6 @@
     ./pass
     ./shell
     #./tmux
-    ./yazi
     ./zellij
 
     ./fastfetch.nix

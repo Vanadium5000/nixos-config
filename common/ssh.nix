@@ -1,9 +1,11 @@
 { config, ... }:
 {
   services.openssh = {
-    settings.PermitRootLogin = "yes";
-    #settings.PasswordAuthentication = true;
     enable = true;
+    settings = {
+      PermitRootLogin = "yes";
+      PasswordAuthentication = false;
+    };
   };
 
   # OpenPGP, tools/management of keys, etc.

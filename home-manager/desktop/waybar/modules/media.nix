@@ -88,7 +88,6 @@ in
 
   home.packages = [
     album_art
-    # Custom package
     pkgs.waybar-lyric
   ];
 }

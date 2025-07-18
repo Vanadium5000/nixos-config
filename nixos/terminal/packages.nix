@@ -6,14 +6,12 @@
       # General CLI tools
       [
         git
-        git-ignore # Quickly and easily fetch .gitignore templates from gitignore.io
         wget
         curl
 
         fzf
         fd
         ripgrep
-        bc # Calculator
 
         tealdeer # Very fast implementation of tldr in Rust
         btop # System resource monitor

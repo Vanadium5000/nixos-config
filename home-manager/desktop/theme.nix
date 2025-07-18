@@ -15,11 +15,7 @@
 
     # Packages
     packages = with pkgs; [
-      font-awesome
-      adwaita-icon-theme
-      #morewaita-icon-theme
-      qogir-icon-theme
-      papirus-icon-theme
+      morewaita-icon-theme
       ffmpegthumbnailer
     ];
   };
@@ -31,26 +27,11 @@
     # Also set by Stylix
     iconTheme = {
       package = lib.mkForce pkgs.morewaita-icon-theme;
-
       name = lib.mkForce "MoreWaita";
     };
   };
 
-  qt = {
-    enable = true;
-    #platformTheme.name = lib.mkForce "kde6";
-
-    # Use default kde theme for qt
-    #style.name = lib.mkForce "breeze";
-  };
-
-  # Use kde6 platform theme
-  #stylix.targets.qt.platform = "kde6";
-
   home.file = {
-    # Install ArcDark kvantum theme
-    ".config/Kvantum/ArcDark".source = "${pkgs.arc-kde-theme}/share/Kvantum/ArcDark";
-
     # Enable gtk theme for flatpaks
     ".local/share/flatpak/overrides/global".text =
       let

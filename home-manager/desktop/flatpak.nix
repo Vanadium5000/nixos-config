@@ -7,7 +7,28 @@
 
   # By default nix-flatpak will add the flathub remote
   services.flatpak.packages = [
-    # Sober - Runtime for Roblox on Linux
-    "org.vinegarhq.Sober"
+    # Monitoring
+    "io.missioncenter.MissionCenter" # System monitoring
+    "net.nokyan.Resources" # System monitoring
+
+    # Configuration software
+    "org.freedesktop.Piper" # Mouse config GUI
+    "com.github.wwmm.easyeffects" # Pipewire/audio effects Manager
+    "com.github.tchx84.Flatseal" # Review & modify permissions of Flatpaks
+
+    "org.nickvision.tubeconverter" # Parabolic - Download video/audio
+    "io.gitlab.liferooter.TextPieces" # Text processing
+    "io.gitlab.adhami3310.Impression" # Creates bootable drives
+    "org.libreoffice.LibreOffice" # LibeOffice suite
+    "org.gimp.GIMP" # GIMP - Image Editor
+    "org.inkscape.Inkscape" # Inkscape - Vector Graphics Editor
+
+    # Gnome
+    "org.gnome.Evince" # Document Viewer
+    "org.gnome.Loupe" # Image Viewer
+    "org.gnome.baobab" # Disk Usage
+    "org.gnome.World.PikaBackup" # Backup software
+    "org.gnome.Evolution" # Email, contacts and schedule
+    "org.gnome.Snapshot" # Camera
   ];
 }

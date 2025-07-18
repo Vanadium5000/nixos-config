@@ -26,15 +26,15 @@
   # XDG Portal
   xdg.portal = {
     enable = true;
-    config.common.default = "*";
+    config.common.default = "gtk";
     xdgOpenUsePortal = true;
 
     extraPortals = with pkgs; [
       # Already added by hyprland
       #xdg-desktop-portal-hyprland
-
-      # KDE
-      kdePackages.xdg-desktop-portal-kde
+      
+      # GTK
+      xdg-desktop-portal-gtk
     ];
   };
 }

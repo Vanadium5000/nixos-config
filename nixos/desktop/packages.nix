@@ -8,9 +8,6 @@
     (with pkgs; [
       # GUIs
       kitty
-      keepassxc
-      mpv
-      libreoffice
       freetube
 
       # CLIs
@@ -20,13 +17,6 @@
 
       # BTRFS
       btdu # Disk usage
-
-      papirus-icon-theme # Icon theme
-
-      # Obsidian
-      #obsidian
-
-      #kdePackages.breeze-icons
     ])
     # Install gtk theme for root, some apps like gparted only run as root
     ++ (with config.home-manager.users.${config.var.username}.gtk; [

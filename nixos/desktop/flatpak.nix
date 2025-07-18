@@ -19,35 +19,20 @@
     uninstallUnused = true; # Automatically clean up stale packages
 
     packages = [
-      # Monitoring
-      "io.missioncenter.MissionCenter" # System monitoring
-
-      # Configuration software
-      "org.freedesktop.Piper" # Mouse config GUI
-      "com.github.wwmm.easyeffects" # Pipewire/audio effects Manager
-      "com.github.tchx84.Flatseal" # Review & modify permissions of Flatpaks
-
-      "org.nickvision.tubeconverter" # Parabolic - Download video/audio
-      "io.gitlab.liferooter.TextPieces" # Text processing
-      "io.gitlab.adhami3310.Impression" # Creates bootable drives
-
-      # Gnome
-      "org.gnome.Evince" # Document Viewer
-      "org.gnome.Loupe" # Image Viewer
-      "org.gnome.baobab" # Disk Usage
-      "org.gnome.World.PikaBackup" # Backup software
-
       # An improved version of Thunderbird
       # Open source email, newsfeed, chat, and calendaring client
       "eu.betterbird.Betterbird"
     ];
   };
 
+  # Persist flatpak apps
   customPersist.nixos.directories = [ "/var/lib/flatpak" ];
 
-  # Sober Roblox installation - which is quite large
+  # Persist flatpak storage
   customPersist.home.directories = [
-    ".var/app"
+    ".var/app" # Persist flatpak apps
     ".local/share/flatpak"
   ];
+
+  # TODO: ^^^ Make flatpak persistence more selective/fix this ^^^
 }

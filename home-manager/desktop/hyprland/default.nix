@@ -17,7 +17,6 @@ in
     ./bindings.nix
     ./decorations.nix
     ./hyprspace.nix
-    ./polkit-kde.nix
     ./variables.nix
     ./xwayland.nix
   ];

@@ -44,27 +44,15 @@
     # DBus service that allows applications to query and manipulate storage devices
     udisks2.enable = true;
 
-    dbus.enable = true;
-  };
-
-  # Whether to enable KDE PIM base packages
-  # programs.kde-pim = {
-  #   enable = true;
-
-  #   merkuro = true; # Calendar & contacts
-  #   kontact = true; # Contacts
-  #   kmail = true; # Mail
-  # };
-
-# Enable kwallet service
-  security = {
-    pam.services.kwallet = {
-      name = "kwallet";
-      enableKwallet = true;
+    gnome = {
+      sushi.enable = true; # Sushi, a quick previewer for nautilus
+      evolution-data-server.enable = true; # A collection of services for storing addressbooks and calendars
+      gnome-keyring.enable = true; # GNOME Keyring daemon
+      gnome-online-accounts.enable = true; # GNOME Online Accounts daemon
     };
   };
 
-  # NetworkManager control applet for GNOME
+  # NetworkManager control applet for desktop
   programs.nm-applet.enable = true;
   environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 

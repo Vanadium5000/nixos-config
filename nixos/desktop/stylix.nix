@@ -17,19 +17,10 @@ in
     # Light or Dark
     polarity = "dark";
 
-    # Enable/disable icon theming
-    # iconTheme = {
-    #   enable = true;
-    #   package = pkgs.morewaita-icon-theme;
-    #   # Dark & light icon theme name
-    #   dark = "MoreWaita";
-    #   light = "MoreWaita";
-    # };
-
     # Base-16 Theme
     base16Scheme = thme.colorScheme;
     # Wallpaper, required
-    image = thme.defaultWallpaper;
+    #image = thme.defaultWallpaper;
 
     # Cursor settings
     cursor = {

@@ -26,6 +26,6 @@ buildGoModule rec {
     homepage = "https://github.com/Nadim147c/waybar-lyric";
     license = licenses.agpl3Only;
     mainProgram = "waybar-lyric";
-    maintainers = with maintainers; [ ];
+    maintainers = /* with maintainers; */ [ ];
   };
 }

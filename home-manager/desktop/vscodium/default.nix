@@ -48,9 +48,11 @@
         usernamehw.errorlens # Improves error highlighting
         fill-labs.dependi # Helps manage dependencies
         #streetsidesoftware.code-spell-checker
+        gruntfuggly.todo-tree # Show TODOs, FIXMEs, etc. comment tags in a tree view
 
         # AI
         continue.continue
+        saoudrizwan.claude-dev # Cline - Autonomous AI coding agent
       ];
 
       userSettings = lib.mkForce { };

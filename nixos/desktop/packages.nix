@@ -17,13 +17,15 @@
 
       # BTRFS
       btdu # Disk usage
+
+      # GTK icon themes
+      morewaita-icon-theme
+      adwaita-icon-theme
     ])
     # Install gtk theme for root, some apps like gparted only run as root
     ++ (with config.home-manager.users.${config.var.username}.gtk; [
       theme.package
       iconTheme.package
-      morewaita-icon-theme
-      adwaita-icon-theme
     ])
     # QT libraries
     ++ (with pkgs; [

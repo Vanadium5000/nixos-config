@@ -12,6 +12,10 @@
   # FIXME: add impermanence paths
   customPersist.home.directories = [
     "Shared" # Shared directory
+    ".local/state/syncthing" # Syncthing state/config
   ];
-  customPersist.nixos.directories = [ "/var/lib/syncthing" ];
+
+  customPersist.home.files = [
+    ".config/syncthingtray.ini" # Syncthing tray config
+  ];
 }

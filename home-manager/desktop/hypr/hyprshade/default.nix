@@ -3,11 +3,11 @@
   home.file.".config/hypr/hyprshade.toml" = {
     text = ''
       [[shades]]
-      name = "vibrance"
+      name = ""
       default = true
 
       [[shades]]
-      name = "blue-light-filter"
+      name = "blue-light-filter-modified"
       start_time = 19:00:00
       end_time = 22:15:00
 
@@ -18,8 +18,7 @@
     '';
   };
   home.file.".config/hypr/shaders/grayscale.glsl".source = ./grayscale.glsl;
-  home.file.".config/hypr/shaders/blue-light-filter.glsl.mustache".source =
-    ./blue-light-filter.glsl.mustache;
+  home.file.".config/hypr/shaders/blue-light-filter-modified.glsl".source = ./blue-light-filter.glsl;
 
   systemd.user.services.hyprshade = {
     Unit = {

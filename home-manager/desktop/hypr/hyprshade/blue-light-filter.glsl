@@ -1,31 +1,15 @@
-/*
- * Blue Light Filter
- *
- * Use warmer colors to make the display easier on your eyes.
- *
- * Source: https://github.com/hyprwm/Hyprland/issues/1140#issuecomment-1335128437
- */
+// from https://github.com/hyprwm/Hyprland/issues/1140#issuecomment-1335128437
+
+// HACK: The following line is a temporary fix for https://github.com/loqusion/hyprshade/issues/58
+#version 300 es
 
 precision highp float;
-varying vec2 v_texcoord;
+in vec2 v_texcoord;
 uniform sampler2D tex;
+out vec4 fragColor;
 
-/**
- * Color temperature in Kelvin.
- * https://en.wikipedia.org/wiki/Color_temperature
- *
- * @min 1000.0
- * @max 40000.0
- */
-const float Temperature = float({{#nc}}{{temperature}} ? 2600.0{{/nc}});
-
-/**
- * Strength of filter.
- *
- * @min 0.0
- * @max 1.0
- */
-const float Strength = float({{#nc}}{{strength}} ? 1.0{{/nc}});
+const float temperature = 2600.0;
+const float temperatureStrength = 1.0;
 
 #define WithQuickAndDirtyLuminancePreservation
 const float LuminancePreservationFactor = 1.0;
@@ -55,11 +39,9 @@ void main() {
                  LuminancePreservationFactor);
 #endif
 
-    color = mix(color, color * colorTemperatureToRGB(Temperature), Strength);
+    color = mix(color, color * colorTemperatureToRGB(temperature), temperatureStrength);
 
     vec4 outCol = vec4(color, pixColor[3]);
 
-    gl_FragColor = outCol;
+    fragColor = outCol;
 }
-
-// vim: ft=glsl

@@ -18,7 +18,6 @@
     ./ollama.nix
     ./packages.nix
     ./stylix.nix
-    ./syncthing.nix
     ./tuigreet.nix
     ./virtualisation.nix
     #./ydotool.nix
@@ -54,7 +53,11 @@
 
   # NetworkManager control applet for desktop
   programs.nm-applet.enable = true;
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+
+  environment.systemPackages = with pkgs; [
+    networkmanagerapplet
+    libsecret # Required by Chromium and VSCodium for storing secrets
+  ];
 
   # GUI password prompt for SUDO
   environment.sessionVariables.SUDO_ASKPASS =

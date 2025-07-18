@@ -5,7 +5,7 @@
 }:
 {
   nix = {
-    settings = {
+    settings = rec {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Opinionated: disable global registry
@@ -28,26 +28,34 @@
       ];
 
       # Performance optimizations
-      keep-outputs = true; # Keep build dependencies to avoid rebuilds
-      keep-derivations = true; # Keep derivation files for faster rebuilds
-      fallback = true; # Build from source if binary fetch fails
-      max-jobs = "auto"; # Use all available cores for building
+      max-jobs = "auto"; # Use all available cores for building - default is 1, int or "auto"
       cores = 0; # Use all available cores per build job
+
+      # Binary cache optimisations
+      # TODO: I would use 128 for both but the RAM usage seems to be astronomical
+      http-connections = 32; # Max number of parallel TCP connections - default is 25
+      max-substitution-jobs = 32; # Max number of substitution jobs in parallel - default is 16
+
+      # Substituters
+      # NOTE: ?priority={num} specificies the priority of the substituter
+      # NOTE: All of this is duplicated both in flake.nix and common/nix.nix
+      # Lower means more priority - cache.nixos.org defaults to 40 priority so it is unchanged
+      substituters = [
+        "https://cache.nixos.org?priority=40"
+        "https://hyprland.cachix.org?priority=45"
+        "https://nix-community.cachix.org?priority=50"
+        "https://cache.soopy.moe?priority=55" # Apple T2
+      ];
+      trusted-substituters = substituters;
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "cache.soopy.moe-1:0RZVsQeR+GOh0VQI9rvnHz55nVXkFardDqfm4+afjPo=" # Apple T2
+      ];
 
       # removes ~/.nix-profile and ~/.nix-defexpr
       use-xdg-base-directories = true;
-
-      # Substituters
-      substituters = [
-        #"https://cache.soopy.moe" # Apple T2
-        "https://hyprland.cachix.org"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        #"cache.soopy.moe-1:0RZVsQeR+GOh0VQI9rvnHz55nVXkFardDqfm4+afjPo="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
     };
 
     # Opinionated: disable channels

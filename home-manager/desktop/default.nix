@@ -7,6 +7,7 @@
     ./kitty.nix
     ./mime.nix
     ./spicetify.nix
+    ./syncthing.nix
     ./theme.nix
 
     ./chromium

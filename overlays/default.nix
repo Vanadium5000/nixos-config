@@ -11,23 +11,11 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
-    ueberzugpp = prev.ueberzugpp.override {
-      enableOpencv = false;
-    };
     rofi-calc = prev.rofi-calc.override {
       rofi-unwrapped = prev.rofi-wayland-unwrapped;
     };
     rofi-vpn = prev.rofi-vpn.override {
       rofi-unwrapped = prev.rofi-wayland-unwrapped;
-    };
-    lldb = prev.lldb.overrideAttrs {
-      dontCheckForBrokenSymlinks = true;
-    };
-    basedpyright = prev.basedpyright.overrideAttrs {
-      dontCheckForBrokenSymlinks = true;
-    };
-    waydroid = prev.waydroid.override {
-      python3Packages = prev.python312Packages;
     };
   };
 

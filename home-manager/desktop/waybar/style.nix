@@ -20,7 +20,7 @@ in
       * {
           /* `otf-font-awesome` is required to be installed for icons */
           font-family: '${font}';
-          font-size: ${toString fontSize}px;
+          /* font-size: ${toString fontSize}px; */
 
           /* Reset all styles */
           border-radius: ${radius}px;

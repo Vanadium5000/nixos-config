@@ -45,6 +45,7 @@
         #"signon.rememberSignons" = false;
 
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "sidebar.verticalTabs" = true;
       };
 
       /*

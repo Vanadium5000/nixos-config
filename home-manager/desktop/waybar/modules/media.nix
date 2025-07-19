@@ -69,6 +69,9 @@ in
         exec-if = "which waybar-lyric";
         exec = "waybar-lyric --quiet -m50";
         on-click = "waybar-lyric --toggle";
+
+        # Restart interval (secs) - only with continuous scripts
+        restart-interval = 2;
       };
       "image#album-art" = {
         exec = "album_art";

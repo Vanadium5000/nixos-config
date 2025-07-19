@@ -20,7 +20,7 @@ in
       * {
           /* `otf-font-awesome` is required to be installed for icons */
           font-family: '${font}';
-          /* font-size: ${toString fontSize}px; */
+          font-size: ${toString fontSize}px;
 
           /* Reset all styles */
           border-radius: ${radius}px;
@@ -63,7 +63,7 @@ in
           margin: ${width}px ${toString thme.gaps-in} ${width}px ${toString thme.gaps-in};
           padding-left: 3px;
           padding-right: 3px;
-          background-color: ${clrs.background-alt};
+          /* background-color: ${clrs.background-alt}; */
           color: ${clrs.foreground};
           /* border: ${width}px solid ${clrs.border-color};
           border-radius: ${radius}px; */

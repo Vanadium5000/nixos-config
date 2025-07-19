@@ -44,6 +44,27 @@ in
   # Persist pinned apps
   customPersist.home.files = [ ".cache/nwg-dock-pinned" ];
 
+  # Define systemd user services
+  # Stops nwg-dock-hyprland taking any of waybars space because it is spawned first
+  systemd.user.services.toggle-dock-twice = {
+    Unit = {
+      Description = "Toggle nwg-dock-hyprland twice after waybar starts";
+    };
+    Install = {
+      After = [ "waybar.service" ];
+      Requires = [ "waybar.service" ];
+      WantedBy = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "toggle-dock-twice" ''
+        ${toggle-dock}
+        ${toggle-dock}
+      '';
+      RemainAfterExit = false;
+    };
+  };
+
   home.file.".config/nwg-dock-hyprland/style.css".text = ''
     window {
       background: ${clrs-rgba.background};

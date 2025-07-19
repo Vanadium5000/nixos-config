@@ -27,12 +27,13 @@
   # Set hostname to the same as the nixosConfiguration used
   var.hostname = "macbook";
 
-  # Enable s2idle sleep, disable broken s3 sleep
-  # systemd.sleep.extraConfig = ''
-  #   SuspendState=mem
-  #   MemorySleepMode=s2idle
-  # '';
-
+  # (cdc_ncm, cdc_mbim) prevent networkmanager spam from unusable cdc devices
+  # (hci_bcm4377) disable bluetooth as it's very buggy on a MacBookAir9,1
+  boot.blacklistedKernelModules = [
+    "cdc_ncm"
+    "cdc_mbim"
+    "hci_bcm4377"
+  ];
   # Workaround for suspend/resume issues on T2 Macs
   systemd.services."suspend-fix-t2" = {
     enable = true;

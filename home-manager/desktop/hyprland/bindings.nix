@@ -50,6 +50,9 @@
         # Screen zooming on shiftMod + mouse_scroll
         "$mod,MINUS, exec, hyprctl keyword cursor:zoom_factor $(awk \"BEGIN {print $(hyprctl getoption cursor:zoom_factor | grep 'float:' | awk '{print $2}') - 0.1}\")"
         "$mod,EQUAL, exec, hyprctl keyword cursor:zoom_factor $(awk \"BEGIN {print $(hyprctl getoption cursor:zoom_factor | grep 'float:' | awk '{print $2}') + 0.1}\")"
+
+        # Disable middle-click, it is so annoying
+        ", mouse:274, exec, "
       ]
       ++ (builtins.concatLists (
         builtins.genList (

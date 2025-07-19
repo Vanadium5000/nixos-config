@@ -1,4 +1,5 @@
-_: {
+{ config, ... }:
+{
   # https://github.com/ashish-kus/waybar-minimal/blob/main/src/config.jsonc
   # Options: https://github.com/Alexays/Waybar/wiki/Configuration
   programs.waybar.settings = {
@@ -11,8 +12,8 @@ _: {
         };
       };
       tray = {
-        icon-size = 14;
-        spacing = 10;
+        icon-size = config.stylix.fonts.sizes.desktop;
+        spacing = 3;
 
         show-passive-items = true;
       };

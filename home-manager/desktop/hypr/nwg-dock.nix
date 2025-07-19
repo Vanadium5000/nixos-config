@@ -11,57 +11,49 @@ let
 
   thme = config.var.theme;
 
-  # -x: move other windows aside
-  # -m*: margin bottom, left, right, top
-  # -f: full-length
-  # -p: position (left)
-  # -a: alignment of icons
-  spawn-dock = pkgs.writeShellScriptBin "spawn-dock" ''
-    if [ -n "$(pgrep nwg-dock)" ]; then
-      echo "nwg-dock is already running"
-    else
-      hyprctl dispatch exec "nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start -i 38"
-    fi
-  '';
-
   toggle-dock = pkgs.writeShellScriptBin "toggle-dock" ''
-    if [ -n "$(pgrep nwg-dock)" ]; then
-      pkill nwg-dock
+    # Check if nwg-dock-hyprland service is active
+    if systemctl --user is-active --quiet nwg-dock-hyprland.service; then
+        # If active, stop the service
+        systemctl --user stop nwg-dock-hyprland.service
+        echo "nwg-dock-hyprland has been stopped."
     else
-      hyprctl dispatch exec "nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start -i 38"
+        # If inactive, start the service
+        systemctl --user start nwg-dock-hyprland.service
+        echo "nwg-dock-hyprland has been started."
     fi
   '';
 in
 {
   home.packages = [
-    spawn-dock
     toggle-dock
     pkgs.nwg-dock-hyprland
   ];
 
-  wayland.windowManager.hyprland.settings.exec-once = [ "spawn-dock" ];
-
   # Persist pinned apps
   customPersist.home.files = [ ".cache/nwg-dock-pinned" ];
 
-  # Define systemd user services
-  # Stops nwg-dock-hyprland taking any of waybars space because it is spawned first
-  systemd.user.services.toggle-dock-twice = {
+  # Service to start nwg-dock-hyprland
+  systemd.user.services.nwg-dock-hyprland = {
     Unit = {
-      Description = "Toggle nwg-dock-hyprland twice after waybar starts";
+      Description = "Autostart nwg-dock-hyprland";
+      # Stop nwg-dock-hyprland taking any of waybars space because it is spawned first
+      After = [ "waybar.service" ]; # Ensures nwg-dock-hyprland starts after waybar
+      BindsTo = [ "waybar.service" ]; # Binds the service lifecycle to waybar (restarts when waybar restarts)
     };
     Install = {
-      After = [ "waybar.service" ];
-      Requires = [ "waybar.service" ];
       WantedBy = [ "graphical-session.target" ];
     };
     Service = {
-      Type = "oneshot";
-      ExecStart = pkgs.writeShellScript "toggle-dock-twice" ''
-        ${toggle-dock}
-        ${toggle-dock}
+      # Start command
+      # -x: move other windows aside
+      # -m*: margin bottom, left, right, top
+      # -f: full-length
+      # -p: position (left)
+      # -a: alignment of icons
+      ExecStart = pkgs.writeShellScript "nwg-dock-hyprland-start" ''
+        ${pkgs.nwg-dock-hyprland}/bin/nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start -i 38
       '';
-      RemainAfterExit = false;
     };
   };
 

@@ -1,6 +1,7 @@
 { config, ... }:
 let
   clrs = config.var.colors;
+  clrs-rgba = config.var.colors-rgba thme.bar.opacity;
   stylix = config.var.stylix;
   thme = config.var.theme;
 
@@ -45,7 +46,8 @@ in
 
 
     * {
-        bg:  ${clrs.background};
+        bg:  ${clrs-rgba.background};
+        bg-opaque: ${clrs.background};
         fgd: ${clrs.foreground};
         cya: #${stylix.base0C};
         grn: #${stylix.base0B};
@@ -59,6 +61,7 @@ in
 
         foreground: @fgd;
         background: @bg;
+        background-opaque: @bg-opaque;
         active-background: @acc;
         urgent-background: @red;
 
@@ -100,8 +103,9 @@ in
         border:  0;
         padding: 1px ;
     }
+    /* Get rid of @background (use transparent instead) for elements to avoid double opacity bad-looking ui */
     #element.normal.normal {
-        background-color: @background;
+        background-color: transparent;
         text-color:       @foreground;
     }
     #element.normal.urgent {
@@ -110,11 +114,11 @@ in
     }
     #element.normal.active {
         background-color: @active-background;
-        text-color:       @background;
+        text-color:       @background-opaque;
     }
     #element.selected.normal {
         background-color: @selected-background;
-        text-color:       @background;
+        text-color:       @background-opaque;
     }
     #element.selected.urgent {
         background-color: @selected-urgent-background;
@@ -122,10 +126,10 @@ in
     }
     #element.selected.active {
         background-color: @selected-active-background;
-        text-color:       @background;
+        text-color:       @background-opaque;
     }
     #element.alternate.normal {
-        background-color: @background;
+        background-color: transparent;
         text-color:       @foreground;
     }
     #element.alternate.urgent {
@@ -148,7 +152,7 @@ in
     }
     #button.selected {
         background-color: @selected-background;
-        text-color:       @background;
+        text-color:       @background-opaque;
     }
     #inputbar {
         spacing:    0;

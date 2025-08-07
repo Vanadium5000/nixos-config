@@ -62,6 +62,7 @@
   # LSPs/Dependencies
   home.packages = with pkgs; [
     nixd
+    nil
     nixfmt-rfc-style # Nixfmt
     nixfmt-tree # Nixfmt-tree
     alejandra

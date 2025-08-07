@@ -16,7 +16,7 @@
     inactive-opacity = 0.75;
 
     # Default opacity
-    opacity = 0.7;
+    opacity = 0.3; # 0.7
 
     blur = true;
     shadows = false;
@@ -36,13 +36,13 @@
 
       borders = true; # Whether to enable borders
 
-      opacity = 0.5;
+      opacity = 0.3;
 
       font = config.stylix.fonts.monospace.name;
     };
 
     launcher = {
-      opacity = 0.5;
+      opacity = 0.3;
     };
 
     lockscreen = {

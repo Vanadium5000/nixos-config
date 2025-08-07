@@ -184,6 +184,11 @@ in
         "noanim, ^nwg-dock$"
         "blur, ^nwg-dock$"
         "ignorezero, ^nwg-dock$" # makes blur ignore fully transparent pixels
+
+        # Rofi
+        "noanim, ^rofi$"
+        "blur, ^rofi$"
+        "ignorezero, ^rofi$" # makes blur ignore fully transparent pixels
       ];
 
       cursor = {

@@ -71,6 +71,9 @@
       '';
 
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        # Ad block
+        ublock-origin
+
         # Bookmarks & tabs sync across browsers any WebDAV or Git service,
         # via local file, Nextcloud, or Google Drive
         floccus
@@ -79,11 +82,21 @@
         darkreader
 
         # YouTube enhancements
-        ublock-origin
         sponsorblock
-        youtube-shorts-block
         return-youtube-dislikes
+        enhancer-for-youtube # Block YT shorts & general improvements
+
+        tampermonkey # Userscripts
+        private-grammar-checker-harper # Private spellcheck
+        #styl-us # Userstyles (CSS) manager
       ];
     };
   };
+
+  # FIXME: enhancer-for-youtube is unfree
+  # Custom option
+  allowedUnfree = [
+    "enhancer-for-youtube"
+    "tampermonkey"
+  ];
 }

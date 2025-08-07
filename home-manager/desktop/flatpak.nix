@@ -15,6 +15,7 @@
     "org.freedesktop.Piper" # Mouse config GUI
     "com.github.wwmm.easyeffects" # Pipewire/audio effects Manager
     "com.github.tchx84.Flatseal" # Review & modify permissions of Flatpaks
+    "io.github.nokse22.inspector" # View lots of system information
 
     "org.nickvision.tubeconverter" # Parabolic - Download video/audio
     "io.gitlab.liferooter.TextPieces" # Text processing
@@ -32,5 +33,7 @@
     "org.gnome.Evolution" # Email, contacts and schedule
     "org.gnome.Snapshot" # Camera
     "org.gnome.FileRoller" # Archives
+
+    "fr.handbrake.ghb" # Video transpiler
   ];
 }

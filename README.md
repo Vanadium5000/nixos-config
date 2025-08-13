@@ -10,7 +10,7 @@
 
 ## 🎥 Preview
 
-https://raw.githubusercontent.com/Vanadium5000/nixos-config/main/src/video.mp4
+<video src="src/video.mp4" controls></video>
 
 ## 📋 Overview
 

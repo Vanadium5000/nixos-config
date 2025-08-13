@@ -1,6 +1,6 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
-  clrs = config.var.colors-no-tags;
+  #clrs = config.var.colors-no-tags;
   thme = config.var.theme;
 in
 {
@@ -27,8 +27,9 @@ in
       #---------------------------------------------------------
       shadow = {
         enabled = thme.shadows;
-        range = 20;
-        #render_power = 3;
+        range = 16;
+        render_power = 5;
+        color = lib.mkForce "rgba(0,0,0,0.35)";
       };
 
       #---------------------------------------------------------
@@ -36,19 +37,10 @@ in
       #---------------------------------------------------------
       blur = {
         enabled = thme.blur;
-        size = 5;
+        size = 2;
         passes = 3; # more passes = more resources
-        ignore_opacity = true;
         new_optimizations = true;
-        noise = 0.01;
-        contrast = 1; # range 0 - 2
-        brightness = 1; # range 0 - 2
-        # vibrancy = 0.8;
-        # vibrancy_darkness = 0.9;
-        popups = true;
-        # popups_ignorealpha = 0.8;
-        special = false;
-        # xray = true;
+        vibrancy = 0.1696;
       };
     };
   };

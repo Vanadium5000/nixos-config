@@ -5,24 +5,24 @@
 }:
 {
   config.var.theme = {
-    rounding = 10;
-    button-rounding = 5;
+    rounding = 8;
+    button-rounding = 8;
 
     gaps-in = 2; # between windows/buttons
     gaps-out = 3; # between windows and border of display
 
     # Hyprland windows
     active-opacity = 1.0;
-    inactive-opacity = 0.75;
+    inactive-opacity = 1.0; # No change - 0.75 for change
 
     # Default opacity
     opacity = 0.3; # 0.7
 
     blur = true;
-    shadows = false;
+    shadows = true;
     use-opacity = true;
 
-    border-size = 2;
+    border-size = 1;
 
     animation-speed = "slow"; # "fast" | "medium" | "slow"
 

@@ -21,6 +21,7 @@
       # GTK icon themes
       morewaita-icon-theme
       adwaita-icon-theme
+      crystal-remix-icon-theme
     ])
     # Install gtk theme for root, some apps like gparted only run as root
     ++ (with config.home-manager.users.${config.var.username}.gtk; [

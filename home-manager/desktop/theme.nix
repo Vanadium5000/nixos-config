@@ -17,6 +17,7 @@
     packages = with pkgs; [
       morewaita-icon-theme
       adwaita-icon-theme
+      crystal-remix-icon-theme
       ffmpegthumbnailer
     ];
   };
@@ -29,6 +30,8 @@
     iconTheme = {
       package = lib.mkForce pkgs.morewaita-icon-theme;
       name = lib.mkForce "MoreWaita";
+      # package = lib.mkForce pkgs.crystal-remix-icon-theme;
+      # name = lib.mkForce "Crystal Remix";
     };
   };
 

@@ -4,6 +4,7 @@ let
   clrs-rgba = config.var.colors-rgba thme.bar.opacity;
   stylix = config.var.stylix;
   thme = config.var.theme;
+  radius = toString thme.button-rounding;
 
   #backgroundOpacity = builtins.floor (builtins.mul thme.launcher.opacity 100);
 
@@ -70,6 +71,15 @@ in
         selected-active-background: @active-background;
         separatorcolor: @active-background;
         bordercolor: ${clrs.border-color};
+
+        /* Reset all styles */
+        border-radius: ${radius}px;
+        min-height: 0;
+        margin: 0;
+        padding: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        //background: transparent;
     }
 
     #window {

@@ -6,4 +6,7 @@ pkgs: {
 
   # It's in nixpkgs anyways but use the latest from the main branch instead of latest version
   waybar-lyric = pkgs.callPackage ./waybar-lyric.nix { };
+
+  # Cool icon theme
+  crystal-remix-icon-theme = pkgs.callPackage ./crystal-remix.nix { };
 }

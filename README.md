@@ -10,10 +10,7 @@
 
 ## 🎥 Preview
 
-<video controls>
-  <source src="src/video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+https://raw.githubusercontent.com/Vanadium5000/nixos-config/main/src/video.mp4
 
 ## 📋 Overview
 

@@ -10,7 +10,15 @@
 
 ## 🎥 Preview
 
-<video src="src/video.mp4" controls></video>
+<video controls>
+  <source src="src/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<video controls>
+  <source src="src/Stop%20It,%20Get%20Some%20Help.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## 📋 Overview
 

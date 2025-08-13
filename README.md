@@ -15,11 +15,6 @@
   Your browser does not support the video tag.
 </video>
 
-<video controls>
-  <source src="src/Stop%20It,%20Get%20Some%20Help.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
 ## 📋 Overview
 
 This is my personal nixos-config as of now. I use this config day-to-day for all my online activities, as well as web & program development using languages such as Rust, Go, Typescript, & Python. I try and keep the nix code well-documented and mostly generic, I plan to add more modularisation & make the whole repo a module that can be used in other configs. I would be happy if people benefit from my config; it has a few good features.

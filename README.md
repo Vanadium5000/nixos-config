@@ -58,37 +58,3 @@ Note: `--cdi-spec-dir=/run/cdi` is added from the official command to solve this
 ```bash
 docker run -ti --name local-ai -p 8080:8080 --cdi-spec-dir=/run/cdi --gpus all localai/localai:latest-gpu-nvidia-cuda-12
 ```
-
-<!-- Links -->
-
-[Hyprland]: https://github.com/hyprwm/Hyprland
-[Ghostty]: https://ghostty.org/
-[powerlevel10k]: https://github.com/romkatv/powerlevel10k
-[Waybar]: https://github.com/Alexays/Waybar
-[rofi]: https://github.com/lbonn/rofi
-[Btop]: https://github.com/aristocratos/btop
-[Resources]: https://welcome.gnome.org/app/Resources/
-[Nautilus]: https://apps.gnome.org/Nautilus/
-[yazi]: https://github.com/sxyazi/yazi
-[Fish]: https://fishshell.com/
-[Swaylock-effects]: https://github.com/mortie/swaylock-effects
-[Hyprlock]: https://github.com/hyprwm/hyprlock
-[audacious]: https://audacious-media-player.org/
-[mpv]: https://github.com/mpv-player/mpv
-[VSCodium]: https://vscodium.com/
-[Neovim]: https://github.com/neovim/neovim
-[grimblast]: https://github.com/hyprwm/contrib
-[imv]: https://sr.ht/~exec64/imv/
-[swaync]: https://github.com/ErikReider/SwayNotificationCenter
-[JetBrainsMono]: https://www.jetbrains.com/lp/mono/
-[NetworkManager]: https://wiki.gnome.org/Projects/NetworkManager
-[network-manager-applet]: https://gitlab.gnome.org/GNOME/network-manager-applet/
-[wl-clipboard]: https://github.com/bugaevc/wl-clipboard
-[wf-recorder]: https://github.com/ammen99/wf-recorder
-[hyprpicker]: https://github.com/hyprwm/hyprpicker
-[Gruvbox]: https://github.com/morhetz/gruvbox
-[Papirus-Dark]: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
-[Bibata-Modern-Ice]: https://www.gnome-look.org/p/1197198
-[maxfetch]: https://github.com/jobcmax/maxfetch
-[Adwaita gtk theme]: https://gnome.pages.gitlab.gnome.org/libadwaita/
-[OBS]: https://obsproject.com/

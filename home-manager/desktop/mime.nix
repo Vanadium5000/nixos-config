@@ -3,6 +3,9 @@
 {
   xdg.mime.enable = true;
 
+  # Find .desktop files
+  # For Nix packages: ls -l /run/current-system/sw/share/applications
+  # For Flatpaks: ls $HOME/.local/share/flatpak/exports/share/applications/
   xdg.mimeApps = {
     enable = true;
 

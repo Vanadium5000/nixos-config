@@ -32,6 +32,7 @@
           gcc
           bun
           go
+          sqlite
         ]
       ++
         # Just cool

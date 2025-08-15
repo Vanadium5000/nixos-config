@@ -18,31 +18,20 @@ This is my personal nixos-config as of now. I use this config day-to-day for all
 
 ## 📓 Components
 
-|                             |                                  NixOS + Hyprland                                   |
-| --------------------------- | :---------------------------------------------------------------------------------: |
-| **Window Manager**          |                                [Hyprland][Hyprland]                                 |
-| **Bar**                     |                                  [Waybar][Waybar]                                   |
-| **Application Launcher**    |                                    [rofi][rofi]                                     |
-| **Notification Daemon**     |                                  [swaync][swaync]                                   |
-| **Terminal Emulator**       |                                 [Ghostty][Ghostty]                                  |
-| **Shell**                   |                                    [Fish][fish]                                     |
-| **Text Editor**             |                       [VSCodium][VSCodium] + [Neovim][Neovim]                       |
-| **network management tool** | [NetworkManager][NetworkManager] + [network-manager-applet][network-manager-applet] |
-| **System resource monitor** |                        [Btop][Btop] + [Resources][Resources]                        |
-| **File Manager**            |                         [Nautilus][Nautilus] + [yazi][yazi]                         |
-| **Fonts**                   |                           [JetBrains Mono][JetBrainsMono]                           |
-| **Color Scheme**            |                                [Ayu Mirage][Gruvbox]                                |
-| **GTK theme**               |                            [Adwaita][Adwaita gtk theme]                             |
-| **Cursor**                  |                       [Bibata-Modern-Ice][Bibata-Modern-Ice]                        |
-| **Icons**                   |                            [Papirus-Dark][Papirus-Dark]                             |
-| **Lockscreen**              |                                [Hyprlock][Hyprlock]                                 |
-| **Image Viewer**            |                                     [imv][imv]                                      |
-| **Media Player**            |                                     [mpv][mpv]                                      |
-| **Music Player**            |                               [audacious][audacious]                                |
-| **Screenshot Software**     |                               [grimblast][grimblast]                                |
-| **Screen Recording**        |                       [wf-recorder][wf-recorder] + [OBS][OBS]                       |
-| **Clipboard**               |                            [wl-clipboard][wl-clipboard]                             |
-| **Color Picker**            |                              [hyprpicker][hyprpicker]                               |
+| Component                |                                            Software                                            |
+| ------------------------ | :--------------------------------------------------------------------------------------------: |
+| **Window Manager**       |                           [Hyprland](home-manager/desktop/hyprland/)                           |
+| **Filesystem**           |       [Btrfs](https://btrfs.readthedocs.io) with [Impermanence](common/impermanence.nix)       |
+| **Bar**                  |                             [Waybar](home-manager/desktop/waybar/)                             |
+| **Application Launcher** |                               [Rofi](home-manager/desktop/rofi/)                               |
+| **File Manager**         |                             [Nautilus](nixos/desktop/packages.nix)                             |
+| **Browser**              |                          [LibreWolf](home-manager/desktop/librewolf/)                          |
+| **Text Editor**          | [VSCodium](home-manager/desktop/vscodium/) / [NvF](https://github.com/Vanadium5000/nvf-neovim) |
+| **Terminal Emulator**    |                          [Ghostty](home-manager/desktop/ghostty.nix)                           |
+| **Shell**                |                          [Fish](home-manager/terminal/shell/fish.nix)                          |
+| **Local AI Tools**       |               [LocalAI](https://localai.io) / [Ollama](nixos/desktop/ollama.nix)               |
+| **Password Manager**     |    [pass](home-manager/terminal/pass/) with [git-sync](home-manager/terminal/git-sync.nix)     |
+| **Login Manager**        |                             [tuigreet](nixos/desktop/tuigreet.nix)                             |
 
 ## ✨ Features
 
@@ -50,13 +39,25 @@ This is my personal nixos-config as of now. I use this config day-to-day for all
 - BTRFS Impermanence with snapshots of old roots stored in /old_roots
 - Rofi scripts & packages including: powermenu, askpass, screenshot, rofi-wallpaper
 - [Safeeyes](https://slgobinath.github.io/SafeEyes/) to greatly improve healthiness when spending hours using the computer
-- Local AIs using Ollama for LLMs & [LocalAI](https://localai.io/) via Docker for everything else
-- Security such as encrypted DNS with ResolveD, Impermanence, Firewall, etc.
+- Local AIs using Ollama for LLMs & [LocalAI](https://localai.io/) via Podman for many other AIs (with Nvidia CUDA support)
+- Security such as encrypted DNS with ResolveD, Impermanence, Firewall, installing many apps as flatpaks, etc.
 - Hyprshade which automatically enables blue-light-filter from 19:00 and greyscale from 22:15
 - Waybar with a skeumorphic design inspired by [this](https://github.com/diinki/diinki-aero/blob/main/config/waybar/style.css) as well as displaying system information & song lyrics
-- Many apps such as Spicetify, Obsidian, Firefox, VSCodium with complex settings & all adhering to my Stylix theme
+- Many apps such as Spicetify, Obsidian, Librewolf, VSCodium with complex settings & all adhering to my Stylix theme
 - Stylix theming (with Base16) with mainly GTK applications
 - Utilises my complete NVF (Neovim) config as a package from another repo
+- Automatic syncing of passwords (uses password-store) over multiple devices via [git-sync](home-manages/terminal/git-sync.nix)
+- Persisted syncthing config for syncing of large data files like media over multiple devices
+
+## 📋 Important Commands
+
+### Run LocalAI
+
+Note: `--cdi-spec-dir=/run/cdi` is added from the official command to solve this [issue](https://github.com/nixos/nixpkgs/issues/420638)
+
+```bash
+docker run -ti --name local-ai -p 8080:8080 --cdi-spec-dir=/run/cdi --gpus all localai/localai:latest-gpu-nvidia-cuda-12
+```
 
 <!-- Links -->
 

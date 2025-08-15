@@ -15,13 +15,14 @@
       defaultNetwork.settings.dns_enabled = true;
 
       networkSocket.openFirewall = true;
-
-      enableNvidia = config.nixpkgs.config.cudaSupport;
     };
 
     libvirtd.enable = true;
     oci-containers.backend = "podman";
   };
+
+  # Use nvidia with podman/docker - https://discourse.nixos.org/t/nvidia-docker-container-runtime-doesnt-detect-my-gpu/51336
+  hardware.nvidia-container-toolkit.enable = config.nixpkgs.config.cudaSupport;
 
   # Add 'newuidmap' and 'sh' to the PATH for users' Systemd units.
   # Required for Rootless podman.

@@ -8,6 +8,7 @@
     ./zellij
 
     ./fastfetch.nix
+    ./git-sync.nix
     ./git.nix
     ./lazygit.nix
     ./rust.nix

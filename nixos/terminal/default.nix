@@ -9,7 +9,6 @@
   imports = [
     #./fenix.nix
     ./fonts.nix
-    ./gitwatch.nix
     ./packages.nix
     ./pager.nix
     ./postgresql.nix

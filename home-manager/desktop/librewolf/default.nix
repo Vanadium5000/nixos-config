@@ -22,6 +22,7 @@
   };
 
   # Browser
+  # TODO: Multi-account containers
   programs.librewolf = {
     enable = true;
 
@@ -45,6 +46,13 @@
 
         # Don't suggest stuff in the urlbar
         "browser.urlbar.suggest.history" = false;
+
+        # Re-enable browser rendering stuff
+        "webgl.disabled" = false;
+
+        # Disable annoying swipe gestures (alt + left/right arrow is so much easier)
+        "browser.gesture.swipe.left" = "";
+        "browser.gesture.swipe.right" = "";
       };
 
       # /*
@@ -69,6 +77,7 @@
         }*/
       '';
 
+      # TODO: Add Vencord, probably swap tampermonkey with something lighter
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         # Ad block
         ublock-origin

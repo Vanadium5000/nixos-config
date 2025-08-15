@@ -24,6 +24,7 @@
     "org.gimp.GIMP" # GIMP - Image Editor
     "org.inkscape.Inkscape" # Inkscape - Vector Graphics Editor
     "com.github.marhkb.Pods" # Frontend for podman
+    "io.github.celluloid_player.Celluloid" # Video player
 
     # Gnome
     "org.gnome.Evince" # Document Viewer

@@ -8,7 +8,7 @@
   # By default nix-flatpak will add the flathub remote
   services.flatpak.packages = [
     # Monitoring
-    "io.missioncenter.MissionCenter" # System monitoring
+    #"io.missioncenter.MissionCenter" # System monitoring - BROKEN
     "net.nokyan.Resources" # System monitoring
 
     # Configuration software

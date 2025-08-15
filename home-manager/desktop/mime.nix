@@ -282,7 +282,7 @@
         ];
       in
       (lib.genAttrs code (_: [ "nvim.desktop" ])) # Quick code editor - not my main editor
-      // (lib.genAttrs urls (_: [ "firefox.desktop" ])) # Browser
+      // (lib.genAttrs urls (_: [ "librewolf.desktop" ])) # Browser
       // (lib.genAttrs audioVideo (_: [ "vlc.desktop" ])) # Video player
       # Flatpak GUI apps
       // (lib.genAttrs archives (_: [ "org.gnome.FileRoller.desktop" ])) # Archive manager

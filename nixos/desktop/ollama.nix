@@ -1,7 +1,8 @@
-_: {
+{ config, ... }:
+{
   services.ollama = {
     enable = true;
-    acceleration = "cuda";
+    acceleration = if config.nixpkgs.config.cudaSupport then "cuda" else false;
   };
 
   customPersist.nixos.directories = [

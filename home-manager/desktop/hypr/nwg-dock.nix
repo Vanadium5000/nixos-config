@@ -54,6 +54,7 @@ in
       ExecStart = pkgs.writeShellScript "nwg-dock-hyprland-start" ''
         ${pkgs.nwg-dock-hyprland}/bin/nwg-dock-hyprland -x -mb ${toString thme.gaps-out} -ml ${toString thme.gaps-out} -mr 0 -mt ${toString thme.gaps-out} -f -p left -a start -i 38
       '';
+      Restart = "on-failure"; # Optional: restart on failure
     };
   };
 

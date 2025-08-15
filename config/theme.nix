@@ -27,7 +27,10 @@
     animation-speed = "slow"; # "fast" | "medium" | "slow"
 
     # https://tinted-theming.github.io/base16-gallery/
-    colorScheme = "${pkgs.base16-schemes}/share/themes/ayu-mirage.yaml"; # ayu-mirage
+    # colorScheme = "${pkgs.base16-schemes}/share/themes/3024-night.yaml"; # ayu-mirage
+
+    # You would think how many themes there are, there would be one which has a dark background that isn't just an off-black
+    colorScheme = ./windows-95.yaml;
     defaultWallpaper = "${pkgs.nixy-wallpapers}/wallpapers/fuji-dark.png";
 
     bar = {

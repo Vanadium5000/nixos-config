@@ -15,6 +15,7 @@
     ./floorp
     ./hypr
     ./hyprland
+    ./librewolf
     ./obsidian
     #./qutebrowser
     ./rofi

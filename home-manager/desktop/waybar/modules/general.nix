@@ -17,24 +17,28 @@
 
         show-passive-items = true;
       };
+      # TODO: Add CalDav support as the example shows here: https://github.com/Alexays/Waybar/wiki/Module:-Custom:-Examples#calendar-with-caldav-integration
       clock = {
         format = "󰸗 {:%a %d %b  %H:%M:%S}";
-        interval = 1;
-        on-click = "gnome-calendar";
-
+        format-alt = "{:%A, %B %d, %Y (%R)}  ";
+        tooltip-format = "<tt><small>{calendar}</small></tt>";
         calendar = {
-          mode = "month";
+          mode = "year";
           mode-mon-col = 3;
+          weeks-pos = "right";
           on-scroll = 1;
-          on-click-right = "mode";
-
-          tooltip-format = "\n<span size='14pt'>{calendar}</span>";
           format = {
-            months = "<span color='#5e81ac'><b>{}</b></span>";
-            days = "<span color='#88c0d0'><b>{}</b></span>";
-            weekdays = "<span color='#d08770'><b>{}</b></span>";
-            today = "<span color='#bf616a'><b><u>{}</u></b></span>";
+            months = "<span color='#ffead3'><b>{}</b></span>";
+            days = "<span color='#ecc6d9'><b>{}</b></span>";
+            weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+            weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+            today = "<span color='#ff6699'><b><u>{}</u></b></span>";
           };
+        };
+        actions = {
+          on-click-right = "mode";
+          on-scroll-up = "shift_up";
+          on-scroll-down = "shift_down";
         };
       };
     };

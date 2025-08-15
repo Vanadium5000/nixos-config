@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }:
 {
@@ -11,10 +10,10 @@
   ];
 
   # Persist browser
-  customPersist.home.directories = [ ".mozilla" ];
+  customPersist.home.directories = [ ".librewolf" ];
 
   # Stylix theming for floorp
-  stylix.targets.firefox = {
+  stylix.targets.librewolf = {
     # The Floorp profile names to apply styling on
     profileNames = [ config.var.username ];
 
@@ -23,11 +22,10 @@
   };
 
   # Browser
-  programs.firefox = {
+  programs.librewolf = {
     enable = true;
-    languagePacks = [ "en-GB" ];
 
-    package = pkgs.firefox;
+    package = pkgs.librewolf;
 
     nativeMessagingHosts = [
       #pkgs.keepassxc
@@ -39,29 +37,30 @@
       isDefault = true;
 
       settings = {
-        "dom.security.https_only_mode" = true;
-        "browser.download.panel.shown" = true;
-        "identity.fxaccounts.enabled" = false;
-        #"signon.rememberSignons" = false;
-
-        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
         "sidebar.verticalTabs" = true;
+        "sidebar.visibility" = "expand-on-hover";
+        "layout.spellcheckDefault" = 0; # Disable spellcheck - use Harper spellcheck instead
+        "widget.gtk.overlay-scrollbars.enabled" = false; # Always show scrollbars
+        "layout.css.always_underline_links" = true;
+
+        # Don't suggest stuff in the urlbar
+        "browser.urlbar.suggest.history" = false;
       };
 
-      /*
-        2815: set "Cookies" and "Site Data" to clear on shutdown (if 2810 is true) [SETUP-CHROME] [FF128+]
-          * [NOTE] Exceptions: For cross-domain logins, add exceptions for both sites
-          * e.g. https://www.youtube.com (site) + https://accounts.google.com (single sign on)
-          * [WARNING] Be selective with what sites you "Allow", as they also disable partitioning (1767271)
-          * [SETTING] to add site exceptions: Ctrl+I>Permissions>Cookies>Allow (when on the website in question)
-          * [SETTING] to manage site exceptions: Options>Privacy & Security>Permissions>Settings **
-      */
-      extraConfig =
-        (lib.fileContents "${pkgs.arkenfox-userjs}/user.js")
-        # Overrides
-        + ''
-          // Overrides go here
-        '';
+      # /*
+      #   2815: set "Cookies" and "Site Data" to clear on shutdown (if 2810 is true) [SETUP-CHROME] [FF128+]
+      #     * [NOTE] Exceptions: For cross-domain logins, add exceptions for both sites
+      #     * e.g. https://www.youtube.com (site) + https://accounts.google.com (single sign on)
+      #     * [WARNING] Be selective with what sites you "Allow", as they also disable partitioning (1767271)
+      #     * [SETTING] to add site exceptions: Ctrl+I>Permissions>Cookies>Allow (when on the website in question)
+      #     * [SETTING] to manage site exceptions: Options>Privacy & Security>Permissions>Settings **
+      # */
+      # extraConfig =
+      #   (lib.fileContents "${pkgs.arkenfox-userjs}/user.js")
+      #   # Overrides
+      #   + ''
+      #     // Overrides go here
+      #   '';
 
       userChrome = ''
         /* some css */

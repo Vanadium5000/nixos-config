@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -14,6 +15,8 @@
       defaultNetwork.settings.dns_enabled = true;
 
       networkSocket.openFirewall = true;
+
+      enableNvidia = config.nixpkgs.config.cudaSupport;
     };
 
     libvirtd.enable = true;

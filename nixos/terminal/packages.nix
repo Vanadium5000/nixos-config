@@ -33,6 +33,7 @@
           bun
           go
           sqlite
+          sqlite-web # sqlite web editor
         ]
       ++
         # Just cool

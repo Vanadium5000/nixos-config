@@ -21,6 +21,7 @@
       clock = {
         format = "󰸗 {:%a %d %b  %H:%M:%S}";
         format-alt = "{:%A, %B %d, %Y (%R)}  ";
+        interval = 1;
         tooltip-format = "<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "year";

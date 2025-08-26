@@ -128,4 +128,7 @@
     "$shift,XF86KbdBrightnessUp, exec, brightness-up-small 'apple::kbd_backlight'" # Kbd Brightness Up Small
     "$shift,XF86KbdBrightnessDown, exec, brightness-down-small 'apple::kbd_backlight'" # Kbd Brightness Down Small
   ];
+
+  # No cuda - doesn't have an Nvidia GPU
+  nixpkgs.config.cudaSupport = false;
 }

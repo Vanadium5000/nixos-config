@@ -21,6 +21,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     # Disko REPLACED
+    # FIXME: Disko/filesystem config is ugly
     #(import ../../disko.nix {device = "/dev/nvme0n1";})
     ../../disko-replace-legion.nix
   ];

@@ -21,6 +21,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     # Disko
+    # FIXME: Disko/filesystem config is ugly
     ../../disko-replace-mac.nix
   ];
 

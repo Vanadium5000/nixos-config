@@ -83,6 +83,12 @@
 
     # Handles persistent state on systems with ephemeral root storage
     impermanence.url = "github:nix-community/impermanence";
+
+    # Declarative disk partitioning and formatting using nix
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -143,6 +149,7 @@
       nixosConfigurations = {
         legion5i = nixosConfig ./hosts/legion5i;
         macbook = nixosConfig ./hosts/macbook;
+        ionos_vps = nixosConfig ./hosts/ionos_vps;
       };
     };
 

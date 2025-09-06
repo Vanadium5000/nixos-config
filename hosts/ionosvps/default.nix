@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   ...
 }:
 {
@@ -22,4 +23,7 @@
   users.users.${config.var.username}.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFsIUmSPfK9/ncfGjINjeI7sz+QK7wyaYJZtLhVpiU66 thealfiecrawford@icloud.com"
   ];
+
+  # GUI askpass doesn't work
+  programs.gnupg.agent.enableSSHSupport = lib.mkForce false;
 }

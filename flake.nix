@@ -149,7 +149,7 @@
       nixosConfigurations = {
         legion5i = nixosConfig ./hosts/legion5i;
         macbook = nixosConfig ./hosts/macbook;
-        ionos_vps = nixosConfig ./hosts/ionos_vps;
+        ionosvps = nixosConfig ./hosts/ionosvps;
       };
     };
 

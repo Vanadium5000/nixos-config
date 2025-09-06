@@ -90,10 +90,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # For IONOS VPS, these are private repositories
-    # NOTE: Remove these if you don't want this
-    my-website-frontend.url = "git+ssh://git@github-my-website-frontend.com/Vanadium5000/my-website-frontend.git?ref=main";
-    my-website-backend.url = "git+ssh://git@github-my-website-backend.com/Vanadium5000/my-website-backend.git?ref=main";
+    # My Website
+    my-website-frontend.url = "github:Vanadium5000/my-website-frontend";
+    my-website-backend.url = "github:Vanadium5000/my-website-backend";
   };
 
   outputs =

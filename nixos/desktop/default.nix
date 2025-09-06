@@ -11,6 +11,7 @@
 
     ./audio.nix
     ./bluetooth.nix
+    ./deploy-vps.nix
     ./flatpak.nix
     ./fonts.nix
     ./gaming.nix

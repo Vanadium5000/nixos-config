@@ -1,23 +1,4 @@
 { pkgs, inputs, ... }:
-let
-  deploy-vps = pkgs.writeShellScriptBin "deploy-vps" ''
-    # SSH into the server
-    ssh ac@217.154.38.159 << 'EOF'
-      # Change to the nixos-config directory
-      cd ~/Documents/nixos-config
-
-      # Pull any nixos-config changes
-      git pull
-      
-      # Update specific flake inputs
-      nix flake update my-website-frontend
-      nix flake update my-website-backend
-      
-      # Rebuild the system using the flake
-      sudo nixos-rebuild switch --flake .
-    EOF
-  '';
-in
 {
   imports = [
     inputs.my-website-backend.nixosModules.default
@@ -68,7 +49,4 @@ in
     80
     443
   ];
-
-  # Add the deploy-vps script to deploy config & website changes
-  environment.systemPackages = [ deploy-vps ];
 }

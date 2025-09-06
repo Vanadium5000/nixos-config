@@ -92,8 +92,8 @@
 
     # For IONOS VPS, these are private repositories
     # NOTE: Remove these if you don't want this
-    my-website-frontend.url = "git+ssh://git@github-my-website-frontend.com/Vanadium5000/my-website-frontend.git";
-    my-website-backend.url = "git+ssh://git@github-my-website-backend.com/Vanadium5000/my-website-backend.git";
+    my-website-frontend.url = "git+ssh://git@github-my-website-frontend.com/Vanadium5000/my-website-frontend.git?ref=master";
+    my-website-backend.url = "git+ssh://git@github-my-website-backend.com/Vanadium5000/my-website-backend.git?ref=master";
   };
 
   outputs =

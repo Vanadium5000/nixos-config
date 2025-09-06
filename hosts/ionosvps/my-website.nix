@@ -1,12 +1,33 @@
 { pkgs, inputs, ... }:
+let
+  deploy-vps = pkgs.writeShellScriptBin "deploy-vps" ''
+    # SSH into the server
+    ssh ac@217.154.38.159 << 'EOF'
+      # Change to the nixos-config directory
+      cd ~/Documents/nixos-config
+
+      # Pull any nixos-config changes
+      git pull
+      
+      # Update specific flake inputs
+      nix flake update my-website-frontend
+      nix flake update my-website-backend
+      
+      # Rebuild the system using the flake
+      sudo nixos-rebuild switch --flake .
+    EOF
+  '';
+in
 {
   imports = [
     inputs.my-website-backend.nixosModules.default
   ];
 
   # Enable services
-  services.my-website-backend.enable = true; # Starts the my-website-backend
-
+  services.my-website-backend = {
+    enable = true; # Starts the my-website-backend
+    databaseUrl = "sqlite:///var/lib/rust-backend/db.sqlite";
+  };
   services.nginx = {
     enable = true;
     recommendedGzipSettings = true;
@@ -15,6 +36,8 @@
     recommendedTlsSettings = true;
 
     virtualHosts."my-website.space" = {
+      serverAliases = [ "www.my-website.space" ];
+
       forceSSL = true; # Redirect HTTP to HTTPS
       enableACME = true; # Auto Let's Encrypt
 
@@ -45,4 +68,7 @@
     80
     443
   ];
+
+  # Add the deploy-vps script to deploy config & website changes
+  environment.systemPackages = [ deploy-vps ];
 }

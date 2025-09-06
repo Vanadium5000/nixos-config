@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -11,6 +12,7 @@
     ./audio.nix
     ./bluetooth.nix
     ./flatpak.nix
+    ./fonts.nix
     ./gaming.nix
     ./hyprland.nix
     ./nix-ld.nix
@@ -22,7 +24,7 @@
     #./ydotool.nix
   ];
 
-  home-manager = {
+  home-manager = lib.makeForce {
     extraSpecialArgs = {
       inherit inputs;
     };

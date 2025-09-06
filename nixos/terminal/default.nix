@@ -8,15 +8,15 @@
 {
   imports = [
     #./fenix.nix
-    ./fonts.nix
     ./packages.nix
     ./pager.nix
     ./postgresql.nix
   ];
 
-  home-manager = lib.mkDefault {
+  # Desktop is higher priority with lib.mkForce
+  home-manager = {
     extraSpecialArgs = {
-      inherit inputs; # settings;
+      inherit inputs;
     };
     users.${config.var.username} = import ../../home-manager/terminal;
   };

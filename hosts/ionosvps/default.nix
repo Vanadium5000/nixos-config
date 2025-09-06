@@ -24,6 +24,10 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFsIUmSPfK9/ncfGjINjeI7sz+QK7wyaYJZtLhVpiU66 thealfiecrawford@icloud.com"
   ];
 
-  # GUI askpass doesn't work
-  programs.gnupg.agent.enableSSHSupport = lib.mkForce false;
+  # Reduce ram usage
+  max-jobs = "1"; # Use only 1 core for building - default is 1, int or "auto"
+  cores = 1; # Use only 1 per build job
+  # Reduce binary cache ram usage
+  http-connections = 8; # Max number of parallel TCP connections - default is 25
+  max-substitution-jobs = 4; # Max number of substitution jobs in parallel - default is 16
 }

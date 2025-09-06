@@ -3,6 +3,7 @@
   imports = [
     ./brightness.nix
     ./caffeine.nix
+    ./deploy-vps.nix
     ./hyprfocus.nix
     ./hyprpanel.nix
     ./nerdfont_fzf.nix

@@ -11,6 +11,9 @@
     inputs.disko.nixosModules.disko
     (import ./disko_ionos.nix { device = "/dev/vda"; })
     ./hardware-configuration.nix
+
+    # Services to run My Website
+    ./my-website.nix
   ];
 
   # Set hostname to the same as the nixosConfiguration used

@@ -45,12 +45,13 @@
 
         # General
         eamodio.gitlens
-        #ms-azuretools.vscode-containers
+        ms-azuretools.vscode-containers
         pkief.material-icon-theme
         usernamehw.errorlens # Improves error highlighting
         fill-labs.dependi # Helps manage dependencies
         #streetsidesoftware.code-spell-checker
         gruntfuggly.todo-tree # Show TODOs, FIXMEs, etc. comment tags in a tree view
+        mkhl.direnv # Direnv for VSCodium
 
         # AI
         continue.continue

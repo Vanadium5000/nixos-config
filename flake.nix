@@ -89,6 +89,11 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # For IONOS VPS, these are private repositories
+    # NOTE: Remove these if you don't want this
+    my-website-frontend.url = "git+ssh://git@github.com/Vanadium5000/my-website-frontend.git";
+    my-website-backend.url = "git+ssh://git@github.com/Vanadium5000/my-website-backend.git";
   };
 
   outputs =

@@ -24,7 +24,7 @@
     #./ydotool.nix
   ];
 
-  home-manager = lib.makeForce {
+  home-manager = lib.mkForce {
     extraSpecialArgs = {
       inherit inputs;
     };

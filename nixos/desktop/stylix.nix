@@ -19,8 +19,6 @@ in
 
     # Base-16 Theme
     base16Scheme = thme.colorScheme;
-    # Wallpaper, required
-    #image = thme.defaultWallpaper;
 
     # Cursor settings
     cursor = {

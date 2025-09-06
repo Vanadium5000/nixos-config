@@ -7,6 +7,7 @@
   # Enable services
   services.my-website-backend = {
     enable = true; # Starts the my-website-backend
+    enableMigrations = true; # Run SQLx migrations on service startup
     databaseUrl = "sqlite:///var/lib/rust-backend/db.sqlite";
   };
   services.nginx = {

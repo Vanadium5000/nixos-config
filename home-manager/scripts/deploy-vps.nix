@@ -11,10 +11,13 @@ let
       # Change to the nixos-config directory
       cd ~/Documents/nixos-config
 
+      # Remove any local changes
+      git reset --hard
+
       # Pull any nixos-config changes
       git pull
       
-      # Update specific flake inputs
+      # Ensure the my-website flake inputs are updated
       nix flake update my-website-frontend
       nix flake update my-website-backend
       

@@ -28,10 +28,10 @@
 
     package = pkgs.librewolf;
 
-    nativeMessagingHosts = [
-      #pkgs.keepassxc
-      #pkgs.passff-host
-    ];
+    # nativeMessagingHosts = [
+    #   #pkgs.keepassxc
+    #   #pkgs.passff-host
+    # ];
 
     profiles.${config.var.username} = {
       id = 0;

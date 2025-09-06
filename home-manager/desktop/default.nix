@@ -10,9 +10,9 @@
     ./theme.nix
 
     ./chromium
-    ./discord
-    ./firefox
-    ./floorp
+    #./discord
+    #./firefox
+    #./floorp
     ./hypr
     ./hyprland
     ./librewolf

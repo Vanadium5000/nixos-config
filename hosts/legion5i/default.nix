@@ -69,7 +69,7 @@
     # Your existing variables ...
     CUDA_PATH = "${pkgs.cudatoolkit}";
     LD_LIBRARY_PATH =
-      "${pkgs.cudatoolkit}/lib:${pkgs.cudaPackages_12_3.cudnn}/lib"
+      "${pkgs.cudatoolkit}/lib:${pkgs.cudaPackages.cudnn}/lib"
       # https://github.com/anotherhadi/nixy/blob/main/home/programs/shell/zsh.nix
       + ":${config.hardware.nvidia.package}/lib:$LD_LIBRARY_PATH"; # Extra for btop nvidia support
   };

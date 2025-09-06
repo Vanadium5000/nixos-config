@@ -16,7 +16,7 @@ in
     ./animations.nix
     ./bindings.nix
     ./decorations.nix
-    ./hyprspace.nix
+    #./hyprspace.nix # FIXME: Hyperspace is currently broken
     ./variables.nix
     ./xwayland.nix
   ];
@@ -33,7 +33,8 @@ in
     swww # wallpaper utilhyprpaper
     hyprpicker # color picker
 
-    nwg-displays # displays/outputs settings gui
+    # FIXME: Package broken, reverted to stable
+    stable.nwg-displays # displays/outputs settings gui
     protonvpn-gui # proton vpn gui
   ];
 

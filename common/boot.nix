@@ -1,15 +1,23 @@
 _: {
   boot = {
     loader = {
-      efi = {
-        # Mounts efi partition to "/boot"
-        efiSysMountPoint = "/boot";
-        canTouchEfiVariables = true; # Whether the installation process is allowed to modify EFI boot variables
-      };
+      # efi = {
+      #   # Mounts efi partition to "/boot"
+      #   efiSysMountPoint = "/boot";
+      #   canTouchEfiVariables = true; # Whether the installation process is allowed to modify EFI boot variables
+      # };
       # Use the systemd-boot EFI boot loader.
-      systemd-boot = {
+      # systemd-boot = {
+      #   enable = true;
+      #   consoleMode = "auto"; # Pick a suitable mode automatically using heuristics
+      # };
+
+      # Use the grub EFI boot loader.
+      # NOTE: No need to set devices, disko will add all devices that have a EF02 partition to the list already
+      grub = {
         enable = true;
-        consoleMode = "auto"; # Pick a suitable mode automatically using heuristics
+        efiSupport = true;
+        efiInstallAsRemovable = true;
       };
     };
 

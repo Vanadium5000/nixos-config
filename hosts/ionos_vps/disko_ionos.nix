@@ -18,16 +18,18 @@
           type = "gpt";
           partitions = {
             boot = {
-              priority = 1;
               name = "boot";
-              start = "1M";
-              end = "128M";
-              type = "EF00";
+              size = "1M";
+              type = "EF02"; # BIOS Boot partition type
+            };
+            esp = {
+              name = "ESP";
+              size = "500M";
+              type = "EF00"; # EFI partition type
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
               };
             };
             root = {

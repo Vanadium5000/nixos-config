@@ -54,6 +54,27 @@
         definedAliases = [ "@gh" ];
       };
 
+      "grok" = {
+        name = "Grok";
+        urls = [
+          {
+            template = "https://x.com/i/grok";
+            params = [
+              {
+                name = "focus";
+                value = "1";
+              }
+              {
+                name = "text";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+        icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/XAI-Logo.svg/150px-XAI-Logo.svg.png";
+        definedAliases = [ "@grok" ];
+      };
+
       "bing".metaData.hidden = true;
       "ddg".metaData.hidden = true;
       "ebay".metaData.hidden = true;

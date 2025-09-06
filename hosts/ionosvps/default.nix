@@ -26,10 +26,11 @@
 
   # Reduce ram usage
   nix.settings = {
-    max-jobs = "1"; # Use only 1 core for building - default is 1, int or "auto"
-    cores = 1; # Use only 1 per build job
+    # "lib.mkOverride 99" is slightly higher priority
+    max-jobs = lib.mkOverride 99 1; # Use only 1 core for building - default is 1, int or "auto"
+    cores = lib.mkOverride 99 1; # Use only 1 per build job
     # Reduce binary cache ram usage
-    http-connections = 8; # Max number of parallel TCP connections - default is 25
-    max-substitution-jobs = 4; # Max number of substitution jobs in parallel - default is 16
+    http-connections = lib.mkOverride 99 8; # Max number of parallel TCP connections - default is 25
+    max-substitution-jobs = lib.mkOverride 99 4; # Max number of substitution jobs in parallel - default is 16
   };
 }

@@ -11,7 +11,7 @@
     ./git-sync.nix
     ./git.nix
     ./lazygit.nix
-    #./rust.nix
+    ./rust.nix
 
     ../home.nix
   ];

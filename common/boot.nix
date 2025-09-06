@@ -1,4 +1,5 @@
-_: {
+{ lib, ... }:
+{
   boot = {
     loader = {
       # efi = {
@@ -18,6 +19,7 @@ _: {
         enable = true;
         efiSupport = true;
         efiInstallAsRemovable = true;
+        device = lib.mkDefault "nodev"; # For EFI, set to "nodev" as GRUB doesn't need a specific device
       };
     };
 

@@ -522,11 +522,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1756977414,
-        "narHash": "sha256-Hz5S4fILpYd1smWDZ+uLYjHgW22v6JS/04j15I4cFZE=",
+        "lastModified": 1757180583,
+        "narHash": "sha256-PcHIK+FlH9EiP59ikyTOr66wvdMvxCieW8UVKLLgA5c=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "4e785d12a91117cd5b255052799d1a051d9976c0",
+        "rev": "bce43f74eb8e4570d0d043f5fc8257eef7a57399",
         "type": "github"
       },
       "original": {
@@ -795,17 +795,17 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1757167338,
-        "narHash": "sha256-9+c2HbfAaUlS4ZWcCxAfJLFaen6QBm7EVn8Te6Fz2Nc=",
-        "ref": "refs/heads/main",
-        "rev": "03ca6d27d213cbbe499a90b9ca5b7cd25f429838",
-        "revCount": 14,
-        "type": "git",
-        "url": "ssh://git@github.com/Vanadium5000/my-website-backend.git"
+        "lastModified": 1757182578,
+        "narHash": "sha256-vllwVyd1VrdadPgqY9JXLt6YF9uO8eKvWJ/NuDb41R0=",
+        "owner": "Vanadium5000",
+        "repo": "my-website-backend",
+        "rev": "cb494cf6693c9c7b56834ad600521da5bfa6e7b2",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/Vanadium5000/my-website-backend.git"
+        "owner": "Vanadium5000",
+        "repo": "my-website-backend",
+        "type": "github"
       }
     },
     "my-website-frontend": {
@@ -815,15 +815,15 @@
       "locked": {
         "lastModified": 1757161462,
         "narHash": "sha256-uSd3OIOAZQpB10rlcIxAdOadGu4F8KEpLDpriFlK1qQ=",
-        "ref": "refs/heads/main",
+        "owner": "Vanadium5000",
+        "repo": "my-website-frontend",
         "rev": "c8f2042b4a5946aec7b2254cb507ed8c5f7a4cfd",
-        "revCount": 10,
-        "type": "git",
-        "url": "ssh://git@github.com/Vanadium5000/my-website-frontend.git"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/Vanadium5000/my-website-frontend.git"
+        "owner": "Vanadium5000",
+        "repo": "my-website-frontend",
+        "type": "github"
       }
     },
     "naersk": {
@@ -1098,11 +1098,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757149947,
-        "narHash": "sha256-czeC/NUGD6vFtzgmVHnMVRgG+oM946P9NnIHk5mMhhM=",
+        "lastModified": 1757175473,
+        "narHash": "sha256-zi5d9XZMqZwsnEOFn2mgNQTAVp7oifTNtdqAzSsNZbc=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "a526a67cecb4aee7c2d1f8ee2d00c8c642b1e10f",
+        "rev": "56a58305f2668b2d5519f64eaac93e8d1cef1827",
         "type": "github"
       },
       "original": {
@@ -1421,11 +1421,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1757119848,
-        "narHash": "sha256-DxxKBdP6MFleepcB1hsQYU4cHvvFTekFWlomqot7k9A=",
+        "lastModified": 1757172691,
+        "narHash": "sha256-VOn/s24rb+iO6auhmGfT5kyr0ixRK6weBsNCKkGo2yY=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "f6e9a1b62457efcbf48a09aafbf7233f306fcdc9",
+        "rev": "9991299fe9aad330fb6b96bb58def37033271177",
         "type": "github"
       },
       "original": {

@@ -6,8 +6,8 @@
 { pkgs, ... }:
 let
   deploy-vps = pkgs.writeShellScriptBin "deploy-vps" ''
-    # SSH into the server
-    ssh ac@217.154.38.159 << 'EOF'
+    # SSH into the server with a pseudo-terminal
+    ssh -t ac@217.154.38.159 << 'EOF'
       # Change to the nixos-config directory
       cd ~/Documents/nixos-config
 
@@ -24,6 +24,6 @@ let
   '';
 in
 {
-  # Add the deploy-vps script to deploy config & website changes
-  environment.systemPackages = [ deploy-vps ];
+  # Add the deploy-vps script
+  home.packages = [ deploy-vps ];
 }

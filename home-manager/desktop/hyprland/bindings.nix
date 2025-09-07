@@ -5,7 +5,7 @@
       [
         "$mod,RETURN, exec, ${pkgs.ghostty}/bin/ghostty" # Ghostty
         "$mod,E, exec, dolphin" # Dolphin
-        "$mod,B, exec, ${pkgs.librewolf}/bin/librewolf" # Librewolf
+        "$mod,B, exec, librewolf" # Librewolf
         "$mod,G, exec, xdg-open https://x.com/i/grok" # Open Grok
 
         "$mod,L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock

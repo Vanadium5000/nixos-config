@@ -14,6 +14,8 @@
 
   # Stylix theming for floorp
   stylix.targets.librewolf = {
+    enable = true;
+
     # The Floorp profile names to apply styling on
     profileNames = [ config.var.username ];
 
@@ -24,9 +26,10 @@
   # Browser
   # TODO: Multi-account containers
   programs.librewolf = {
-    enable = true;
+    enable = false;
 
-    package = pkgs.librewolf;
+    # FIXME: Librewolf doesn't get fetched from cache.nixos.org
+    package = pkgs.stable.librewolf;
 
     # nativeMessagingHosts = [
     #   #pkgs.keepassxc

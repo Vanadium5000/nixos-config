@@ -20,7 +20,7 @@
     virtualHosts."my-website.space" = {
       serverAliases = [ "www.my-website.space" ];
 
-      forceSSL = true; # Redirect HTTP to HTTPS
+      addSSL = true; # Redirect HTTP to HTTPS
       enableACME = true; # Auto Let's Encrypt
 
       # Serve frontend static files

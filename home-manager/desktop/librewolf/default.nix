@@ -26,7 +26,7 @@
   # Browser
   # TODO: Multi-account containers
   programs.librewolf = {
-    enable = false;
+    enable = true;
 
     # FIXME: Librewolf doesn't get fetched from cache.nixos.org
     package = pkgs.stable.librewolf;

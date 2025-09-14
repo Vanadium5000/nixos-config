@@ -72,7 +72,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "yaml.schemas": {
-    "file:///home/ac/.vscode-oss/extensions/continue.continue-1.3.4-linux-x64/config-yaml-schema.json": [
+    "file:///home/ac/.vscode-oss/extensions/continue.continue-1.3.8-linux-x64/config-yaml-schema.json": [
       ".continue/**/*.yaml"
     ]
   },

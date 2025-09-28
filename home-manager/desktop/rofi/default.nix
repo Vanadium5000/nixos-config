@@ -1,8 +1,8 @@
 { pkgs, ... }:
 let
-  rofiPackage = pkgs.rofi-wayland.override {
+  rofiPackage = pkgs.rofi.override {
     plugins = [
-      pkgs.rofi-emoji-wayland
+      pkgs.rofi-emoji
       # Overrided with wayland support
       pkgs.rofi-calc
     ];

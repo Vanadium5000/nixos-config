@@ -12,10 +12,10 @@
     # ...
     # });
     rofi-calc = prev.rofi-calc.override {
-      rofi-unwrapped = prev.rofi-wayland-unwrapped;
+      rofi-unwrapped = prev.rofi-unwrapped;
     };
     rofi-vpn = prev.rofi-vpn.override {
-      rofi-unwrapped = prev.rofi-wayland-unwrapped;
+      rofi-unwrapped = prev.rofi-unwrapped;
     };
   };
 

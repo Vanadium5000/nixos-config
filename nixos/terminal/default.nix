@@ -8,6 +8,7 @@
 {
   imports = [
     #./fenix.nix
+    ./mongodb.nix
     ./packages.nix
     ./pager.nix
     ./postgresql.nix

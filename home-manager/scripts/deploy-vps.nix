@@ -7,7 +7,7 @@
 let
   deploy-vps = pkgs.writeShellScriptBin "deploy-vps" ''
     # SSH into the server with a pseudo-terminal
-    ssh -t ac@217.154.38.159 << 'EOF'
+    ssh -t my-website.space << 'EOF'
       # Change to the nixos-config directory
       cd ~/Documents/nixos-config
 

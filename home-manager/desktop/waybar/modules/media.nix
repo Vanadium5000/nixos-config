@@ -56,23 +56,24 @@ in
         };
       };
       # Waybar lyrics
-      "custom/lyrics" = {
-        return-type = "json";
-        format = "{icon} {0}";
-        hide-empty-text = true;
-        format-icons = {
-          playing = "";
-          paused = "";
-          lyric = "";
-          music = "󰝚";
-        };
-        exec-if = "which waybar-lyric";
-        exec = "waybar-lyric --quiet -m50";
-        on-click = "waybar-lyric --toggle";
+      # FIXME: HIGH CPU USAGE
+      # "custom/lyrics" = {
+      #   return-type = "json";
+      #   format = "{icon} {0}";
+      #   hide-empty-text = true;
+      #   format-icons = {
+      #     playing = "";
+      #     paused = "";
+      #     lyric = "";
+      #     music = "󰝚";
+      #   };
+      #   exec-if = "which waybar-lyric";
+      #   exec = "waybar-lyric --quiet -m50";
+      #   on-click = "waybar-lyric --toggle";
 
-        # Restart interval (secs) - only with continuous scripts
-        restart-interval = 2;
-      };
+      #   # Restart interval (secs) - only with continuous scripts
+      #   restart-interval = 2;
+      # };
       "image#album-art" = {
         exec = "album_art";
         size = 24;

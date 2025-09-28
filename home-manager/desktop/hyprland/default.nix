@@ -131,9 +131,10 @@ in
         mfact = 0.5;
       };
 
-      gestures = {
-        workspace_swipe = true;
-      };
+      gesture = [
+        # Workspace swipe
+        "3, horizontal, workspace"
+      ];
 
       misc = {
         vfr = true;

@@ -10,7 +10,7 @@
     ./night-shift.nix
     ./notification.nix
     ./screenshot.nix
-    ./security-recorder.nix
+    # ./security-recorder.nix
     ./sounds.nix
     ./system.nix
     ./waybar.nix

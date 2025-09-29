@@ -70,33 +70,33 @@
   hardware.graphics.enable = true;
 
   # Make audio sound better
-  services.pipewire = {
-    extraConfig = {
-      pipewire-pulse."92-fix-crackle" = {
-        "pulse.properties" = {
-          "pulse.properties" = {
-            "pulse.min.req" = "1024/48000";
-            "pulse.default.req" = "1024/48000";
-            "pulse.max.req" = "1024/48000";
-            "pulse.min.quantum" = "1024/48000";
-            "pulse.max.quantum" = "1024/48000";
-          };
-          "stream.properties" = {
-            "node.latency" = "1024/48000";
-            "resample.quality" = 1;
-          };
-        };
-      };
-      pipewire."92-fix-crackle" = {
-        "context.properties" = {
-          "default.clock.rate" = 48000;
-          "default.clock.quantum" = 1024;
-          "default.clock.min-quantum" = 1024;
-          "default.clock.max-quantum" = 1024;
-        };
-      };
-    };
-  };
+  # services.pipewire = {
+  #   extraConfig = {
+  #     pipewire-pulse."92-fix-crackle" = {
+  #       "pulse.properties" = {
+  #         "pulse.properties" = {
+  #           "pulse.min.req" = "1024/48000";
+  #           "pulse.default.req" = "1024/48000";
+  #           "pulse.max.req" = "1024/48000";
+  #           "pulse.min.quantum" = "1024/48000";
+  #           "pulse.max.quantum" = "1024/48000";
+  #         };
+  #         "stream.properties" = {
+  #           "node.latency" = "1024/48000";
+  #           "resample.quality" = 1;
+  #         };
+  #       };
+  #     };
+  #     pipewire."92-fix-crackle" = {
+  #       "context.properties" = {
+  #         "default.clock.rate" = 48000;
+  #         "default.clock.quantum" = 1024;
+  #         "default.clock.min-quantum" = 1024;
+  #         "default.clock.max-quantum" = 1024;
+  #       };
+  #     };
+  #   };
+  # };
 
   # Switch cmd with option, and fn with ctrl: for a more normal keyboard layout
   # home-manager.users.${config.var.username} = {

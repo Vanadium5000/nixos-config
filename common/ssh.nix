@@ -17,7 +17,7 @@
   # Ensure GPG is available
   environment.systemPackages = with pkgs; [
     gnupg
-    pinentry-cursers
+    pinentry-curses
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

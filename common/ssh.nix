@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   services.openssh = {
     enable = true;
@@ -11,8 +11,14 @@
   # OpenPGP, tools/management of keys, etc.
   programs.gnupg.agent = {
     enable = true;
-    enableSSHSupport = true;
+    enableSSHSupport = true; # For SSH key caching
   };
+
+  # Ensure GPG is available
+  environment.systemPackages = with pkgs; [
+    gnupg
+    pinentry-cursers
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -33,4 +33,7 @@
     http-connections = lib.mkOverride 99 8; # Max number of parallel TCP connections - default is 25
     max-substitution-jobs = lib.mkOverride 99 4; # Max number of substitution jobs in parallel - default is 16
   };
+
+  # Fix GnuPG when there is no GUI
+  programs.gnupg.agent.pinentryFlavor = "curses"; # Essential for headless/terminal; alternatives: "tty" or "gnome3" if GUI forwarded
 }

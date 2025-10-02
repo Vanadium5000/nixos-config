@@ -6,4 +6,9 @@
   allowedUnfree = [
     "mongodb"
   ];
+
+  # Persist data
+  customPersist.nixos.directories = [
+    "/var/db/mongodb"
+  ];
 }

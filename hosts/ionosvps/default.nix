@@ -2,6 +2,7 @@
   inputs,
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -35,5 +36,5 @@
   };
 
   # Fix GnuPG when there is no GUI
-  programs.gnupg.agent.pinentryFlavor = "curses"; # Essential for headless/terminal; alternatives: "tty" or "gnome3" if GUI forwarded
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-cursers; # Essential for headless/terminal; alternatives: "tty" or "gnome3" if GUI forwarded
 }

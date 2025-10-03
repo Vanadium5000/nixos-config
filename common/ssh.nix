@@ -9,11 +9,12 @@
   };
 
   # OpenPGP, tools/management of keys, etc.
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true; # For SSH key caching
-    pinentryPackage = pkgs.pinentry-curses; # Use terminal-friendly curses backend
-  };
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true; # For SSH key caching
+  #   pinentryPackage = pkgs.pinentry-curses; # Use terminal-friendly curses backend
+  # };
+
   # Ensure GPG is available
   environment.systemPackages = with pkgs; [
     gnupg

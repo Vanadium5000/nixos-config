@@ -9,6 +9,6 @@
 
   # Persist data
   customPersist.nixos.directories = [
-    "/var/db/" # Meant to be /var/db/mongodb but it breaks mongodb
+    # "/var/db/" # Meant to be /var/db/mongodb but it breaks mongodb
   ];
 }

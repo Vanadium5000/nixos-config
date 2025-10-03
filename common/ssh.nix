@@ -19,12 +19,9 @@
     gnupg
     pinentry-curses
   ];
-  # Automate TTY setup and SSH_AUTH_SOCK for GPG agent on shell login
-  environment.shellInit = ''
-    export GPG_TTY="$(tty)"
-    gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
-    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-  '';
+
+  # Start sshAgent
+  programs.ssh.startAgent = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

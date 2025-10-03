@@ -64,4 +64,6 @@
   environment.sessionVariables.SUDO_ASKPASS =
     # Syncronised with home-manager
     config.home-manager.users."${config.var.username}".home.sessionVariables.SUDO_ASKPASS;
+
+  services.gnome.gcr-ssh-agent.enable = lib.mkForce false;
 }

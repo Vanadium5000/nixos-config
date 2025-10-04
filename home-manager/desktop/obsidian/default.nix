@@ -1,11 +1,11 @@
 { ... }:
 {
-  imports = [ ./theme.nix ];
+  # imports = [ ./theme.nix ];
 
   # Enable custom stylix module for theming
   stylix.targets.obsidian = {
     enable = true;
-    vaults = [ "Vault" ];
+    vaultNames = [ "Vault" ];
   };
 
   # Add Obsidian using flatpak

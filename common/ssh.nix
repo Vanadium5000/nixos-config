@@ -9,11 +9,10 @@
   };
 
   # OpenPGP, tools/management of keys, etc.
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true; # For SSH key caching
-  #   pinentryPackage = pkgs.pinentry-curses; # Use terminal-friendly curses backend
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true; # For SSH key caching
+  };
 
   # Ensure GPG is available
   environment.systemPackages = with pkgs; [
@@ -22,7 +21,7 @@
   ];
 
   # Start sshAgent
-  programs.ssh.startAgent = true;
+  # programs.ssh.startAgent = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

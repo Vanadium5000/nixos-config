@@ -34,4 +34,7 @@
     http-connections = lib.mkOverride 99 8; # Max number of parallel TCP connections - default is 25
     max-substitution-jobs = lib.mkOverride 99 4; # Max number of substitution jobs in parallel - default is 16
   };
+
+  # Use terminal-friendly curses backend
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-curses;
 }

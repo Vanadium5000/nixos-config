@@ -25,6 +25,9 @@
         # TOML
         tamasfe.even-better-toml # Support for Cargo.toml
 
+        # YAML
+        redhat.vscode-yaml
+
         # Python
         ms-python.python
         ms-python.debugpy
@@ -35,7 +38,7 @@
         # Web dev
         bradlc.vscode-tailwindcss
         esbenp.prettier-vscode
-        svelte.svelte-vscode # Svelte
+        # svelte.svelte-vscode # Svelte
 
         # Go
         golang.go
@@ -47,15 +50,17 @@
         eamodio.gitlens
         ms-azuretools.vscode-containers
         pkief.material-icon-theme
-        usernamehw.errorlens # Improves error highlighting
+        # usernamehw.errorlens # Improves error highlighting
         fill-labs.dependi # Helps manage dependencies
         #streetsidesoftware.code-spell-checker
         gruntfuggly.todo-tree # Show TODOs, FIXMEs, etc. comment tags in a tree view
         mkhl.direnv # Direnv for VSCodium
 
         # AI
-        continue.continue
-        saoudrizwan.claude-dev # Cline - Autonomous AI coding agent
+        kilocode.kilo-code # Kilo Code - Open Source AI coding assistant for planning, building, and fixing code
+        # amazonwebservices.amazon-q-vscode # Amazon Q - Autocomplete mainly
+        # continue.continue
+        # saoudrizwan.claude-dev # Cline - Autonomous AI coding agent
       ];
 
       userSettings = lib.mkForce { };

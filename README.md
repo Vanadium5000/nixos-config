@@ -58,3 +58,13 @@ Note: `--cdi-spec-dir=/run/cdi` is added from the official command to solve this
 ```bash
 docker run -ti --name local-ai -p 8080:8080 --cdi-spec-dir=/run/cdi --gpus all localai/localai:latest-gpu-nvidia-cuda-12
 ```
+
+### List of other commands
+
+```bash
+# Rebuild
+sudo nixos-rebuild switch --flake ...
+
+# Bulk delete all VPN connections
+nmcli con del $(nmcli -t -f UUID,TYPE con | awk -F":" '{if ($2 == "vpn") print $1}')
+```

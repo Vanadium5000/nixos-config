@@ -1,4 +1,5 @@
 {
+  // Font settings
   "chat.editor.fontFamily": "JetBrainsMono Nerd Font",
   "chat.editor.fontSize": 17.333333333333332,
   "debug.console.fontFamily": "JetBrainsMono Nerd Font",
@@ -14,69 +15,26 @@
   "scm.inputFontSize": 16.095238095238095,
   "screencastMode.fontSize": 69.33333333333333,
   "terminal.integrated.fontSize": 17.333333333333332,
+
+  // Editor settings
   "editor.formatOnSave": true,
-  "telemetry.feedback.enabled": false,
-  "continue.telemetryEnabled": false,
+
+  // Language-specific settings
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // Nix
-  "nix.enableLanguageServer": true,
-  "nix.serverPath": "nil", // "nil" or "nixd"
-  "nix.formatterPath": ["treefmt", "--stdin", "{file}"],
-  // LSP config can be passed via the ``nix.serverSettings.{lsp}`` as shown below.
-  // "nix.serverSettings": {
-  //   // check https://github.com/oxalica/nil/blob/main/docs/configuration.md for all options available
-  //   "nil": {
-  //     // "diagnostics": {
-  //     //  "ignored": ["unused_binding", "unused_with"],
-  //     // },
-  //   },
-  //   // check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
-  //   "nixd": {
-  //     "options": {
-  //       // By default, this entry will be read from `import <nixpkgs> { }`.
-  //       // You can write arbitrary Nix expressions here, to produce valid "options" declaration result.
-  //       // Tip: for flake-based configuration, utilize `builtins.getFlake`
-  //       "nixos": {
-  //         "expr": "(builtins.getFlake \"/home/ac/Documents/nixos-config\").nixosConfigurations.legion5i.options"
-  //       },
-  //       "home-manager": {
-  //         //"expr": "(builtins.getFlake \"/absolute/path/to/flake\").homeConfigurations.<name>.options",
-  //       },
-  //       // Tip: use ${workspaceFolder} variable to define path
-  //       "nix-darwin": {
-  //         //"expr": "(builtins.getFlake \"${workspaceFolder}/path/to/flake\").darwinConfigurations.<name>.options",
-  //       }
-  //     }
-  //   }
-  // },
-  "git.autofetch": true,
-  "lldb.suppressUpdateNotifications": true,
-  "workbench.iconTheme": "material-icon-theme",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "terminal.integrated.defaultProfile.linux": "fish",
-  "containers.containerCommand": "podman",
-  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
-  "svelte.enable-ts-plugin": true,
-  "workbench.colorTheme": "Stylix",
   "[svelte]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "yaml.schemas": {
-    "file:///home/ac/.vscode-oss/extensions/continue.continue-1.3.15-linux-x64/config-yaml-schema.json": [
-      ".continue/**/*.yaml"
-    ]
-  },
-  "redhat.telemetry.enabled": false,
   "[dockercompose]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
@@ -90,5 +48,65 @@
   },
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
-  }
+  },
+
+  // Nix extension settings
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd", // or "nixd", or ["executable", "argument1", ...]
+  // LSP config can be passed via the ``nix.serverSettings.{lsp}`` as shown below.
+  "nix.serverSettings": {
+    // check https://github.com/oxalica/nil/blob/main/docs/configuration.md for all options available
+    "nil": {
+      // "diagnostics": {
+      //  "ignored": ["unused_binding", "unused_with"],
+      // },
+      "formatting": {
+        "command": ["nixfmt"]
+      }
+    },
+    // check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
+    "nixd": {
+      "formatting": {
+        "command": ["nixfmt"]
+      },
+      "options": {
+        // By default, this entry will be read from `import <nixpkgs> { }`.
+        // You can write arbitrary Nix expressions here, to produce valid "options" declaration result.
+        // Tip: for flake-based configuration, utilize `builtins.getFlake`
+        "nixos": {
+          "expr": "(builtins.getFlake \"/home/ac/Documents/nixos-config\").nixosConfigurations.legion5i.options"
+        }
+      }
+    }
+  },
+
+  // Git settings
+  "git.autofetch": true,
+
+  // LLDB settings
+  "lldb.suppressUpdateNotifications": true,
+
+  // Workbench settings
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Stylix",
+
+  // Terminal settings
+  "terminal.integrated.defaultProfile.linux": "fish",
+
+  // Container settings
+  "containers.containerCommand": "podman",
+  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+
+  // Telemetry settings
+  "telemetry.telemetryLevel": "off",
+  "telemetry.feedback.enabled": false,
+  "continue.telemetryEnabled": false,
+  "redhat.telemetry.enabled": false,
+  "gitlens.telemetry.enabled": false,
+
+  // Kilo Code settings
+  "kilo-code.allowedCommands": ["git log", "git diff", "git show"],
+  "kilo-code.deniedCommands": [],
+  "liveServer.settings.host": "0.0.0.0",
+  "liveServer.settings.useLocalIp": true
 }

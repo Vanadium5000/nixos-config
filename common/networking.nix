@@ -1,6 +1,7 @@
 {
   config,
   options,
+  pkgs,
   ...
 }:
 {
@@ -12,6 +13,9 @@
       enable = true;
       # Prevents networkmanager override set nameservers
       #dns = "none";
+      plugins = with pkgs; [
+        networkmanager-openvpn # This provides the org.freedesktop.NetworkManager.openvpn plugin
+      ];
     };
 
     # Better security

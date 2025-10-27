@@ -1,15 +1,15 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    inputs.my-website-backend.nixosModules.default
+    # inputs.my-website-backend.nixosModules.default
   ];
 
   # Enable services
-  services.my-website-backend = {
-    enable = true; # Starts the my-website-backend
-    enableMigrations = true; # Run SQLx migrations on service startup
-    databaseUrl = "sqlite:///var/lib/rust-backend/db.sqlite";
-  };
+  # services.my-website-backend = {
+  #   enable = true; # Starts the my-website-backend
+  #   enableMigrations = true; # Run SQLx migrations on service startup
+  #   databaseUrl = "sqlite:///var/lib/rust-backend/db.sqlite";
+  # };
   services.nginx = {
     enable = true;
     recommendedGzipSettings = true;

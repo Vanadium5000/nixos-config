@@ -32,6 +32,13 @@
         proxyWebsockets = true; # If needed for WS
       };
 
+      # New auth proxy (preserves /auth/api/ path)
+      location."/auth/api/" = {
+        proxy_pass = "http://127.0.0.1:3000";
+        proxy_websockets = "on"; # If needed for WS
+        # Add other proxy settings like proxy_set_header Host $host; etc.
+      };
+
       # Optional: SPA fallback for frontend routes
       locations."/" = {
         tryFiles = "$uri $uri/ /index.html";

@@ -23,6 +23,9 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -107,6 +110,10 @@
   // Kilo Code settings
   "kilo-code.allowedCommands": ["git log", "git diff", "git show"],
   "kilo-code.deniedCommands": [],
+
+  // Live server settings
   "liveServer.settings.host": "0.0.0.0",
   "liveServer.settings.useLocalIp": true
+
+  // Other...
 }

@@ -2,8 +2,7 @@
   inputs,
   config,
   ...
-}:
-{
+}: {
   nix = {
     settings = rec {
       # Enable flakes and new 'nix' command
@@ -44,7 +43,7 @@
         "https://cache.nixos.org?priority=1"
         "https://hyprland.cachix.org?priority=2"
         "https://nix-community.cachix.org?priority=3"
-        "https://cache.soopy.moe?priority=4" # Apple T2
+        # "https://cache.soopy.moe?priority=4" # Apple T2
       ];
       trusted-substituters = substituters;
       trusted-public-keys = [
@@ -61,12 +60,12 @@
     # Opinionated: disable channels
     channel.enable = false;
 
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     # Save space by hardlinking store files
     optimise = {
       automatic = true;
-      dates = [ "weekly" ];
+      dates = ["weekly"];
     };
     # Remove old generations, unnecessary software, etc.
     gc = {

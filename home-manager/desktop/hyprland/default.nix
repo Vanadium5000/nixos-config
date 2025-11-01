@@ -187,6 +187,11 @@ in
         "blur, ^nwg-dock$"
         "ignorezero, ^nwg-dock$" # makes blur ignore fully transparent pixels
 
+        # Nwg-drawer
+        "noanim, ^nwg-drawer$"
+        "blur, ^nwg-drawer$"
+        "ignorezero, ^nwg-drawer$" # makes blur ignore fully transparent pixels
+
         # Rofi
         "noanim, ^rofi$"
         "blur, ^rofi$"

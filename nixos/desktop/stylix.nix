@@ -4,12 +4,10 @@
   config,
   lib,
   ...
-}:
-let
+}: let
   thme = config.var.theme;
-in
-{
-  imports = [ inputs.stylix.nixosModules.stylix ];
+in {
+  imports = [inputs.stylix.nixosModules.stylix];
 
   stylix = {
     enable = true;
@@ -53,7 +51,7 @@ in
       };
 
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
 
@@ -66,5 +64,5 @@ in
     };
   };
 
-  nixpkgs = lib.mkForce { };
+  nixpkgs = lib.mkForce {};
 }

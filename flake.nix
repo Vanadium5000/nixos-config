@@ -95,67 +95,63 @@
     my-website-backend.url = "github:Vanadium5000/my-website-backend";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      impermanence,
-      ...
-    }@inputs:
-    let
-      inherit (self) outputs;
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    impermanence,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
 
-      # Supported systems for your flake packages, shell, etc.
-      systems = [
-        "aarch64-linux"
-        "i686-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
-      # This is a function that generates an attribute by calling a function you
-      # pass to it, with each system as an argument
-      forAllSystems = nixpkgs.lib.genAttrs systems;
+    # Supported systems for your flake packages, shell, etc.
+    systems = [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    # This is a function that generates an attribute by calling a function you
+    # pass to it, with each system as an argument
+    forAllSystems = nixpkgs.lib.genAttrs systems;
 
-      nixosConfig =
-        file:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs; # settings;
-          };
-          modules = [
-            file # hosts/x.nix file
-
-            ./common
-
-            home-manager.nixosModules.home-manager # Home manager
-
-            #disko.nixosModules.disko # Declarative disk partitioning
-            impermanence.nixosModules.impermanence # Handles persistent state on systems with ephemeral root storage
-            #persist-retro.nixosModules.persist-retro # Retroactively persist directories with impermanence - copies files/folders to persist once added instead of deleting & making new - doesn't loose data
-          ];
+    nixosConfig = file:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs outputs; # settings;
         };
-    in
-    {
-      # Your custom packages
-      # Accessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      # Formatter for your nix files, available through 'nix fmt'
-      # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+        modules = [
+          file # hosts/x.nix file
 
-      # Your custom packages and modifications, exported as overlays
-      overlays = import ./overlays { inherit inputs; };
+          ./common
 
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#configuration-name'
-      nixosConfigurations = {
-        legion5i = nixosConfig ./hosts/legion5i;
-        macbook = nixosConfig ./hosts/macbook;
-        ionosvps = nixosConfig ./hosts/ionosvps;
+          home-manager.nixosModules.home-manager # Home manager
+
+          #disko.nixosModules.disko # Declarative disk partitioning
+          impermanence.nixosModules.impermanence # Handles persistent state on systems with ephemeral root storage
+          #persist-retro.nixosModules.persist-retro # Retroactively persist directories with impermanence - copies files/folders to persist once added instead of deleting & making new - doesn't loose data
+        ];
       };
+  in {
+    # Your custom packages
+    # Accessible through 'nix build', 'nix shell', etc
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    # Formatter for your nix files, available through 'nix fmt'
+    # Other options beside 'alejandra' include 'nixpkgs-fmt'
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+
+    # Your custom packages and modifications, exported as overlays
+    overlays = import ./overlays {inherit inputs;};
+
+    # NixOS configuration entrypoint
+    # Available through 'nixos-rebuild --flake .#configuration-name'
+    nixosConfigurations = {
+      legion5i = nixosConfig ./hosts/legion5i;
+      macbook = nixosConfig ./hosts/macbook;
+      ionosvps = nixosConfig ./hosts/ionosvps;
     };
+  };
 
   nixConfig = {
     # Substituters
@@ -166,7 +162,7 @@
       "https://cache.nixos.org?priority=1"
       "https://hyprland.cachix.org?priority=2"
       "https://nix-community.cachix.org?priority=2"
-      "https://cache.soopy.moe?priority=4" # Apple T2
+      # "https://cache.soopy.moe?priority=4" # Apple T2
     ];
     extra-trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="

@@ -55,10 +55,11 @@
   # NetworkManager control applet for desktop
   programs.nm-applet.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    networkmanagerapplet
-    libsecret # Required by Chromium and VSCodium for storing secrets
-  ];
+  # environment.systemPackages = with pkgs; [
+
+  #   libsecret # Required by Chromium and VSCodium for storing secrets
+  #   kdePackages.polkit-kde-agent-1 # Provides the authentication dialog for Plasma/Dolphin
+  # ];
 
   # GUI password prompt for SUDO
   environment.sessionVariables.SUDO_ASKPASS =
@@ -66,4 +67,26 @@
     config.home-manager.users."${config.var.username}".home.sessionVariables.SUDO_ASKPASS;
 
   services.gnome.gcr-ssh-agent.enable = lib.mkForce false;
+
+  # Install KDE Polkit agent + Qt support
+  environment.systemPackages = with pkgs; [
+    networkmanagerapplet
+    kdePackages.polkit-kde-agent-1
+    kdePackages.polkit-qt-1 # Ensures Qt apps like Dolphin integrate smoothly
+  ];
+
+  # Auto-start via systemd user service (activates on graphical login for all users)
+  systemd.user.services.polkit-kde-agent-1 = {
+    description = "KDE Polkit Authentication Agent";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
 }

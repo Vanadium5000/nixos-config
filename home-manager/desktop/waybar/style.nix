@@ -35,7 +35,7 @@ in
       window#waybar {
           /* background-color: ${clrs-rgba.background};
           color: ${clrs.foreground}; */
-          background-image: linear-gradient(to bottom, rgba(255,255,255,0.25)0%, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.6)50%);
+          background-image: linear-gradient(to bottom, rgba(255,255,255,0.25)0%, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.8)50%);
 
           border: ${width}px solid ${clrs.border-color};
           border-radius: ${toString thme.rounding}px;

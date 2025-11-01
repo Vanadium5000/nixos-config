@@ -1,71 +1,71 @@
 { pkgs, ... }:
 {
   wayland.windowManager.hyprland.settings = {
-    bind =
-      [
-        "$mod,RETURN, exec, ${pkgs.ghostty}/bin/ghostty" # Ghostty
-        "$mod,E, exec, dolphin" # Dolphin
-        "$mod,B, exec, librewolf" # Librewolf
-        "$mod,G, exec, xdg-open https://x.com/i/grok" # Open Grok
+    bind = [
+      "$mod,RETURN, exec, ${pkgs.ghostty}/bin/ghostty" # Ghostty
+      # "$mod,E, exec, dolphin" # Dolphin
+      "$mod,B, exec, librewolf" # Librewolf
+      "$mod,G, exec, xdg-open https://x.com/i/grok" # Open Grok
+      "$mod,A, exec, toggle-nwg-drawer" # Toggle nwg-drawer
 
-        "$mod,L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
+      "$mod,L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
 
-        "$shiftMod,SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
+      "$shiftMod,SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
 
-        #"$mod,TAB, overview:toggle" # Overview (Hyprspace)
+      #"$mod,TAB, overview:toggle" # Overview (Hyprspace)
 
-        "$mod,D, exec, toggle-dock" # Toggle nwg-dock-hyprland (dock)
-        "$shiftMod,D, exec, waybar-toggle" # Toggle Hyprpanel (bar)
+      "$mod,D, exec, toggle-dock" # Toggle nwg-dock-hyprland (dock)
+      "$shiftMod,D, exec, waybar-toggle" # Toggle Hyprpanel (bar)
 
-        "$mod,Q, killactive," # Close window
-        "$mod,T, togglefloating," # Toggle Floating
-        "$mod,F, fullscreen" # Toggle Fullscreen
-        "$mod,left, movefocus, l" # Move focus left
-        "$mod,right, movefocus, r" # Move focus Right
-        "$mod,up, movefocus, u" # Move focus Up
-        "$mod,down, movefocus, d" # Move focus Down
-        "$shiftMod,up, focusmonitor, -1" # Focus previous monitor
-        "$shiftMod,down, focusmonitor, 1" # Focus next monitor
-        "$shiftMod,left, layoutmsg, addmaster" # Add to master
-        "$shiftMod,right, layoutmsg, removemaster" # Remove from master
+      "$mod,Q, killactive," # Close window
+      "$mod,T, togglefloating," # Toggle Floating
+      "$mod,F, fullscreen" # Toggle Fullscreen
+      "$mod,left, movefocus, l" # Move focus left
+      "$mod,right, movefocus, r" # Move focus Right
+      "$mod,up, movefocus, u" # Move focus Up
+      "$mod,down, movefocus, d" # Move focus Down
+      "$shiftMod,up, focusmonitor, -1" # Focus previous monitor
+      "$shiftMod,down, focusmonitor, 1" # Focus next monitor
+      "$shiftMod,left, layoutmsg, addmaster" # Add to master
+      "$shiftMod,right, layoutmsg, removemaster" # Remove from master
 
-        "$mod,PRINT, exec, screenshot area" # Screenshot area & copy/save
-        ",PRINT, exec, screenshot monitor" # Screenshot monitor & copy/save
-        "$shiftMod,PRINT, exec, screenshot area toText" # Screenshot area & copy as text
+      "$mod,PRINT, exec, screenshot area" # Screenshot area & copy/save
+      ",PRINT, exec, screenshot monitor" # Screenshot monitor & copy/save
+      "$shiftMod,PRINT, exec, screenshot area toText" # Screenshot area & copy as text
 
-        "$mod,F2, exec, night-shift" # Toggle night shift
-        "$mod,F3, exec, night-shift" # Toggle night shift
+      "$mod,F2, exec, night-shift" # Toggle night shift
+      "$mod,F3, exec, night-shift" # Toggle night shift
 
-        # Rofi
-        "$mod,SPACE, exec, rofi-menu"
-        "$mod,Z, exec, clipboard"
-        "$mod,V, exec, rofi-vpn"
-        "$mod,P, exec, rofi-pass"
-        "$shiftMod,E, exec, rofi -show emoji"
-        "$mod,W, exec, rofi-wallpaper"
-        "$mod,C, exec, rofi -show calc"
-        "$mod,X, exec, rofi-powermenu"
-        "$mod,S, exec, rofi-screenshot"
+      # Rofi
+      "$mod,SPACE, exec, rofi-menu"
+      "$mod,Z, exec, clipboard"
+      "$mod,V, exec, rofi-vpn"
+      "$mod,P, exec, rofi-pass"
+      "$mod,E, exec, rofi -show emoji"
+      "$mod,W, exec, rofi-wallpaper"
+      "$mod,C, exec, rofi -show calc"
+      "$mod,X, exec, rofi-powermenu"
+      "$mod,S, exec, rofi-screenshot"
 
-        # Screen zooming on shiftMod + mouse_scroll
-        "$mod,MINUS, exec, hyprctl keyword cursor:zoom_factor $(awk \"BEGIN {print $(hyprctl getoption cursor:zoom_factor | grep 'float:' | awk '{print $2}') - 0.1}\")"
-        "$mod,EQUAL, exec, hyprctl keyword cursor:zoom_factor $(awk \"BEGIN {print $(hyprctl getoption cursor:zoom_factor | grep 'float:' | awk '{print $2}') + 0.1}\")"
+      # Screen zooming on shiftMod + mouse_scroll
+      "$mod,MINUS, exec, hyprctl keyword cursor:zoom_factor $(awk \"BEGIN {print $(hyprctl getoption cursor:zoom_factor | grep 'float:' | awk '{print $2}') - 0.1}\")"
+      "$mod,EQUAL, exec, hyprctl keyword cursor:zoom_factor $(awk \"BEGIN {print $(hyprctl getoption cursor:zoom_factor | grep 'float:' | awk '{print $2}') + 0.1}\")"
 
-        # Disable middle-click, it is so annoying
-        ", mouse:274, exec, "
-      ]
-      ++ (builtins.concatLists (
-        builtins.genList (
-          i:
-          let
-            ws = i + 1;
-          in
-          [
-            "$mod,code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT,code:1${toString i}, movetoworkspace, ${toString ws}"
-          ]
-        ) 9
-      ));
+      # Disable middle-click, it is so annoying
+      ", mouse:274, exec, "
+    ]
+    ++ (builtins.concatLists (
+      builtins.genList (
+        i:
+        let
+          ws = i + 1;
+        in
+        [
+          "$mod,code:1${toString i}, workspace, ${toString ws}"
+          "$mod SHIFT,code:1${toString i}, movetoworkspace, ${toString ws}"
+        ]
+      ) 9
+    ));
 
     bindm = [
       "$mod,mouse:272, movewindow" # Move Window (mouse)

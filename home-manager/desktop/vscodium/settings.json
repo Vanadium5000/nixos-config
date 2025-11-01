@@ -113,7 +113,14 @@
 
   // Live server settings
   "liveServer.settings.host": "0.0.0.0",
-  "liveServer.settings.useLocalIp": true
+  "liveServer.settings.useLocalIp": true,
+  "yaml.schemas": {
+    "file:///home/ac/.vscode-oss/extensions/continue.continue-1.3.22-linux-x64/config-yaml-schema.json": [
+      ".continue/**/*.yaml"
+    ]
+  },
+  "qt-qml.doNotAskForQmllsDownload": true,
+  "qt-qml.qmlls.useQmlImportPathEnvVar": true
 
   // Other...
 }

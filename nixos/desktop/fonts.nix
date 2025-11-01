@@ -2,8 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     font-awesome # Icons that some apps require
@@ -20,7 +19,7 @@
     dejavu_fonts
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     openmoji-color
     twemoji-color-font
     inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
